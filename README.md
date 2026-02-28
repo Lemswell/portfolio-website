@@ -1,2 +1,7 @@
 # Hi
 This is a repository that holds the code for my personal website portfolio.
+
+## Blog
+### Starting this profile 28/02/2026
+This is all to up for change but I wanted to log my crude thoughts whenever I worked on this profile. I really wanted to start this personal website as a way to get some experience in, actually making something. I lack anything I'm really proud of showing off on my resume so I wanted to start with something simple, like this. I've been reviewing some other dev website/profile on youtube and am also consulting AI to teach me how to make what I want for myself. I have settled on making things simple and understandable because that seems to be whats the most hirable, however that's only really the case when I have projects to show off. Therefore, I had a bit of inner turmoil when it came to either making this website first or working on another project SO I could make the website AND show something off. Eventually settling on making this website, I am now just thinking about what I should have in it. 
+The first thing I did change after making this with Next.js was the home page, replacing it with a simple greeting and description of myself. AI helped me with using tailwindCSS (which I feel like I should learn more of on my own), and now I just want to get rid of the assets that aren't being used, like the several `.svg` files that come with first making the page in Next.js. 

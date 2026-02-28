@@ -5,8 +5,10 @@ export default function Home() {
         {"Hi, I'm Lem."}
       </h1>
       <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 leading-8">
-        {"I’m a 25yo software engineering graduate from Sydney, Australia. "}
-        {"I like learning about and building useful applications. Currently exploring Next.js and high-performance web systems."}
+        {"25 yo software engineer student from Sydney, Australia\n"}
+      </p>
+      <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 leading-8">
+        {"I like learning about software so that I can build useful applications. Currently exploring web development."}
       </p>
     </main>
   );
