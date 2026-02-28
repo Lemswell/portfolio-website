@@ -56,7 +56,7 @@ export default function AnimateName() {
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="ml-0.5 inline-block w-[2px] h-[1.2em] bg-blue-500 animate-pulse"
+              className="ml-0.5 inline-block w-[2px] h-[1.2em] bg-black dark:bg-white animate-pulse"
               style={{ verticalAlign: 'middle' }}
             />
           )}
