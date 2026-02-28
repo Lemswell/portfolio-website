@@ -4,10 +4,10 @@ export default function Home() {
       <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
         {"Hi, I'm Lem."}
       </h1>
-      <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 leading-8">
-        {"25 yo software engineer student from Sydney, Australia\n"}
+      <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 leading-6">
+        {"25 yo software engineer student from Sydney, Australia"}
       </p>
-      <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 leading-8">
+      <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 leading-6">
         {"I like learning about software so that I can build useful applications. Currently exploring web development."}
       </p>
     </main>
