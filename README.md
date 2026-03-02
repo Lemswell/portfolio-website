@@ -7,6 +7,7 @@ I was contemplating how i should set up my profile. I was thinking it _should_ i
 * Links to my github, linkedin, download resume, and contact.
 * experience / projects section
 * page (or section) for each project, with list of technologies used
+
 and it _could_ include:
 * More about me/blog
 * photos of myself
