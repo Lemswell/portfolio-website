@@ -8,7 +8,7 @@ export default function AnimateName() {
   const [isHovered, setIsHovered] = useState(false);
 
   // The static part that never moves
-  const base = "lem";
+  const base = "Lem";
   // The two possible suffixes
   const suffix = isExpanded ? "uel De La Cruz." : ".";
 
