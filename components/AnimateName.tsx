@@ -47,7 +47,7 @@ export default function AnimateName() {
               // duration: 0 makes it "pop" in without fading
               transition={{ duration: 0 }}
             >
-              {char}
+              {char === " " ? "\u00A0" : char /* uses space character code*/} 
             </motion.span>
           ))}
 
