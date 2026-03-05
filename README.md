@@ -13,6 +13,8 @@ I'll try import my github and linkedin links along side working on this animatio
 
 HOLD AWN, I got an idea! I want my name to be toggle-able, and for each time its toggled there's a little tid-bit that would comment my thoughts on either my full name or nickname! oh yeah!
 
+Oh wait, prompting AI to help me with this animation made me import `framer-motion` when I don't think I really need it. AND there's a more updated version (apperently). I'll do more research but now I need to figure out how to get rid of packages.
+
 ### 02/03/2026 | Thinking of what I should add? 
 I was contemplating how i should set up my profile. I was thinking it _should_ include the following:
 * Links to my github, linkedin, download resume, and contact.
