@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+let intervalId: number;
+
 const ToggleName = () => {
   const [idxCount, setIdxCount] = useState(0);
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
@@ -11,24 +13,24 @@ const ToggleName = () => {
   const handleClick = () => {
     setIdxCount(i => (i + 1) % nameVariations.length);
 
-    const initialDeleteInterval = setInterval(() => 
+    intervalId = window.setInterval(() => 
       {
         setDisplayedText(displayedText.substring(0, displayedText.length - 1));
-        clearInterval(initialDeleteInterval);
+        clearInterval(intervalId);
       },
       100
     );
-
-    const deleteInterval = setInterval(() => 
+    intervalId = window.setInterval(() => clearInterval(intervalId), 500);
+    intervalId = window.setInterval(() => 
       displayedText.length != 0 
         ? setDisplayedText(displayedText.substring(0, displayedText.length - 1))
-        : clearInterval(deleteInterval), 
+        : clearInterval(intervalId), 
       20
     ); 
-    const typeInterval = setInterval(() =>
+    intervalId = window.setInterval(() =>
       displayedText.length != currentName.length
         ? setDisplayedText(currentName.substring(0, displayedText.length + 1))
-        : clearInterval(typeInterval),
+        : clearInterval(intervalId),
       100
     );
   }
