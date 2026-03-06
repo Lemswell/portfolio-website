@@ -1,4 +1,6 @@
 import AnimateName from '../components/AnimateName';
+import LinkedInSVG from '../public/linkedin-svgrepo-com.svg';
+import GithubSVG from '../public/github-142-svgrepo-com.svg';
 
 export default function Home() {
   return (
@@ -10,8 +12,9 @@ export default function Home() {
         {"25 yo software engineer student from Sydney, Australia"}
       </p>
       <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 leading-6">
-        {"I like learning about software so that I can build useful applications. Currently exploring web development."}
+        {"I like learning about things so that I can build cool, useful software. Currently exploring web development."}
       </p>
     </main>
+    
   );
 }
