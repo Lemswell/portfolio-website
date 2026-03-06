@@ -1,5 +1,5 @@
 # Project description
-This is a repository that holds the code for my personal website for my dev portfolio (for hirers) as well as a blog for thoughts and updates on projectsx. As of now I'm useing `Next.js`, In conjunction with `React` (Which i think is necesarry). Also looking to use `Motion` or `framer-motion` for animations.
+This is a repository that holds the code for my personal website for my dev portfolio (to try get hired UGH) as well as a blog for thoughts and updates on projects. As of now I'm using `Next.js`, In conjunction with `React` (Which i think is necesarry). Also looking to use `Motion` or `framer-motion` for animations.
 
 ---
 
