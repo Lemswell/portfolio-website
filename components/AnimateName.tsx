@@ -1,67 +1,46 @@
-'use client'; // Required for interactivity in Next.js App Router
+'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
-export default function AnimateName() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+const ToggleName = () => {
+  const [idxCount, setIdxCount] = useState(0);
+  const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
+  const currentName = nameVariations[idxCount];
+  const [displayedText, setDisplayedText] = useState(currentName);
+  
+  const handleClick = () => {
+    setIdxCount(i => (i + 1) % nameVariations.length);
 
-  // The static part that never moves
-  const base = "Lem";
-  // The two possible suffixes
-  const suffix = isExpanded ? "uel De La Cruz." : ".";
+    const initialDeleteInterval = setInterval(() => 
+      {
+        setDisplayedText(displayedText.substring(0, displayedText.length - 1));
+        clearInterval(initialDeleteInterval);
+      },
+      100
+    );
 
-  const letterVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-  };
+    const deleteInterval = setInterval(() => 
+      displayedText.length != 0 
+        ? setDisplayedText(displayedText.substring(0, displayedText.length - 1))
+        : clearInterval(deleteInterval), 
+      20
+    ); 
+    const typeInterval = setInterval(() =>
+      displayedText.length != currentName.length
+        ? setDisplayedText(currentName.substring(0, displayedText.length + 1))
+        : clearInterval(typeInterval),
+      100
+    );
+  }
 
   return (
     <span 
       className="inline-flex items-center cursor-pointer font-bold text-zinc-800 dark:text-zinc-100"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setIsExpanded(true)}
+      onClick={handleClick}
     >
-      {base}
-      
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={suffix} // Changing the key triggers the "Backspace" then "Type"
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ 
-            staggerChildren: 0.05, 
-            // This ensures the "exit" happens before the "entrance"
-            staggerDirection: 1 
-          }}
-          className="inline-flex items-center"
-        >
-          {suffix.split("").map((char, i) => (
-            <motion.span
-              key={i}
-              variants={letterVariants}
-              // duration: 0 makes it "pop" in without fading
-              transition={{ duration: 0 }}
-            >
-              {char === " " ? "\u00A0" : char /* uses space character code*/} 
-            </motion.span>
-          ))}
-
-          {/* The Blinking Cursor */}
-          {isHovered && (
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="ml-0.5 inline-block w-[2px] h-[1.2em] bg-black dark:bg-white animate-pulse"
-              style={{ verticalAlign: 'middle' }}
-            />
-          )}
-        </motion.span>
-      </AnimatePresence>
+      {displayedText}
     </span>
   );
 }
+
+export default ToggleName;

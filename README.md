@@ -1,7 +1,13 @@
 # Project description
 This is a repository that holds the code for my personal website for my dev portfolio (for hirers) as well as a blog for thoughts and updates on projectsx. As of now I'm useing `Next.js`, In conjunction with `React` (Which i think is necesarry). Also looking to use `Motion` or `framer-motion` for animations.
 
+---
+
 ## Blog
+
+### 06/03/2026 | Giving it a shot
+I really missed this. I took some of the code from AI and plugged it into my components. It worked. But I only vaguely understood how it worked, and I didn't get the satisfaction of making something myself. So I deleted most of it and typed up something from scratch regarding what I wanted with 'toggling' my name in the last post. Actually going through the documentation and some youtube tutorials admittedly took a LOT longer but is so much more satisfying. Right now, NOTHING works. I don't understand why. And it's hilarious.
+
 ### 04/03/2026 | Balencing having a job and learning... so I can have a job
 I want to complete this website such that I have the means and experience to find a job in the tech field. Specifically developer field(?). However I have little time to learn these skills because of having a Job. I will try none-the-less.
 
