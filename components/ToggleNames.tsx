@@ -9,7 +9,7 @@ const ToggleName = () => {
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
   const currentName = nameVariations[idxCount];
   const [displayedText, setDisplayedText] = useState(currentName);
-  
+
   const handleClick = () => {
     setIdxCount(i => (i + 1) % nameVariations.length);
 
