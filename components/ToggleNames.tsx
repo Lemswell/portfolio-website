@@ -1,48 +1,63 @@
 'use client';
 
-import { useState } from 'react';
-
-let intervalId: number;
+import { useState, useEffect } from 'react';
 
 const ToggleName = () => {
-  const [idxCount, setIdxCount] = useState(0);
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
-  const currentName = nameVariations[idxCount];
-  const [displayedText, setDisplayedText] = useState(currentName);
+  
+  const [idxCount, setIdxCount] = useState(0);
+  const [displayedText, setDisplayedText] = useState(nameVariations[0]);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
 
   const handleClick = () => {
-    setIdxCount(i => (i + 1) % nameVariations.length);
+    // Only trigger if we aren't already in the middle of an animation
+    if (!isDeleting && !isWaiting) {
+      setIsDeleting(true);
+    }
+  };
 
-    intervalId = window.setInterval(() => 
-      {
-        setDisplayedText(displayedText.substring(0, displayedText.length - 1));
-        clearInterval(intervalId);
-      },
-      100
-    );
-    intervalId = window.setInterval(() => clearInterval(intervalId), 500);
-    intervalId = window.setInterval(() => 
-      displayedText.length != 0 
-        ? setDisplayedText(displayedText.substring(0, displayedText.length - 1))
-        : clearInterval(intervalId), 
-      20
-    ); 
-    intervalId = window.setInterval(() =>
-      displayedText.length != currentName.length
-        ? setDisplayedText(currentName.substring(0, displayedText.length + 1))
-        : clearInterval(intervalId),
-      100
-    );
-  }
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    const currentFullText = nameVariations[idxCount];
+    const nextIdx = (idxCount + 1) % nameVariations.length;
+    const nextFullText = nameVariations[nextIdx];
+
+    // Deleting the current text
+    if (isDeleting && displayedText.length > 0) {
+      timer = setTimeout(() => {
+        setDisplayedText(prev => prev.slice(0, -1));
+      }, 10); // Backspacing speed
+    } 
+    // Finished deleting, switch to next name
+    else if (isDeleting && displayedText.length === 0) {
+      setIsDeleting(false);
+      setIdxCount(nextIdx);
+      setIsWaiting(true); // Small pause before typing starts
+    } 
+    // Waiting before typing new name
+    else if (isWaiting) {
+      timer = setTimeout(() => setIsWaiting(false), 100);
+    }
+    // Typing the new text
+    else if (!isDeleting && displayedText !== currentFullText) {
+      timer = setTimeout(() => {
+        setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
+      }, 40); // Typing speed
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations]);
 
   return (
     <span 
-      className="inline-flex items-center cursor-pointer font-bold text-zinc-800 dark:text-zinc-100"
+      className="cursor-pointer text-blue-800 dark:text-blue-200"
       onClick={handleClick}
     >
       {displayedText}
     </span>
   );
-}
+};
 
 export default ToggleName;
