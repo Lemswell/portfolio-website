@@ -5,6 +5,16 @@ This is a repository that holds the code for my personal website for my dev port
 
 ## Blog
 
+### 09/03/2026 | One tiny step
+Got the animation part done for my name aaand I'm not completely satisfied with it. It works... it's just *sigh* not as cool as I thought it'd be. But I did learn heaps about useEffect and how it interacts with timeouts/timers which is nice. 
+
+I also started working on putting in some links to things. So far I have put in links to my LinkedIn and GitHub, and I want to also have a 'get in contact', and a 'download resume'. But as of now things still look ass. Today I downloaded a package "`SVGR`" for displaying SVGs in react (as suggested by AI), however I got stuck on how to import it into my project and just gave up and uninstalled it. *SIGH*
+
+I've also established my main inspirations as this dude [ted's website](https://tedawf.com/) from the [Anthony Sistilli Video](https://youtu.be/4xqNp6IVXPM) and this cracked teen [Jason Cameron](https://jasoncameron.dev). I love the idea of making things and learning but I get so impatient with myself for not knowing how to do certain things, for googling and/or using AI to tell me whats going on, and for -even after resorting to that- not being able to understand/ have something work. Ah such is coding. 
+
+
+
+
 ### 06/03/2026 | Giving it a shot
 I really missed this. I took some of the code from AI and plugged it into my components. It worked. But I only vaguely understood how it worked, and I didn't get the satisfaction of making something myself. So I deleted most of it and typed up something from scratch regarding what I wanted with 'toggling' my name in the last post. Actually going through the documentation and some youtube tutorials admittedly took a LOT longer but is so much more satisfying. Right now, NOTHING works. I don't understand why. And it's hilarious.
 

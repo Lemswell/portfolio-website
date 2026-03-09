@@ -22,13 +22,12 @@ const ToggleName = () => {
 
     const currentFullText = nameVariations[idxCount];
     const nextIdx = (idxCount + 1) % nameVariations.length;
-    const nextFullText = nameVariations[nextIdx];
 
     // Deleting the current text
     if (isDeleting && displayedText.length > 0) {
       timer = setTimeout(() => {
         setDisplayedText(prev => prev.slice(0, -1));
-      }, 10); // Backspacing speed
+      }, 5); // Backspacing speed
     } 
     // Finished deleting, switch to next name
     else if (isDeleting && displayedText.length === 0) {
@@ -44,19 +43,26 @@ const ToggleName = () => {
     else if (!isDeleting && displayedText !== currentFullText) {
       timer = setTimeout(() => {
         setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
-      }, 40); // Typing speed
+      }, 40 - currentFullText.length*2 > 15 ? 50 - currentFullText.length : 15); // Typing speed
     }
 
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations]);
 
   return (
-    <span 
-      className="cursor-pointer text-blue-800 dark:text-blue-200"
-      onClick={handleClick}
-    >
-      {displayedText}
+    <span>
+      <span
+        className="cursor-pointer text-blue-800 dark:text-blue-200"
+        onClick={handleClick}
+      >
+        {displayedText}
+      </span>
+      <span>{"."}</span>
+      {/*}
+      <span>{comment}</span>
+      */}
     </span>
+    
   );
 };
 
