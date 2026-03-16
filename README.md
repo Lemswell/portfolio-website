@@ -8,6 +8,7 @@ This is a repository that holds the code for my personal website for my dev port
 I've had trouble getting the SVGs working and so I asked AI for help, prompting for a report comparing several approaches on using SVGs with react and tailwind. It resulted in the following table, reccommending the use of SVGR. The thing is, the last time I tried to set up SVGR with my project I ran into some trouble. Something about next.js no longer using webpack... I'll give it another go though because I understand that setting up tools and configuration is an important part of developing.
 
 Method|Type Safety|Perf (JS Size)|Styling Depth|Learning Curve
+|---|---|---|---|---|
 Registry|High|Low|High|Easy
 SVGR|High|Medium|High|Medium
 Sprites|Low|High|Low|Medium
