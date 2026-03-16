@@ -52,7 +52,7 @@ const ToggleName = () => {
   return (
     <span>
       <span
-        className="cursor-pointer text-blue-800 dark:text-blue-200"
+        className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300"
         onClick={handleClick}
       >
         {displayedText}

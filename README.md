@@ -4,16 +4,30 @@ This is a repository that holds the code for my personal website for my dev port
 ---
 
 ## Blog
+### 16/03/2026 | SVGs and links to socials
+I've had trouble getting the SVGs working and so I asked AI for help, prompting for a report comparing several approaches on using SVGs with react and tailwind. It resulted in the following table, reccommending the use of SVGR. The thing is, the last time I tried to set up SVGR with my project I ran into some trouble. Something about next.js no longer using webpack... I'll give it another go though because I understand that setting up tools and configuration is an important part of developing.
+
+Method|Type Safety|Perf (JS Size)|Styling Depth|Learning Curve
+Registry|High|Low|High|Easy
+SVGR|High|Medium|High|Medium
+Sprites|Low|High|Low|Medium
+Framer|High|Low|Highest|Hard
+
+*Update:* Yea it doesn't work because my version of next `Next.js version: 16.1.6 (Turbopack)` uses turbopack (as shown) instead of webpack. When I prompted for fixes it suggested I:
+* probably have to use a less 'cutting edge' version of Next,
+* **or** use a svg library like `lucide-react` (Which contain the icons that ted uses for his [website](https://tedawf.com/)), 
+* **or** just manually convert it (or use the SVGR CLI tool),
+* **or** use `@svgr/core` package which is _apparently_ compatible with turbo pack.
+
+And so I was looking at the documentation for setting up with `npm i @svgr/core` *but* I can't find anything of use for starting from scratch. What the literal helly. WHY AM I GETTING STUCK ON IMPORTING ICONS ARRGHH.
+
 
 ### 09/03/2026 | One tiny step
 Got the animation part done for my name aaand I'm not completely satisfied with it. It works... it's just *sigh* not as cool as I thought it'd be. But I did learn heaps about useEffect and how it interacts with timeouts/timers which is nice. 
 
 I also started working on putting in some links to things. So far I have put in links to my LinkedIn and GitHub, and I want to also have a 'get in contact', and a 'download resume'. But as of now things still look ass. Today I downloaded a package "`SVGR`" for displaying SVGs in react (as suggested by AI), however I got stuck on how to import it into my project and just gave up and uninstalled it. *SIGH*
 
-I've also established my main inspirations as this dude [ted's website](https://tedawf.com/) from the [Anthony Sistilli Video](https://youtu.be/4xqNp6IVXPM) and this cracked teen [Jason Cameron](https://jasoncameron.dev). I love the idea of making things and learning but I get so impatient with myself for not knowing how to do certain things, for googling and/or using AI to tell me whats going on, and for -even after resorting to that- not being able to understand/ have something work. Ah such is coding. 
-
-
-
+I've also established my main inspirations as this dude [Ted's website](https://tedawf.com/) from the [Anthony Sistilli Video](https://youtu.be/4xqNp6IVXPM) and this cracked teen [Jason Cameron's website](https://jasoncameron.dev). I love the idea of making things and learning but I get so impatient with myself for not knowing how to do certain things, for googling and/or using AI to tell me whats going on, and for -even after resorting to that- not being able to understand/ have something work. Ah such is coding. 
 
 ### 06/03/2026 | Giving it a shot
 I really missed this. I took some of the code from AI and plugged it into my components. It worked. But I only vaguely understood how it worked, and I didn't get the satisfaction of making something myself. So I deleted most of it and typed up something from scratch regarding what I wanted with 'toggling' my name in the last post. Actually going through the documentation and some youtube tutorials admittedly took a LOT longer but is so much more satisfying. Right now, NOTHING works. I don't understand why. And it's hilarious.

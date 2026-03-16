@@ -13,16 +13,12 @@ export default function Home() {
       <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 leading-6">
         {"I like learning about things so that I can build cool, useful software. Currently exploring web development."}
       </p>
-      <div className="mt-6 flex space-x-4">
-        <a className='flex items-center mx-4' href="https://www.linkedin.com/in/lemuel-delacruz/" target="_blank" rel="noopener noreferrer">
-          <img src='/linkedin-svgrepo-com.svg' alt="LinkedIn" className="w-5 h-5 mr-2" />
-          | LinkedIn
+      <section className="mt-6 flex gap-5 m-auto">
+        <a className="flex items-center" href="https://www.linkedin.com/in/lemdc/" target="_blank" rel="noopener noreferrer">
         </a>
-        <a className='flex items-center mx-4' href="https://github.com/Lemswell" target="_blank" rel="noopener noreferrer">
-          <img src='/github-142-svgrepo-com.svg' alt="GitHub" className="w-5 h-5 mr-2" />
-          | GitHub
+        <a className="flex items-center" href="https://github.com/Lemswell" target="_blank" rel="noopener noreferrer">
         </a>
-      </div>
+      </section>
     </main>
     
   );
