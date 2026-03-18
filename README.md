@@ -1,11 +1,21 @@
 # Project description
-This is a repository that holds the code for my personal website for my dev portfolio (to try get hired UGH) as well as a blog for thoughts and updates on projects. As of now I'm using `Next.js`, In conjunction with `React` (Which i think is necesarry). Also looking to use `Motion` or `framer-motion` for animations.
+This is a repository that holds the code for my personal website for my dev portfolio (to try get hired UGH) as well as a blog for thoughts and updates on projects. As of now I'm using `Next.js`, In conjunction with `React` (Which i think is necessary). 
 
 ---
 
-## Blog
+# Blog
+
+### 18/03/2026 | Understanding SVGR and trying not to 'black box'
+I admit it... the way I stubbornly try to always understand the process of things really is an inconvenience. It's the reason why-- even though I was immensely excited to learn webdev at uni-- I never got into it. There was too much 'magic' going on. We would learn about html, css, js, and http, then we'd skip a few steps and end up using some magical 'framework' shenanigans to make a website in 'react' because it was the modern standard. I understood none of it, and thats why I was stagnant in learning it, and i'm thats also the case with why some people would not get to learning about it too. Maybe I was subconsciously icked by what I didn't understand... wow philosophical... I guess I could work on that... 
+
+Anywhooo, as soon as I had identified that as a mental road block, I leveraged AI to help explain how the technology got to this point. I kinda get the gist of the historical progression towards why I am using next js for my project but I still am blackboxing a LOT of the processes that happen under the hood (and I suppose thats fine because I likely never will fully understand the whole process). This came about because I started questioning why I had to install certain plugins to use `@svgr/core` (namely:  `@svgr/plugin-jsx` and `@svgr/plugin-svgo`), 
+
+I noticed I've kinda been just copy pasting code without really giving it a go myself for this part and so I'll tell the AI with future prompts to not give the code out-right (unless prompted to), but instead to give the pseudo-code (explaining each step along the way) as well as information about any changes (or additions) that need to be made to the file structure of the project. (oh yeah a lil prompt engineering geared towards learning)
+
+Onto what I'm actually going to do about it... I was taught (by AI ofc), about how using a **'CLI-driven generation pattern'**. It takes place at the 'build-time' of the application (or something) through the use of a script we make that uses the `@svgr/core` package to generate tsx components from our corresponding SVGs. I just imported the code provided, tried to understand it, and so now it prob doesn't work (i haven't tested). I'll work more on this next time.
+
 ### 16/03/2026 | SVGs and links to socials
-I've had trouble getting the SVGs working and so I asked AI for help, prompting for a report comparing several approaches on using SVGs with react and tailwind. It resulted in the following table, reccommending the use of SVGR. The thing is, the last time I tried to set up SVGR with my project I ran into some trouble. Something about next.js no longer using webpack... I'll give it another go though because I understand that setting up tools and configuration is an important part of developing.
+I've had trouble getting the SVGs working and so I asked AI for help, prompting for a report comparing several approaches on using SVGs with react and tailwind. It resulted in the following table, recommending the use of SVGR. The thing is, the last time I tried to set up SVGR with my project I ran into some trouble. Something about next.js no longer using webpack... I'll give it another go though because I understand that setting up tools and configuration is an important part of developing.
 
 Method|Type Safety|Perf (JS Size)|Styling Depth|Learning Curve
 |---|---|---|---|---|
@@ -33,7 +43,7 @@ I've also established my main inspirations as this dude [Ted's website](https://
 ### 06/03/2026 | Giving it a shot
 I really missed this. I took some of the code from AI and plugged it into my components. It worked. But I only vaguely understood how it worked, and I didn't get the satisfaction of making something myself. So I deleted most of it and typed up something from scratch regarding what I wanted with 'toggling' my name in the last post. Actually going through the documentation and some youtube tutorials admittedly took a LOT longer but is so much more satisfying. Right now, NOTHING works. I don't understand why. And it's hilarious.
 
-### 04/03/2026 | Balencing having a job and learning... so I can have a job
+### 04/03/2026 | Balancing having a job and learning... so I can have a job
 I want to complete this website such that I have the means and experience to find a job in the tech field. Specifically developer field(?). However I have little time to learn these skills because of having a Job. I will try none-the-less.
 
 Something that I've been exploring is the use of AI as a teacher. I use AI by prompting it to guide/teach me but I find that putting the time in to analyse the code it generates myself is a better way of teaching myself. Only problem, It's time consuming. 
@@ -44,7 +54,7 @@ I'll try import my github and linkedin links along side working on this animatio
 
 HOLD AWN, I got an idea! I want my name to be toggle-able, and for each time its toggled there's a little tid-bit that would comment my thoughts on either my full name or nickname! oh yeah!
 
-Oh wait, prompting AI to help me with this animation made me import `framer-motion` when I don't think I really need it. AND there's a more updated version (apperently). I'll do more research but now I need to figure out how to get rid of packages.
+Oh wait, prompting AI to help me with this animation made me import `framer-motion` when I don't think I really need it. AND there's a more updated version (apparently). I'll do more research but now I need to figure out how to get rid of packages.
 
 ### 02/03/2026 | Thinking of what I should add? 
 I was contemplating how i should set up my profile. I was thinking it _should_ include the following:

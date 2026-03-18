@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "generate-icons": "tsx scripts/generate-icons.ts",
+    "dev": "npm run generate-icons && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -15,6 +16,9 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
