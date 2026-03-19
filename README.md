@@ -5,6 +5,11 @@ This is a repository that holds the code for my personal website for my dev port
 
 # Blog
 
+### 19/03/2026 | Using AI. and details.
+I was watching a [fireship video](https://www.youtube.com/watch?v=Xn-gtHDsaPY) and he mentions that the CEO of [Replit](https://replit.com/) thinks knowing how to code is a disadvantage. Implying that getting engrossed in the details distracts from productivity- specially when rather than taking the time to understand, you can just produce. Specially in regards to this website, I could've built it easily with AI but that would defeat the purpose. However, industry leaders- like the aforementioned Replit CEO- imply that they prefer the efficiency to understanding. Because thats how you sell (I think). But understanding gives way to creativity (imo).
+
+Well onto how I used AI for this project; I am now going to always give coding a go before consulting AI. When it comes to direction I will present my ideas to AI (unless I know for sure that they'll work). And now, after asking AI for a review on my file structure, I will reorganise things in accordance.
+
 ### 18/03/2026 | Understanding SVGR and trying not to 'black box'
 I admit it... the way I stubbornly try to always understand the process of things really is an inconvenience. It's the reason why-- even though I was immensely excited to learn webdev at uni-- I never got into it. There was too much 'magic' going on. We would learn about html, css, js, and http, then we'd skip a few steps and end up using some magical 'framework' shenanigans to make a website in 'react' because it was the modern standard. I understood none of it, and thats why I was stagnant in learning it, and i'm thats also the case with why some people would not get to learning about it too. Maybe I was subconsciously icked by what I didn't understand... wow philosophical... I guess I could work on that... 
 

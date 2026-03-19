@@ -1,5 +1,5 @@
 
-import ToggleName from '../components/ToggleNames';
+import ToggleName from '../components/ui/ToggleNames';
 
 export default function Home() {
   return (
