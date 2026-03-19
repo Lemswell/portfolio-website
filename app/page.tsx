@@ -1,5 +1,5 @@
-
-import ToggleName from '../components/ui/ToggleNames';
+import { Github } from '@/components/ui/icons/index';
+import ToggleName from '@/components/ui/ToggleNames';
 
 export default function Home() {
   return (
@@ -17,6 +17,7 @@ export default function Home() {
         <a className="flex items-center" href="https://www.linkedin.com/in/lemdc/" target="_blank" rel="noopener noreferrer">
         </a>
         <a className="flex items-center" href="https://github.com/Lemswell" target="_blank" rel="noopener noreferrer">
+          <Github className="w-6 h-6 fill-zinc-800 dark:fill-zinc-100 hover:fill-zinc-600 dark:hover:fill-zinc-400 transition-colors" />
         </a>
       </section>
     </main>

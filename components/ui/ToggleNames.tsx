@@ -27,7 +27,7 @@ const ToggleName = () => {
     if (isDeleting && displayedText.length > 0) {
       timer = setTimeout(() => {
         setDisplayedText(prev => prev.slice(0, -1));
-      }, 5); // Backspacing speed
+      }, 10); // Backspacing speed
     } 
     // Finished deleting, switch to next name
     else if (isDeleting && displayedText.length === 0) {
@@ -58,9 +58,6 @@ const ToggleName = () => {
         {displayedText}
       </span>
       <span>{"."}</span>
-      {/*}
-      <span>{comment}</span>
-      */}
     </span>
     
   );

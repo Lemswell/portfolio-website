@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "generate-icons": "tsx scripts/generate-icons.ts",
+    "generate-icons": "npx tsx scripts/generate-icons.ts",
     "dev": "npm run generate-icons && next dev",
     "build": "next build",
     "start": "next start",

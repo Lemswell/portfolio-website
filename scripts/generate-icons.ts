@@ -1,14 +1,13 @@
-// scripts/generate-icons.ts
 import { transform } from '@svgr/core';
 import fs from 'fs';
 import path from 'path';
 
-const ICON_SOURCE = '..assets/icons';
-const ICONS_OUTPUT = '../components/ui/iconIndex.tsx';
+const ICON_SOURCE = './assets/icons/';
+const ICON_OUTPUT = './components/ui/icons/';
 
 async function generate() {
   const files = fs.readdirSync(ICON_SOURCE).filter(file => file.endsWith('.svg'));
-  let iconIndexCode = '';
+  let barrelExcerpts = '';
 
   for (const file of files) {
     const componentName = path.parse(file).name.charAt(0).toUpperCase() + path.parse(file).name.slice(1);
@@ -23,13 +22,14 @@ async function generate() {
         replaceAttrValues: { '#000': 'currentColor', '#000000': 'currentColor' },
         svgProps: { className: '{props.className}', fill: 'currentColor' },
       },
-      { componentName }
+      { componentName },
     );
 
-    iconIndexCode += `${jsCode}\nexport { default as ${componentName} } from './${componentName}';\n`;
+    fs.writeFileSync(path.join(ICON_OUTPUT, `${componentName}.tsx`), jsCode);
+    barrelExcerpts += `export { default as ${componentName} } from './${componentName}';\n`;
   }
 
-  fs.writeFileSync(ICONS_OUTPUT, iconIndexCode);
+  fs.writeFileSync(path.join(ICON_OUTPUT, 'index.ts'), barrelExcerpts);
 }
 
 generate();
