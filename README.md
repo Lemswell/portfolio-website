@@ -10,6 +10,10 @@ I was watching a [fireship video](https://www.youtube.com/watch?v=Xn-gtHDsaPY) a
 
 Well onto how I used AI for this project; I am now going to always give coding a go before consulting AI. When it comes to direction I will present my ideas to AI (unless I know for sure that they'll work). And now, after asking AI for a review on my file structure, I will reorganise things in accordance.
 
+**Update:** I finally got the SVGs working HOOO MY GOODNESS. Using AI in this way was very frustrating because of the amount of trying I had to do by myself and my stubbornness to keep trying without any prompts. BUT I GOT IT DONE. AND I REORGANISED THE FILES. AHHH satisfaction. A big hurdle was my lack of understanding on exporting and importing components (its definitely something I'll look into more).
+
+I did get another idea though. Dark and light modes: but ANIMATED by literally swiping a sun away in the background or the moon away in the background! I need to make it subtle still but yeaur! 
+
 ### 18/03/2026 | Understanding SVGR and trying not to 'black box'
 I admit it... the way I stubbornly try to always understand the process of things really is an inconvenience. It's the reason why-- even though I was immensely excited to learn webdev at uni-- I never got into it. There was too much 'magic' going on. We would learn about html, css, js, and http, then we'd skip a few steps and end up using some magical 'framework' shenanigans to make a website in 'react' because it was the modern standard. I understood none of it, and thats why I was stagnant in learning it, and i'm thats also the case with why some people would not get to learning about it too. Maybe I was subconsciously icked by what I didn't understand... wow philosophical... I guess I could work on that... 
 
