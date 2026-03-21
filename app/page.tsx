@@ -20,10 +20,10 @@ export default function Home() {
           <Github className="w-6 h-6 fill-zinc-800 dark:fill-zinc-100 hover:fill-zinc-600 dark:hover:fill-zinc-400 transition-colors" />
         </a>
         <a className="flex items-center" href="mailto:lemdelac@gmail.com" target="_blank" rel="noopener noreferrer">
-          <Email className="w-6 h-6 fill-zinc-800 dark:fill-zinc-100 hover:fill-zinc-600 dark:hover:fill-zinc-400 transition-colors" />
+          <Email className="w-6 h-6 stroke-zinc-800 dark:stroke-zinc-100 hover:stroke-zinc-600 dark:hover:stroke-zinc-400 " />
         </a>
         <a className="flex items-center" href="" target="_blank" rel="noopener noreferrer">
-          <Download className="w-6 h-6 fill-zinc-800 dark:fill-zinc-100 hover:fill-zinc-600 dark:hover:fill-zinc-400 transition-colors" />
+          <Download className="w-6 h-6 stroke-zinc-800 dark:stroke-zinc-100 hover:stroke-zinc-600 dark:hover:stroke-zinc-400 " />
         </a>
       </section>
     </main>
