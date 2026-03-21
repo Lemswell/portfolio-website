@@ -5,6 +5,15 @@ This is a repository that holds the code for my personal website for my dev port
 
 # Blog
 
+### 21/03/2026 | Tiny steps.
+
+I'm pretty satisfied with what I have thus far. I added new icons and an age tracker so I wouldn't have the website go out of date. Here's a simple list of the things I got to work on next:
+* Links hover effects still don't work
+* Better spacings and design
+* Make adjustments to `ToggleNames.tsx` such that It reserves space for the longest name.
+* complete `Navbar.tsx` and `Footer.tsx`. 
+* Project section
+
 ### 19/03/2026 | Using AI. and details.
 I was watching a [fireship video](https://www.youtube.com/watch?v=Xn-gtHDsaPY) and he mentions that the CEO of [Replit](https://replit.com/) thinks knowing how to code is a disadvantage. Implying that getting engrossed in the details distracts from productivity- specially when rather than taking the time to understand, you can just produce. Specially in regards to this website, I could've built it easily with AI but that would defeat the purpose. However, industry leaders- like the aforementioned Replit CEO- imply that they prefer the efficiency to understanding. Because thats how you sell (I think). But understanding gives way to creativity (imo).
 
