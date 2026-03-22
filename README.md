@@ -5,6 +5,11 @@ This is a repository that holds the code for my personal website for my dev port
 
 # Blog
 
+### 22/03/2026 | Fun distractions
+I've been feeling kinda stagnant with making this website after spending heaps of time just to get an icon working. So instead of working on what I should be working on (which was listed in the previous post), I ended up looking at more websites for inspiration and came across [this](https://bad.cash/) one. It actually is pretty simple but I saw that it had a 'tool-tip' kinda thing when a window pops up when I hover over a word. I wanted it in my website soo... ima work on that first nyehehe.
+
+***Update***: I ended up getting it done with heaps of help from AI. But the thing is, I did it with my name. And I wanted the text inside the window to change with each time it was clicked on. And I did it with heaps of help from AI but I also just learnt things. I ended up not really liking how it looks but its whatever for now. I'm gonna try for a navbar.
+
 ### 21/03/2026 | Tiny steps.
 
 I'm pretty satisfied with what I have thus far. I added new icons and an age tracker so I wouldn't have the website go out of date. Here's a simple list of the things I got to work on next:

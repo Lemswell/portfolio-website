@@ -20,7 +20,7 @@ async function generate() {
         icon: true,
         typescript: true,
         replaceAttrValues: { '#000': 'currentColor', '#000000': 'currentColor' },
-        svgProps: { className: '{props.className}', fill: 'currentColor' },
+        svgProps: { className: '{props.className}', fill: 'currentColor', stroke: 'currentColor' },
       },
       { componentName },
     );
