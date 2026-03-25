@@ -1,13 +1,21 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import HoverBadge from '@/components/ui/HoverBadge';
 
 
-const ToggleName = ({ onUpdateComment }: { onUpdateComment: (val: string) => void }) => {
+const ToggleName = () => {
   
+  const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
+  const comments = [
+    "Back to my first name, \ngood luck pronouncing it... 😅",
+    "Ahhh better... 😁\nThis is what my friends call me.\n It's easier to pronounce and remember!",
+    "Now you know my full name!\nBut I prefer if you call me Lem 🙂‍↕️👍"
+  ];
+
+
   const [idxCount, setIdxCount] = useState(0);
   const [displayedText, setDisplayedText] = useState(nameVariations[0]);
+  const [comment, setComment] = useState("Try clicking on my name!");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
 
@@ -26,6 +34,7 @@ const ToggleName = ({ onUpdateComment }: { onUpdateComment: (val: string) => voi
     
     // Deleting the current text
     if (isDeleting && displayedText.length > 0) {
+      setComment("");
       timer = setTimeout(() => {
         setDisplayedText(prev => prev.slice(0, -1));
       }, 10); // Backspacing speed
@@ -35,7 +44,6 @@ const ToggleName = ({ onUpdateComment }: { onUpdateComment: (val: string) => voi
       setIsDeleting(false);
       setIdxCount(nextIdx);
       setIsWaiting(true); // Small pause before typing starts
-      onUpdateComment(comments[nextIdx]); // Notify parent of the new name
     } 
     
     // Waiting before typing new name
@@ -47,43 +55,32 @@ const ToggleName = ({ onUpdateComment }: { onUpdateComment: (val: string) => voi
       timer = setTimeout(() => {
         setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
       }, 40 - currentFullText.length*2 > 15 ? 50 - currentFullText.length : 15); // Typing speed
+      setComment(comments[nextIdx]);
     }
     
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations]);
   
   return (
-    <span>
-      <span
-        className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+    <span className='group'>
+      {"Hi, I'm\u00A0"}<span
+        className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors mr-3"
         onClick={handleClick}
         >
         {displayedText}
+      </span>
+      <span className='text-sm absolute opacity-0 group-hover:opacity-100 transition-opacity 
+                      pointer-events-none group-hover:pointer-events-auto duration-500 justify-center
+                      whitespace-pre-line text-zinc-50/15 tracking-normal font-medium leading-4'>
+        {comment}
       </span>
     </span>
     
   );
 };
 
-const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
-const comments = [
-  "Back to my first name, good luck pronouncing it... 😅",
-  "Ahhh better... 😁\nThis is what my friends call me.\n It's easier to pronounce and remember!",
-  "Now you know my full name! But I prefer if you call me Lem 👍"]
 
-const ToggleNameComments = ({ comment }: { comment: string }) => (
-  <span>
-    {comment}
-  </span>
-)
 
-const ToggleNameWithComment = () => {
-  const [currentComment, setCurrentComment] = useState("This is my first name but... try clicking! ;)");
-  return (
-    <HoverBadge trigger={<ToggleName onUpdateComment={setCurrentComment} />} 
-                content={<ToggleNameComments comment={currentComment} />} 
-    />
-  )
-}
-
-export default ToggleNameWithComment;
+export default ToggleName;
