@@ -61,7 +61,7 @@ const ToggleName = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations, comment]);
+  }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations, comment, comments]);
   
   return (
     <div className='group flex-col'>
@@ -75,7 +75,7 @@ const ToggleName = () => {
       </div>
       <div className='text-sm opacity-0 group-hover:opacity-100 transition-opacity 
                       pointer-events-none group-hover:pointer-events-auto duration-500 justify-center
-                      whitespace-pre-line text-zinc-50/15 tracking-normal font-medium font-mono'>
+                      whitespace-pre-line text-zinc-50/15 tracking-normal font-medium font-mono mt-3'>
         {comment}
       </div>
     </div>

@@ -1,5 +1,17 @@
 # Blog
 
+### 27/03/2026 | Tiny update
+<details>
+  <summary>Sadgeness warning</summary>
+  
+  I flippin lost my job. LE SIGH
+  
+</details>
+
+So I now have a bunch more free time to work on this any any other projects I have. And so I was looking through other opportunities before inspecting this again and I realised that the looping comments don't match with the names for my toggleNames component.
+
+Also trying to start using WSL2, apparently the tooling is better or something (I honestly don't really know why, I just know its common practice).
+
 ### 25/03/2026 | Degression
 I kinda just didn't like the look of the tool tip thing so I ended up just wanting to do a simple like `opacity-0 hover:opacity-100` span that does the comments when you hover over my name. I also just thinking of just making a card for location like whats in jasons [website](https://jasoncameron.dev) and I'll just make the location thing link to it. I really just wanna get something I'm proud of. My initial thought was something like an avatar or some sort of picture depiction of me that animatedly thinks the comments about my changing names but that seems a bit nuts. Or something like the minecraft... or was it terraria?.. thing were they do a little cheeky bit of text on launching the game next to the title. 
 

@@ -10,7 +10,7 @@ export default function Home() {
         <h1 className="text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center">
           <ToggleNameWithComment />
         </h1>
-        <div className="mt-6 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">
+        <div className="mt-3 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">
           {"A "}<Age />{" year old developer based in "}<HoverBadge trigger={<span className="hover:underline">{"Sydney, Australia 🇦🇺"}</span>} content={<p>Down under mate</p>} />
         </div>
         <p className="mt-3 text-lg  fill-zinc-800 dark:fill-zinc-100 leading-6">
