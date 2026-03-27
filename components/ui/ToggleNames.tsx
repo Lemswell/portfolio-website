@@ -7,9 +7,9 @@ const ToggleName = () => {
   
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
   const comments = [
-    "Back to my first name, \ngood luck pronouncing it... 😅",
-    "Ahhh better... 😁\nThis is what my friends call me.\n It's easier to pronounce and remember!",
-    "Now you know my full name!\nBut I prefer if you call me Lem 🙂‍↕️👍"
+    "Back to my first name. Pronounce it however you like :)",
+    "Ahhh better... This is what my friends call me. It's easier to pronounce and remember!",
+    "Now you know my full name! Though I do prefer if you call me Lem"
   ];
 
 
@@ -34,7 +34,7 @@ const ToggleName = () => {
     
     // Deleting the current text
     if (isDeleting && displayedText.length > 0) {
-      setComment("");
+      if (comment != "") setComment("");
       timer = setTimeout(() => {
         setDisplayedText(prev => prev.slice(0, -1));
       }, 10); // Backspacing speed
@@ -61,22 +61,24 @@ const ToggleName = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations]);
+  }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations, comment]);
   
   return (
-    <span className='group'>
-      {"Hi, I'm\u00A0"}<span
-        className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors mr-3"
-        onClick={handleClick}
-        >
-        {displayedText}
-      </span>
-      <span className='text-sm absolute opacity-0 group-hover:opacity-100 transition-opacity 
+    <div className='group flex-col'>
+      <div>{"Hi, I'm\u00A0"}
+        <span
+          className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors mr-3"
+          onClick={handleClick}
+          >
+          {displayedText}
+        </span>
+      </div>
+      <div className='text-sm opacity-0 group-hover:opacity-100 transition-opacity 
                       pointer-events-none group-hover:pointer-events-auto duration-500 justify-center
-                      whitespace-pre-line text-zinc-50/15 tracking-normal font-medium leading-4'>
+                      whitespace-pre-line text-zinc-50/15 tracking-normal font-medium font-mono'>
         {comment}
-      </span>
-    </span>
+      </div>
+    </div>
     
   );
 };
