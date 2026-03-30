@@ -6,6 +6,10 @@ const ICON_SOURCE = './assets/icons/';
 const ICON_OUTPUT = './components/ui/icons/';
 
 async function generate() {
+  if (!fs.existsSync(ICON_OUTPUT)) {
+    fs.mkdirSync(ICON_OUTPUT, { recursive: true });
+  }
+
   const files = fs.readdirSync(ICON_SOURCE).filter(file => file.endsWith('.svg'));
   let barrelExcerpts = '';
 

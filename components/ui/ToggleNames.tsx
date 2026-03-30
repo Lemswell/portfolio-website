@@ -8,8 +8,8 @@ const ToggleName = () => {
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
   const comments = [
     "Back to my first name. Pronounce it however you like :)",
-    "Ahhh better... This is what my friends call me. It's easier to pronounce and remember!",
-    "Now you know my full name! Though I do prefer if you call me Lem"
+    "This is what my friends call me. It's easier to pronounce and remember!",
+    "Now you know my full name! Though I do prefer if you call me Lem",
   ];
 
 
@@ -34,7 +34,6 @@ const ToggleName = () => {
     
     // Deleting the current text
     if (isDeleting && displayedText.length > 0) {
-      if (comment != "") setComment("");
       timer = setTimeout(() => {
         setDisplayedText(prev => prev.slice(0, -1));
       }, 10); // Backspacing speed
@@ -55,7 +54,7 @@ const ToggleName = () => {
       timer = setTimeout(() => {
         setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
       }, 40 - currentFullText.length*2 > 15 ? 50 - currentFullText.length : 15); // Typing speed
-      setComment(comments[nextIdx]);
+      setComment(comments[idxCount]);
     }
     
     return () => {
