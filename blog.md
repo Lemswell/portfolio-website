@@ -1,4 +1,21 @@
 # Blog
+A very personalized dev blog.
+
+### 30/03/2026 | Motivation and freedom
+With the amount of freedom I've had, I should be working more but instead I find myself working only maybe a tiny bit more. The rest of my free time goes to enjoying an interesting documentary. But then I find that i'm not really enjoying because I feel like i'm procrastinating. What a contradiction le sigh. Isn't it crazy that the surplus of 'freedom' becomes stifling to motivation. 
+
+Anyways onto what little productive things I *have* done recently:
+* I finally fixed the little things I've been needing to fix and just ironed out (relatively) what I do have.
+* I also tried to start using WSL with all my projects and trying to learn to use all those version managers with this project (just `nvm` haha).
+* And I've got back into [The Odin Project](https://www.theodinproject.com/), a course for full stack web dev. I feel like I need to finish it to gain knowledge of best practice and whatnot but I heard that it can take upwards of a year for completion.
+* I did edited my resume in preparation to upload to the site (I mention projects that i'm not too proud of so i kinda want to 'refurbish them')
+
+I still want to add a few small things (TODO):
+* Add live time when hover location (stretch: add map api to show on hover)
+* link actual resume
+* (the big one) add github api to show projects
+
+Also quick note: the icons i've been using are part of a big pack of theme found [here](https://allsvgicons.com/pack/tabler/). 
 
 ### 27/03/2026 | Tiny update
 <details>
@@ -13,7 +30,7 @@ So I now have a bunch more free time to work on this any any other projects I ha
 Also trying to start using WSL2, apparently the tooling is better or something (I honestly don't really know why, I just know its common practice).
 
 ### 25/03/2026 | Degression
-I kinda just didn't like the look of the tool tip thing so I ended up just wanting to do a simple like `opacity-0 hover:opacity-100` span that does the comments when you hover over my name. I also just thinking of just making a card for location like whats in jasons [website](https://jasoncameron.dev) and I'll just make the location thing link to it. I really just wanna get something I'm proud of. My initial thought was something like an avatar or some sort of picture depiction of me that animatedly thinks the comments about my changing names but that seems a bit nuts. Or something like the minecraft... or was it terraria?.. thing were they do a little cheeky bit of text on launching the game next to the title. 
+I kinda just didn't like the look of the tool tip thing so I ended up just wanting to do a simple like `opacity-0 hover:opacity-100` span that does the comments when you hover over my name. I also just thinking of just making a card for location like whats in Jasons [website](https://jasoncameron.dev) and I'll just make the location thing link to it. I really just wanna get something I'm proud of. My initial thought was something like an avatar or some sort of picture depiction of me that animatedly thinks the comments about my changing names but that seems a bit nuts. Or something like the minecraft... or was it terraria?.. thing were they do a little cheeky bit of text on launching the game next to the title. 
 
 Either way, the next features I'm going to work on is the navbar. And the project pulling from git hub.
 
@@ -34,9 +51,9 @@ I'm pretty satisfied with what I have thus far. I added new icons and an age tra
 ### 19/03/2026 | Using AI. and details.
 I was watching a [fireship video](https://www.youtube.com/watch?v=Xn-gtHDsaPY) and he mentions that the CEO of [Replit](https://replit.com/) thinks knowing how to code is a disadvantage. Implying that getting engrossed in the details distracts from productivity- specially when rather than taking the time to understand, you can just produce. Specially in regards to this website, I could've built it easily with AI but that would defeat the purpose. However, industry leaders- like the aforementioned Replit CEO- imply that they prefer the efficiency to understanding. Because thats how you sell (I think). But understanding gives way to creativity (imo).
 
-Well onto how I used AI for this project; I am now going to always give coding a go before consulting AI. When it comes to direction I will present my ideas to AI (unless I know for sure that they'll work). And now, after asking AI for a review on my file structure, I will reorganise things in accordance.
+Well onto how I used AI for this project; I am now going to always give coding a go before consulting AI. When it comes to direction I will present my ideas to AI (unless I know for sure that they'll work). And now, after asking AI for a review on my file structure, I will re-organise things in accordance.
 
-**Update:** I finally got the SVGs working HOOO MY GOODNESS. Using AI in this way was very frustrating because of the amount of trying I had to do by myself and my stubbornness to keep trying without any prompts. BUT I GOT IT DONE. AND I REORGANISED THE FILES. AHHH satisfaction. A big hurdle was my lack of understanding on exporting and importing components (its definitely something I'll look into more).
+**Update:** I finally got the SVGs working HOOO MY GOODNESS. Using AI in this way was very frustrating because of the amount of trying I had to do by myself and my stubbornness to keep trying without any prompts. BUT I GOT IT DONE. AND I RE-ORGANISED THE FILES. AHHH satisfaction. A big hurdle was my lack of understanding on exporting and importing components (its definitely something I'll look into more).
 
 I did get another idea though. Dark and light modes: but ANIMATED by literally swiping a sun away in the background or the moon away in the background! I need to make it subtle still but yeaur! 
 

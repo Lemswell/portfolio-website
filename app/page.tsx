@@ -31,9 +31,10 @@ export default function Home() {
             <Email className="w-5 h-5" />
             <span className='ml-2 text-sm'>Email</span>
           </a>
+          <span className='text-zinc-500'>|</span>
           <a className="flex items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="mailto:lemdelac@gmail.com" target="_blank" rel="noopener noreferrer">
             <FileDownload className="w-5 h-5" />
-            <span className='ml-2 text-sm'>Download</span>
+            <HoverBadge trigger={<span className='ml-2 text-sm'>Download</span>} content={<p className="text-white text-[0.7rem]">{"Download my resum\u00e9"}</p>} />
           </a>
 
         </section>
