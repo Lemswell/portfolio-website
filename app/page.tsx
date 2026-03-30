@@ -11,7 +11,7 @@ export default function Home() {
           <ToggleNameWithComment />
         </h1>
         <div className="mt-3 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">
-          {"A "}<Age />{" year old developer based in "}<HoverBadge trigger={<span className="hover:underline">{"Sydney, Australia 🇦🇺"}</span>} content={<p>Down under mate</p>} />
+          {"A "}<Age />{" year old developer based in "}<HoverBadge trigger={<span className="underline hover:opacity-50 transition-opacity">{"Sydney, Australia 🇦🇺"}</span>} content={<p>Down under mate</p>} />
         </div>
         <p className="mt-3 text-lg  fill-zinc-800 dark:fill-zinc-100 leading-6">
           {"I like learning about things so that I can build cool, useful software. Currently exploring web development."}

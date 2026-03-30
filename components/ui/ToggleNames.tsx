@@ -7,9 +7,9 @@ const ToggleName = () => {
   
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
   const comments = [
-    "Back to my first name. Pronounce it however you like :)",
-    "This is what my friends call me. It's easier to pronounce and remember!",
-    "Now you know my full name! Though I do prefer if you call me Lem",
+    "Back to my first name! Pronounce it however you like :)",
+    "This is what my friends call me. It's simpler to pronounce and remember!",
+    "Now you know my full name! Though I think we both would prefer you call me Lem :p",
   ];
 
 
@@ -66,7 +66,7 @@ const ToggleName = () => {
     <div className='group flex-col'>
       <div>{"Hi, I'm\u00A0"}
         <span
-          className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors mr-3"
+          className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
           onClick={handleClick}
           >
           {displayedText}
