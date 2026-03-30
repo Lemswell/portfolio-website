@@ -7,7 +7,7 @@ const ToggleName = () => {
   
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
   const comments = [
-    "Back to my first name! Pronounce it however you like :)",
+    "Back to my first name! Most people pronounce it like lem-well (sometimes lem-yu-ell)",
     "This is what my friends call me. It's simpler to pronounce and remember!",
     "Now you know my full name! Though I think we both would prefer you call me Lem :p",
   ];
@@ -15,7 +15,7 @@ const ToggleName = () => {
 
   const [idxCount, setIdxCount] = useState(0);
   const [displayedText, setDisplayedText] = useState(nameVariations[0]);
-  const [comment, setComment] = useState("Try clicking on my name!");
+  const [comment, setComment] = useState("Thanks for visiting! Try clicking on my name! :D");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
 
@@ -72,7 +72,7 @@ const ToggleName = () => {
           {displayedText}
         </span>
       </div>
-      <div className='text-sm opacity-0 group-hover:opacity-100 transition-opacity 
+      <div className='text-sm opacity-0 group-hover:opacity-100 transition-opacity line-clamp-1
                       pointer-events-none group-hover:pointer-events-auto duration-500 justify-center
                       whitespace-pre-line text-zinc-50/15 tracking-normal font-medium font-mono mt-3'>
         {comment}
