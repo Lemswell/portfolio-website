@@ -1,2 +1,4 @@
 # Project description
-This is a repository that holds the code for my personal website for my dev portfolio (to try get hired UGH) as well as a blog for thoughts and updates on projects. As of now I'm using `Next.js`, In conjunction with `React` (Which I think is necessary?). 
+This is a repository that holds the code for my personal website intended to show off my dev portfolio. It also will have a blog for thoughts and updates on the development process (though I might also go on tangents). 
+
+As of now I'm using [`Next.js`](https://nextjs.org/), in conjunction with `React`, `Typescript`, and `Tailwind`.
