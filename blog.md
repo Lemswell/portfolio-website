@@ -1,6 +1,9 @@
 # Blog
 A very personalized dev blog.
 
+### 31/03/2026 | Planning
+So I really want to integrate the github API for showing project information and tech like [contentlayer](https://contentlayer.dev/) (as suggested by AI Gemini) to help with content (my blog). So I just did research and feel really unfulfilled for not actually writing as much code today.
+
 ### 30/03/2026 | Motivation and freedom
 With the amount of freedom I've had, I should be working more but instead I find myself working only maybe a tiny bit more. The rest of my free time goes to enjoying an interesting documentary. But then I find that i'm not really enjoying because I feel like i'm procrastinating. What a contradiction le sigh. Isn't it crazy that the surplus of 'freedom' becomes stifling to motivation. 
 
