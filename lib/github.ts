@@ -3,7 +3,7 @@ export async function fetchRepo() {
     const response = await fetch("https://api.github.com/users/Lemswell/repos", {
         method: "GET",
         headers: {
-            "Accept": "application/vnd.github.v3+json"
+            "Accept": "application/vnd.github.json"
         }
     });
     
