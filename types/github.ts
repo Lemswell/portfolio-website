@@ -1,9 +1,10 @@
 interface GitHubRepository {
-    name: string;
-    full_name: string;
-    description: string;
     html_url: string;
-    stargazers_count: number;
-    forks_count: number;
+    name: string;
+    description: string | null;
+    created_at: string;
+    pushed_at: string;
+    language: string | null;
+    topics: string[];
 }
 export type { GitHubRepository };

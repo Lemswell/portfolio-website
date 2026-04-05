@@ -1,20 +1,20 @@
 
-export async function fetchRepo() {
-    const response = await fetch("https://api.github.com/users/Lemswell/repos", {
-        method: "GET",
+import type { GitHubRepository } from "@/types/github";
+
+export async function fetchRepos(): Promise<GitHubRepository[]> {
+    // method default to GET
+    const response = await fetch("https://api.github.com/users/Lemswell/repos", { 
         headers: {
-            "Accept": "application/vnd.github.json"
+            "Accept": "application/vnd.github+json"
         }
     });
     
-    // check response is ok
     if (!response.ok) {
         throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
     }
 
-    const repos = await response.json();
-
-    
+    const data = await response.json() as GitHubRepository[];
+    return data;
 }
 
 

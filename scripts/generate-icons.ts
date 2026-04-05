@@ -2,8 +2,8 @@ import { transform } from '@svgr/core';
 import fs from 'fs';
 import path from 'path';
 
-const ICON_SOURCE = './assets/icons/';
-const ICON_OUTPUT = './components/ui/icons/';
+const ICON_SOURCE = '@/assets/icons/';
+const ICON_OUTPUT = '@/components/ui/icons/';
 
 async function generate() {
   if (!fs.existsSync(ICON_OUTPUT)) {
