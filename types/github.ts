@@ -1,4 +1,4 @@
-interface GitHubRepository {
+interface GithubRepository {
     html_url: string;
     name: string;
     description: string | null;
@@ -7,4 +7,4 @@ interface GitHubRepository {
     language: string | null;
     topics: string[];
 }
-export type { GitHubRepository };
+export type { GithubRepository };

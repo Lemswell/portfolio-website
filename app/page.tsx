@@ -2,6 +2,8 @@ import { Github, Linkedin, Email, FileDownload } from '@/components/ui/icons/ind
 import ToggleNameWithComment from '@/components/ui/ToggleNames';
 import HoverBadge from '@/components/ui/HoverBadge';
 import Age from '@/components/ui/DynamicAge';
+import { fetchRepos } from '@/lib/github';
+import { GithubRepository } from '@/types/github';
 
 export default function Home() {
   return (
