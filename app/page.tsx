@@ -3,7 +3,8 @@ import ToggleNameWithComment from '@/components/ui/ToggleNames';
 import HoverBadge from '@/components/ui/HoverBadge';
 import Age from '@/components/ui/DynamicAge';
 import { fetchRepos } from '@/lib/github';
-import { GithubRepository } from '@/types/github';
+
+const repos = fetchRepos()
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
             <span className='ml-2 text-sm'>GitHub</span>
           </a>
           <span className='text-zinc-500'>|</span>
-          <a className="flex items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="mailto:lemdelac@gmail.com" target="_blank" rel="noopener noreferrer">
+          <a className="flex items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="mailto:lemdelac@gmail.com" target="_blank" rel="noopener noreferrer" title="Email me">
             <Email className="w-5 h-5" />
             <span className='ml-2 text-sm'>Email</span>
           </a>
@@ -42,9 +43,12 @@ export default function Home() {
 
         </section>
       </section>
+      <section id="projects" className="mt-16">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">Projects</h2>
+        <pre>{JSON.stringify(repos, null, 2)}</pre>
+      </section>
       <section id="career" className="mt-16"></section>
-      <section id="featured-projects" className="mt-16"></section>
-      <section id="latest-blog" className="mt-16"></section>
+      <section id="blog" className="mt-16"></section>
     </main>
     
   );
