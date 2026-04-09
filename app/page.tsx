@@ -4,9 +4,9 @@ import HoverBadge from '@/components/ui/HoverBadge';
 import Age from '@/components/ui/DynamicAge';
 import { fetchRepos } from '@/lib/github';
 
-const repos = fetchRepos()
 
-export default function Home() {
+export default async function Home() {
+  const repos = await fetchRepos()
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <section id="hero">

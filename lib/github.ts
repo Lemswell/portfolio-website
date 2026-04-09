@@ -6,8 +6,8 @@ const headers: { [key: string]: string } = {
     "Accept": "application/vnd.github+json",
 }
 
-if (GITHUB_TOKEN != undefined) 
-    headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
+if (GITHUB_TOKEN != undefined) // static auth
+    headers["Authorization"] = `token ${GITHUB_TOKEN}`;
 
 export async function fetchRepos(): Promise<GithubRepository[]> {
     // method default to GET
