@@ -6,9 +6,12 @@ import { fetchRepos } from '@/lib/github';
 
 
 export default async function Home() {
+  
   const repos = await fetchRepos()
+  const sortedRepos = repos.sort((a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime());
+  
   return (
-    <main className="max-w-4xl mx-auto px-6 py-20">
+    <main className="max-w-3xl mx-auto px-6 py-20">
       <section id="hero">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <ToggleNameWithComment />
@@ -43,8 +46,9 @@ export default async function Home() {
 
         </section>
       </section>
-      <section id="projects" className="mt-16">
+      <section id="projects" className="mt-16 flex flex-col">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">Projects</h2>
+        
         <pre>{JSON.stringify(repos, null, 2)}</pre>
       </section>
       <section id="career" className="mt-16"></section>
