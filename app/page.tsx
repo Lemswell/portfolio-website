@@ -3,6 +3,7 @@ import ToggleNameWithComment from '@/components/ui/ToggleNames';
 import HoverBadge from '@/components/ui/HoverBadge';
 import Age from '@/components/ui/DynamicAge';
 import { fetchRepos } from '@/lib/github';
+import { RepoList } from '@/components/ui/RepoList';
 
 
 export default async function Home() {
@@ -49,7 +50,7 @@ export default async function Home() {
       <section id="projects" className="mt-16 flex flex-col">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">Projects</h2>
         
-        <pre>{JSON.stringify(repos, null, 2)}</pre>
+        < RepoList repos={sortedRepos} timeLim={1000 * 60 * 60 * 24 * 30} displayLim={6} />
       </section>
       <section id="career" className="mt-16"></section>
       <section id="blog" className="mt-16"></section>
