@@ -23,8 +23,8 @@ function RepoList({ repos, timeLim, displayLim }: RepoListProps) {
         <li key={repo.id} className="flex flex-col gap-1 p-2 rounded-md border border-zinc-700/50 bg-zinc-800 hover:bg-zinc-700/50 transition-colors duration-200">
           <div className="flex items-center gap-2">
             <h3 className="text-sm font-semibold">{repo.name}</h3>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer"><Github /></a>
-            {repo.archived && <span className="text-xs text-red-500">Archived</span>}
+            {/* <a href={repo.html_url} target="_blank" rel="noopener noreferrer"><Github /></a> */}
+            {repo.archived && <div className="text-xs text-red-500">Archived</div>}
           </div>
           <p className="text-xs text-zinc-400">{repo.description}</p>
           <div className="flex itmes-center gap-1">
