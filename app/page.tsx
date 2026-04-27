@@ -1,4 +1,4 @@
-import { Github, Linkedin, Email, FileDownload } from '@/components/ui/icons/index';
+import { Github, Linkedin, Email, FileDownload, Folders } from '@/components/ui/icons/index';
 import ToggleNameWithComment from '@/components/ui/ToggleNames';
 import HoverBadge from '@/components/ui/HoverBadge';
 import Age from '@/components/ui/DynamicAge';
@@ -53,7 +53,7 @@ export default async function Home() {
           Projects
         </h2>
         
-        < RepoList repos={sortedRepos} timeLim={1000 * 60 * 60 * 24 * 30} displayLim={6} />
+        < RepoList repos={sortedRepos} timeLim={1000 * 60 * 60 * 24 * 1000} displayLim={6} />
       </section>
       <section id="career" className="mb-16 flex flex-col"></section>
       <section id="blog" className="mb-16 flex flex-col"></section>
