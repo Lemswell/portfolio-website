@@ -5,7 +5,7 @@ interface WindowProps {
   content: React.ReactNode;  // The thing that pops up
 }
 
-const HoverBadge= ({ trigger, content }: WindowProps) => {
+const HoverBadge = ({ trigger, content }: WindowProps) => {
   return (
     <div className="group relative inline-block">
       <div className="trigger">{trigger}</div>
