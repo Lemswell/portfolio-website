@@ -13,7 +13,7 @@ export default async function Home() {
   
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
-      <section id="hero">
+      <section id="hero" className="mb-16">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <ToggleNameWithComment />
         </h1>
@@ -47,13 +47,16 @@ export default async function Home() {
 
         </section>
       </section>
-      <section id="projects" className="mt-16 flex flex-col">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">Projects</h2>
+      <section id="projects" className="mb-16 flex flex-col">
+        <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+          <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
+          Projects
+        </h2>
         
         < RepoList repos={sortedRepos} timeLim={1000 * 60 * 60 * 24 * 30} displayLim={6} />
       </section>
-      <section id="career" className="mt-16"></section>
-      <section id="blog" className="mt-16"></section>
+      <section id="career" className="mb-16 flex flex-col"></section>
+      <section id="blog" className="mb-16 flex flex-col"></section>
     </main>
     
   );

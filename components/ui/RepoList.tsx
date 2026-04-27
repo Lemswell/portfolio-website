@@ -18,7 +18,7 @@ const RepoList = ({ repos, timeLim, displayLim }: RepoListProps) => {
   displayedRepos = displayedRepos.filter(repo => new Date(repo.pushed_at).getTime() >= showFrom);
 
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-4">
       {displayedRepos.map(repo => (
         <RepoCard repo={repo} key={repo.id} />
       ))}
