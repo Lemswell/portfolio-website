@@ -53,7 +53,7 @@ export default async function Home() {
           Projects
         </h2>
         
-        < RepoList repos={sortedRepos} timeLim={1000 * 60 * 60 * 24 * 1000} displayLim={6} />
+        < RepoList repos={sortedRepos} displayLim={5} />
       </section>
       <section id="career" className="mb-16 flex flex-col"></section>
       <section id="blog" className="mb-16 flex flex-col"></section>

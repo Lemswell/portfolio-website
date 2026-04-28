@@ -2,6 +2,7 @@ interface GithubRepository {
     id: number;
     html_url: string;
     name: string;
+    full_name: string;
     description: string | null;
     created_at: string;
     pushed_at: string;
