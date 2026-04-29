@@ -9,7 +9,6 @@ import { RepoList } from '@/components/ui/RepoList';
 export default async function Home() {
   
   const repos = await fetchRepos()
-  const sortedRepos = repos.sort((a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime());
   
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
@@ -53,7 +52,7 @@ export default async function Home() {
           Projects
         </h2>
         
-        < RepoList repos={sortedRepos} displayLim={5} />
+        < RepoList repos={repos} displayLim={5} />
       </section>
       <section id="career" className="mb-16 flex flex-col"></section>
       <section id="blog" className="mb-16 flex flex-col"></section>
