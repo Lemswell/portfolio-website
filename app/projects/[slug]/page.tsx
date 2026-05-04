@@ -1,29 +1,30 @@
-import { useParams } from 'next/navigation';
 import { fetchRepoByName, fetchRepoReadme } from '@/lib/github';
 import fs from "fs";
 import path from 'path';
 import { Github } from '@/components/ui/icons';
 
 const getLocalContent = (slug: string) => {
-  const CONTENT_FILE_SOURCE = path.join(__dirname, '..', '..', '..', '..', 'content', 'projects', slug);
+  const CONTENT_FILE_SOURCE = path.join(process.cwd(), 'content', 'projects', `${slug}.md`);
   
   if (!fs.existsSync(CONTENT_FILE_SOURCE)) {
-    return '';
+    return undefined;
   }
-  
 
   const content = fs.readFileSync(CONTENT_FILE_SOURCE, 'utf8');
 
-  // gray-matter parsing to added
+  // the returned content is the raw markdown content, which can be parsed in the frontend using
+  // gray-matter and marked
 
   return content;
 }
 
-const ProjectPageDisplay = async () => {
-  const params = useParams<{ slug: string }>()
- 
-  const repo = await fetchRepoByName(params.slug);
-  const websiteContent = getLocalContent(params.slug);
+
+
+const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }> }) => {
+  
+  const { slug } = await params;
+  const repo = await fetchRepoByName(slug);
+  const websiteContent = getLocalContent(slug);
   // const readmeContent = await fetchRepoReadme(params.slug); // still need to test/make sure this works
   
   
@@ -40,8 +41,11 @@ const ProjectPageDisplay = async () => {
           <Github />
         </a>
       </div>
+      <pre>
+        {websiteContent ? websiteContent : "No local content found for this project."}
+      </pre>
     </main>
-    // To be editted
+    // To be edited
   );
 }
 

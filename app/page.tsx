@@ -12,7 +12,7 @@ export default async function Home() {
   
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
-      <section id="hero" className="mb-16">
+      <header className="mb-16">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <ToggleNameWithComment />
         </h1>
@@ -45,7 +45,7 @@ export default async function Home() {
           </a>
 
         </section>
-      </section>
+      </header>
       <section id="projects" className="mb-16 flex flex-col">
         <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
