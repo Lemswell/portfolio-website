@@ -30,9 +30,10 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
   
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
         {repo.name}
       </h1>
+      
       <p className="mt-3 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">
         {repo.description}
       </p>
