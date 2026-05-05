@@ -30,23 +30,30 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
   
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
-        {repo.name}
-      </h1>
-      
-      <p className="mt-3 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">
-        {repo.description}
-      </p>
-      <div className="mt-5">
-        <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-          <Github />
-        </a>
-      </div>
-      <pre>
-        {websiteContent ? websiteContent : "No local content found for this project."}
-      </pre>
+      <header className='my-8'>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
+          <a href="/" className="text-white hover:underline">
+            {"Lems'\u00A0"}
+          </a>
+          {repo.name}
+        </h1>
+        
+        <p className="mt-3 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">
+          {repo.description}
+        </p>
+        <div className="mt-5">
+          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+            <Github />
+          </a>
+        </div>
+      </header>
+      <hr className='border-zinc-500'></hr>
+      <section id="project-content" className="my-8 flex flex-col gap-5">
+        <pre>
+          {websiteContent ? websiteContent : "No local content found for this project."}
+        </pre>
+      </section>
     </main>
-    // To be edited
   );
 }
 

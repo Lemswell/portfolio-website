@@ -12,7 +12,7 @@ export default async function Home() {
   
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
-      <header className="mb-16">
+      <header className="my-8">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <ToggleNameWithComment />
         </h1>
@@ -38,15 +38,16 @@ export default async function Home() {
             <Email className="w-5 h-5" />
             <span className='ml-2 text-sm'>Email</span>
           </a>
-          <span className='text-zinc-500'>|</span>
-          <a className="flex items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="mailto:lemdelac@gmail.com" target="_blank" rel="noopener noreferrer">
+          <span className='hidden text-zinc-500'>|</span>
+          <a className="hidden items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="mailto:lemdelac@gmail.com" target="_blank" rel="noopener noreferrer">
             <FileDownload className="w-5 h-5" />
             <HoverBadge trigger={<span className='ml-2 text-sm'>Download</span>} content={<p className="text-white text-[0.7rem]">{"Download my resum\u00e9"}</p>} />
           </a>
 
         </section>
       </header>
-      <section id="projects" className="mb-16 flex flex-col">
+      <hr className='border-black/20 dark:border-white/20'></hr>
+      <section id="projects" className="my-8 flex flex-col">
         <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
           Projects
@@ -54,7 +55,15 @@ export default async function Home() {
         
         < RepoList repos={repos} displayLim={5} />
       </section>
-      <section id="career" className="mb-16 flex flex-col"></section>
+      <hr className='border-black/20 dark:border-white/20'></hr>
+
+      <section id="blog" className="my-8 flex flex-col">
+        <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+          <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
+          Blog Posts
+        </h2>
+          <p className="text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">No blog posts yet, but stay tuned!</p>
+      </section>
       <section id="blog" className="mb-16 flex flex-col"></section>
     </main>
     
