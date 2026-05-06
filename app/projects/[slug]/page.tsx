@@ -32,7 +32,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
     <main className="max-w-3xl mx-auto px-6 py-20">
       <header className='my-8'>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
-          <a href="/" className="text-white hover:underline">
+          <a href="/" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
             {"Lems'\u00A0"}
           </a>
           {repo.name}
@@ -47,7 +47,9 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
           </a>
         </div>
       </header>
-      <hr className='border-zinc-500'></hr>
+      
+      <hr className='border-black/20 dark:border-white/20'></hr>
+      
       <section id="project-content" className="my-8 flex flex-col gap-5">
         <pre>
           {websiteContent ? websiteContent : "No local content found for this project."}
