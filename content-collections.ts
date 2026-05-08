@@ -1,5 +1,6 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMarkdown } from "@content-collections/markdown";
+import { doc } from "prettier";
 import { z } from "zod";
 
 // for more information on configuration, visit:
@@ -15,6 +16,13 @@ const posts = defineCollection({
     tags: z.string().array(),
     grouping: z.string(),
   }),
+  transform: async (document, context) => {
+  const compiledContent = await compileMarkdown(context, document);
+    return {
+      ...document,
+      compiledContent
+    };
+  }
 });
 
 const projects = defineCollection({
@@ -24,11 +32,11 @@ const projects = defineCollection({
   schema: z.object({
     description: z.string(),
   }),
-  transform: async (project) => {
-    const compiledContent = await compileMarkdown(project.content);
+  transform: async (document, context) => {
+    const compiledContent = await compileMarkdown(context, document);
     return {
-      ...project,
-      slug: project._meta.path, // Automatically create a slug from the filename
+      ...document,
+      compiledContent
     };
   }
 });
