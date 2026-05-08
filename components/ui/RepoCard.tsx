@@ -3,7 +3,7 @@ import { Tag } from "./icons";
 
 const RepoCard = ({ repo }: { repo: GithubRepository }) => {
     return (
-        <li key={repo.id} className="flex flex-col gap-3 py-4 px-5 rounded-md border border-black/20 dark:border-white/20 hover:border-blue-300/50 transition-colors duration-200">
+        <li key={repo.id} className="flex flex-col gap-3 py-4 px-5 rounded-md border border-black/10 dark:border-white/10 hover:border-blue-300/50 transition-colors duration-200">
           <div className="flex items-center">
             <a href={"projects/" + repo.name}><h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">{repo.name}</h3></a>
             <div className="grow"></div>

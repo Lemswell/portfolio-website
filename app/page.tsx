@@ -46,7 +46,7 @@ export default async function Home() {
 
         </section>
       </header>
-      <hr className='border-black/20 dark:border-white/20'></hr>
+      <hr className='border-black/10 dark:border-white/10'></hr>
       <section id="projects" className="my-8 flex flex-col">
         <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
@@ -55,7 +55,7 @@ export default async function Home() {
         
         < RepoList repos={repos} displayLim={5} />
       </section>
-      <hr className='border-black/20 dark:border-white/20'></hr>
+      <hr className='border-black/10 dark:border-white/10'></hr>
 
       <section id="blog" className="my-8 flex flex-col">
         <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">

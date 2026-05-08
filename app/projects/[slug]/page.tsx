@@ -48,7 +48,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
         </div>
       </header>
       
-      <hr className='border-black/20 dark:border-white/20'></hr>
+      <hr className='border-black/10 dark:border-white/10'></hr>
       
       <section id="project-content" className="my-8 flex flex-col gap-5">
         <pre>
