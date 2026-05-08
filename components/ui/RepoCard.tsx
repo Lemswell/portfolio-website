@@ -1,7 +1,12 @@
 import type { GithubRepository } from "@/types/github";
 import { Tag } from "./icons";
+import { allProjects } from "content-collections";
+import TagList from "./TagList";
 
 const RepoCard = ({ repo }: { repo: GithubRepository }) => {
+    // TODO: getting description from content collection doesn't work.
+    const project = allProjects.find((proj) => {return proj._meta.fileName === `${repo.name}.md`});
+    const description = project ? project.description : repo.description;
     return (
         <li key={repo.id} className="flex flex-col gap-3 py-4 px-5 rounded-md border border-black/10 dark:border-white/10 hover:border-blue-300/50 transition-colors duration-200">
           <div className="flex items-center">
@@ -11,14 +16,8 @@ const RepoCard = ({ repo }: { repo: GithubRepository }) => {
             {/* <a href={repo.html_url} target="_blank" rel="noopener noreferrer"><Github /></a> */}
             {repo.archived && <div className="text-xs text-red-500">Archived</div>}
           </div>
-          <p className="text-sm line-clamp-2">{repo.description}</p>
-          <div className="mt-2 flex items-center gap-1 line-clamp-1">
-            <Tag className="h-5 w-5 mr-2"/>
-            {repo.language && <span className="px-2 py-[.9] rounded bg-zinc-700/50 text-sm lowercase line-clamp-1">{repo.language}</span>}
-            {repo.topics.length > 0 && repo.topics.map(topic => (
-              <span key={topic} className="px-2 py-[.9] rounded bg-zinc-700/50 text-sm lowercase line-clamp-1">{topic}</span>
-            ))}
-          </div>
+          <p className="text-sm line-clamp-2">{description}</p>
+          < TagList tags={repo.language ? [repo.language].concat(repo.topics) : repo.topics} />
         </li>
     )
 }

@@ -1,30 +1,12 @@
 import { fetchRepoByName, fetchRepoReadme } from '@/lib/github';
-import fs from "fs";
-import path from 'path';
 import { Github } from '@/components/ui/icons';
-
-const getLocalContent = (slug: string) => {
-  const CONTENT_FILE_SOURCE = path.join(process.cwd(), 'content', 'projects', `${slug}.md`);
-  
-  if (!fs.existsSync(CONTENT_FILE_SOURCE)) {
-    return undefined;
-  }
-
-  const content = fs.readFileSync(CONTENT_FILE_SOURCE, 'utf8');
-
-  // the returned content is the raw markdown content, which can be parsed in the frontend using
-  // gray-matter and marked
-
-  return content;
-}
-
-
+import { allProjects } from "content-collections";
 
 const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }> }) => {
   
   const { slug } = await params;
   const repo = await fetchRepoByName(slug);
-  const websiteContent = getLocalContent(slug);
+  const project = allProjects.find((proj) => {return proj._meta.fileName === `${slug}.md`});
   // const readmeContent = await fetchRepoReadme(params.slug); // still need to test/make sure this works
   
   
@@ -51,9 +33,8 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
       <hr className='border-black/10 dark:border-white/10'></hr>
       
       <section id="project-content" className="my-8 flex flex-col gap-5">
-        <pre>
-          {websiteContent ? websiteContent : "No local content found for this project."}
-        </pre>
+        {/*  */}
+        {project && <div dangerouslySetInnerHTML={{ __html: project.compiledContent }} />}
       </section>
     </main>
   );

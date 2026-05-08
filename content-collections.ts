@@ -28,7 +28,7 @@ const posts = defineCollection({
 const projects = defineCollection({
   name: "projects",
   directory: "content/projects",
-  include: "**/*.mdx",
+  include: "**/*.md",
   schema: z.object({
     description: z.string(),
   }),
