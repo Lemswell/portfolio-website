@@ -8,13 +8,14 @@ import { z } from "zod";
 
 const posts = defineCollection({
   name: "posts",
-  directory: "content/blog",
+  directory: "content/blog_posts",
   include: "**/*.md",
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
     tags: z.string().array(),
     grouping: z.string(),
+    tldr: z.string().optional()
   }),
   transform: async (document, context) => {
   const compiledContent = await compileMarkdown(context, document);

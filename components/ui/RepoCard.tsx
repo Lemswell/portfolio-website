@@ -1,7 +1,9 @@
 import type { GithubRepository } from "@/types/github";
-import { Tag } from "./icons";
 import { allProjects } from "content-collections";
 import TagList from "./TagList";
+
+// imports both GithubRepository an allProjects for local descriptions from content collections, 
+// but actual projects from github
 
 const RepoCard = ({ repo }: { repo: GithubRepository }) => {
     // TODO: getting description from content collection doesn't work.
