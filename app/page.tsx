@@ -1,9 +1,10 @@
-import { Github, Linkedin, Email, FileDownload, Folders } from '@/components/ui/icons/index';
+import { Github, Linkedin, Email, FileDownload, Folders, File } from '@/components/ui/icons/index';
 import ToggleNameWithComment from '@/components/ui/ToggleNames';
 import HoverBadge from '@/components/ui/HoverBadge';
 import Age from '@/components/ui/DynamicAge';
 import { fetchRepos } from '@/lib/github';
 import { RepoList } from '@/components/ui/RepoList';
+import BlogPostList from '@/components/ui/BlogPostList';
 
 
 export default async function Home() {
@@ -50,7 +51,7 @@ export default async function Home() {
       <section id="projects" className="my-8 flex flex-col">
         <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
-          Projects
+          <a href="/projects">Projects</a>
         </h2>
         
         < RepoList repos={repos} displayLim={5} />
@@ -59,12 +60,11 @@ export default async function Home() {
 
       <section id="blog" className="my-8 flex flex-col">
         <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-          <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
-          Blog Posts
+          <File className='mr-3 text-blue-950 dark:text-blue-400' />
+          <a href="/blog">Blog Posts</a>
         </h2>
-          <p className="text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">No blog posts yet, but stay tuned!</p>
+        < BlogPostList displayLim={2} />
       </section>
-      <section id="blog" className="mb-16 flex flex-col"></section>
     </main>
     
   );
