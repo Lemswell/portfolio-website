@@ -1,5 +1,5 @@
 import { fetchRepoByName, fetchRepoReadme } from '@/lib/github';
-import { Github, Clanendar, File } from '@/components/ui/icons';
+import { Github, Calendar, File } from '@/components/ui/icons';
 import { allProjects } from "content-collections";
 import TagList from "@/components/ui/TagList";
 import BlogPostList from '@/components/ui/BlogPostList';
