@@ -12,7 +12,7 @@ export default async function Home() {
   const repos = await fetchRepos()
   
   return (
-    <main className="max-w-3xl mx-auto px-6 py-20">
+    <main className="max-w-4xl mx-auto px-6 py-20">
       <header className="my-8">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <ToggleNameWithComment />
@@ -49,20 +49,29 @@ export default async function Home() {
       </header>
       <hr className='border-black/10 dark:border-white/10'></hr>
       <section id="projects" className="my-8 flex flex-col">
-        <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-          <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
-          <a href="/projects">Projects</a>
-        </h2>
-        
+        <header className="mb-8 flex flex-col gap-3">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+            <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
+            <a href="/projects">Projects</a>
+          </h2>
+          <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
+            {`Here's a list of some recent projects I've worked on from my Github.`}
+          </p>
+        </header>
         < RepoList repos={repos} displayLim={5} />
       </section>
       <hr className='border-black/10 dark:border-white/10'></hr>
 
       <section id="blog" className="my-8 flex flex-col">
-        <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-          <File className='mr-3 text-blue-950 dark:text-blue-400' />
-          <a href="/blog">Blog Posts</a>
-        </h2>
+        <header className="mb-8 flex flex-col gap-3">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+            <File className='mr-3 text-blue-950 dark:text-blue-400' />
+            <a href="/blog">Posts</a>
+          </h2>
+          <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
+            {`Here's a list of some recent thoughts I've written up on my blog.`}
+          </p>
+          </header>
         < BlogPostList displayLim={2} />
       </section>
     </main>

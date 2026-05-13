@@ -11,7 +11,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
   
   
   return (
-    <main className="max-w-3xl mx-auto px-6 py-20">
+    <main className="max-w-4xl mx-auto px-6 py-20">
       <header className='my-8'>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
           <a href="/" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
