@@ -11,10 +11,19 @@ interface BlogPostListProps {
 export default function App({ displayLim, tags }: BlogPostListProps) {
 
   // let postsToDisplay = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  const postsToDisplay = displayLim !== undefined 
+  let postsToDisplay = displayLim !== undefined 
   ? allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, displayLim) 
   : allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+  if (tags && tags.length > 0) {
+    postsToDisplay = postsToDisplay.filter(post => post.tags.some(tag => tags.includes(tag)));
+  }
+
+  if (postsToDisplay.length === 0) {
+    return (
+      <p className="text-center text-zinc-500 dark:text-zinc-400">{`No posts as of yet :<`}</p>
+    );
+  }
 
   return (
       <ul className="rounded-md border border-black/10 dark:border-white/10 transition-colors duration-200">

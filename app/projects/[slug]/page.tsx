@@ -1,6 +1,8 @@
 import { fetchRepoByName, fetchRepoReadme } from '@/lib/github';
-import { Github } from '@/components/ui/icons';
+import { Github, Clanendar, File } from '@/components/ui/icons';
 import { allProjects } from "content-collections";
+import TagList from "@/components/ui/TagList";
+import BlogPostList from '@/components/ui/BlogPostList';
 
 const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }> }) => {
   
@@ -20,9 +22,13 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
           {repo.name}
         </h1>
         
-        <p className="mt-3 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">
-          {repo.description}
-        </p>
+        <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+          < Calendar className="w-3 h-3" />
+          <span className="text-xs">`{new Date(repo.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })} - {new Date(repo.pushed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}`</span>
+        </div>
+        <p className="text-sm line-clamp-2">{project?.description}</p>
+        <p className="text-sm line-clamp-2">{repo.description}</p>
+        < TagList tags={repo.language ? [repo.language].concat(repo.topics) : repo.topics} />
         <div className="mt-5">
           <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
             <Github />
@@ -35,6 +41,17 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
       <section id="project-content" className="my-8 flex flex-col gap-5">
         {/*  */}
         {project && <div dangerouslySetInnerHTML={{ __html: project.compiledContent }} />}
+      </section>
+
+      <hr className='border-black/10 dark:border-white/10'></hr>
+
+      <section id="relevant-blog" className="my-8 flex flex-col gap-5">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+          <File className='mr-3 text-blue-950 dark:text-blue-400' />
+          <a href="/blog">Posts</a>
+        </h2>
+        {/*  */}
+        < BlogPostList tags={[slug]} />
       </section>
     </main>
   );
