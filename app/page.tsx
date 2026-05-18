@@ -2,6 +2,7 @@ import { Github, Linkedin, Email, FileDownload, Folders, File } from '@/componen
 import ToggleNameWithComment from '@/components/ui/ToggleNames';
 import HoverBadge from '@/components/ui/HoverBadge';
 import Age from '@/components/ui/DynamicAge';
+import Link from 'next/link';
 import { fetchRepos } from '@/lib/github';
 import { RepoList } from '@/components/ui/RepoList';
 import BlogPostList from '@/components/ui/BlogPostList';
@@ -52,7 +53,7 @@ export default async function Home() {
         <header className="mb-8 flex flex-col gap-3">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
             <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
-            <a href="/projects">Projects</a>
+            <Link href="/projects">Projects</Link>
           </h2>
           <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
             {`Here's a list of some recent projects I've worked on from my Github.`}
@@ -66,7 +67,7 @@ export default async function Home() {
         <header className="mb-8 flex flex-col gap-3">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
             <File className='mr-3 text-blue-950 dark:text-blue-400' />
-            <a href="/blog">Posts</a>
+            <Link href="/blog">Posts</Link>
           </h2>
           <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
             {`Here's a list of some recent thoughts I've written up on my blog.`}

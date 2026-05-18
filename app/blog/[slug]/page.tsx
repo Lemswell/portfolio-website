@@ -29,11 +29,11 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
             {`${post.grouping}`}
           </a>
         </h2>
-        <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
-          < Calendar className="w-3 h-3" />
+        <div className="flex items-center gap-2 text-zinc-500/80 dark:text-zinc-400/80">
+          < Calendar className="w-4 h-4" />
           <span className="text-xs">{new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </div>
-        <p className="text-sm line-clamp-2">{post.tldr ? post.tldr : post.compiledContent}</p>
+        <p className="text-md line-clamp-2">{post.tldr ? post.tldr : post.compiledContent}</p>
         < TagList tags={post.tags.includes(post.grouping) ? post.tags : [post.grouping].concat(post.tags)} />
         
       </header>

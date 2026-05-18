@@ -14,7 +14,7 @@ async function generate() {
   let barrelExcerpts = '';
 
   for (const file of files) {
-    const componentName = path.parse(file).name.charAt(0).toUpperCase() + path.parse(file).name.slice(1);
+    const componentName = path.parse(file).name.split(/-|_/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
     const svgCode = fs.readFileSync(path.join(ICON_SOURCE, file), 'utf8');
     // Transforms raw SVG into a React Component
     const jsCode = await transform(
