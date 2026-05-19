@@ -2,6 +2,7 @@ import TagList from "./TagList";
 import Link from "next/link";
 import type { Post } from "content-collections";
 import { Calendar } from '@/components/ui/icons/index';
+import { formatDate } from '@/lib/formatDate';
 
 const filenameToSlug = (filename: string) => {
     return filename.replace(".md", "");
@@ -17,7 +18,7 @@ const BlogPostCard = ({ post }: { post: Post }) => {
           </Link>
           <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
             < Calendar className="w-3 h-3" />
-            <span className="text-xs">{new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span className="text-xs">{formatDate(post.date)}</span>
           </div>
           <p className="text-sm line-clamp-2">{post.tldr ? post.tldr : post.compiledContent}</p>
           < TagList tags={post.tags.includes(post.grouping) ? post.tags : [post.grouping].concat(post.tags)} />

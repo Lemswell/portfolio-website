@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { allProjects } from "content-collections";
 import TagList from "@/components/ui/TagList";
 import BlogPostList from '@/components/ui/BlogPostList';
+import { formatDate } from '@/lib/formatDate';
 
 const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }> }) => {
   
@@ -26,7 +27,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
         <div className="flex items-center gap-2 text-zinc-500/80 dark:text-zinc-400/80">
           <Calendar className="w-4 h-4" />
           {/* <span className="text-xs">{new Date(repo.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })} - {new Date(repo.pushed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span> */}
-          <span className="text-xs">{new Date(repo.pushed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <span className="text-xs">{formatDate(repo.pushed_at)}</span>
           <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
             <Github />
           </a>

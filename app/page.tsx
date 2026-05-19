@@ -53,7 +53,7 @@ export default async function Home() {
         <header className="mb-8 flex flex-col gap-3">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
             <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
-            <Link href="/projects">Projects</Link>
+            <Link href="/projects" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Projects</Link>
           </h2>
           <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
             {`Here's a list of some recent projects I've worked on from my Github.`}
@@ -67,12 +67,12 @@ export default async function Home() {
         <header className="mb-8 flex flex-col gap-3">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
             <File className='mr-3 text-blue-950 dark:text-blue-400' />
-            <Link href="/blog">Posts</Link>
+            <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Posts</Link>
           </h2>
           <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
             {`Here's a list of some recent thoughts I've written up on my blog.`}
           </p>
-          </header>
+        </header>
         < BlogPostList displayLim={2} />
       </section>
     </main>

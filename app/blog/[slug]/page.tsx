@@ -1,6 +1,7 @@
 import { allPosts } from "content-collections";
 import TagList from "@/components/ui/TagList";
 import Calendar from "@/components/ui/icons/Calendar";
+import { formatDate } from '@/lib/formatDate';
 
 const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> }) => {
   
@@ -31,7 +32,7 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
         </h2>
         <div className="flex items-center gap-2 text-zinc-500/80 dark:text-zinc-400/80">
           < Calendar className="w-4 h-4" />
-          <span className="text-xs">{new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <span className="text-xs">{formatDate(post.date)}</span>
         </div>
         <p className="text-md line-clamp-2">{post.tldr ? post.tldr : post.compiledContent}</p>
         < TagList tags={post.tags.includes(post.grouping) ? post.tags : [post.grouping].concat(post.tags)} />
