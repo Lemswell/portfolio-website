@@ -39,10 +39,10 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
       
       <hr className='border-black/10 dark:border-white/10'></hr>
       
-      <section id="project-content" className="my-8 flex flex-col gap-5">
+      <article className="prose sm:prose-lg dark:prose-invert mx-auto max-w-6xl p-6 ">
         {/*  */}
         {project && <div dangerouslySetInnerHTML={{ __html: project.compiledContent }} />}
-      </section>
+      </article>
 
       <hr className='border-black/10 dark:border-white/10'></hr>
 
