@@ -64,13 +64,14 @@ const ToggleName = () => {
   
   return (
     <div className='group flex-col'>
-      <div>{"Hi, I'm\u00A0"}
-        <span
-          className="cursor-pointer text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+      <div className='flex flex-col md:flex-row'>
+        <h1 className='line-clamp-1 text-xl sm:text-2xl md:text-6xl'>{"Hi, I'm\u00A0"}</h1>
+        <div
+          className="cursor-pointer min-h-12 sm:min-h-15 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
           onClick={handleClick}
           >
           {displayedText}
-        </span>
+        </div>
       </div>
       <div className='text-sm opacity-0 group-hover:opacity-100 transition-opacity line-clamp-1
                       pointer-events-none group-hover:pointer-events-auto duration-500 justify-center

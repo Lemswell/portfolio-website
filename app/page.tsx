@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <header className="my-8">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <ToggleNameWithComment />
         </h1>
         <div className="mt-3 text-lg fill-zinc-800 dark:fill-zinc-100 leading-6">

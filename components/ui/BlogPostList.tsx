@@ -11,9 +11,10 @@ interface BlogPostListProps {
 export default function App({ displayLim, tags }: BlogPostListProps) {
 
   // let postsToDisplay = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // copy before sorting to avoid mutating the shared `allPosts` array
   let postsToDisplay = displayLim !== undefined 
-  ? allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, displayLim) 
-  : allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  ? [...allPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, displayLim) 
+  : [...allPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   if (tags && tags.length > 0) {
     postsToDisplay = postsToDisplay.filter(post => post.tags.some(tag => tags.includes(tag)));
@@ -26,13 +27,13 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
   }
 
   return (
-      <ul className="rounded-md border border-black/10 dark:border-white/10 transition-colors duration-200">
+      <div role="list" className="rounded-md border border-black/10 dark:border-white/10 transition-colors duration-200">
         {postsToDisplay.map((post, index: number) => (
-          <li key={post._meta.fileName}>
+          <div role="listitem" key={post._meta.fileName}>
             <BlogPostCard post={post} />
             {index !== postsToDisplay.length - 1 && <hr className="border-black/10 dark:border-white/10" />}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
   );
 }
