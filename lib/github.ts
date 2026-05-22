@@ -48,6 +48,5 @@ export async function fetchRepoReadme(repoName: string): Promise<string> {
     }
 
     const data = await response.json();
-    const content = atob(data.content);
-    return content;
+    return Buffer.from(data.content, 'base64').toString('utf8');
 }

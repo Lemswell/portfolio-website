@@ -13,7 +13,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
   const { slug } = await params;
   const project = allProjects.find((proj) => {return proj._meta.fileName === `${slug}.md`});
   const repo = await fetchRepoByName(slug).catch((e) => project ? null : notFound()); // catch error if repo not found
-  const readmeContent =  await fetchRepoReadme(slug).catch((e) => null); // still need to test/make sure this works
+  const readmeContent =  await fetchRepoReadme(slug).catch((e) => {console.log(e); return null}); // still need to test/make sure this works
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">

@@ -67,7 +67,7 @@ export default async function Home() {
         <header className="mb-8 flex flex-col gap-3">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
             <File className='mr-3 text-blue-950 dark:text-blue-400' />
-            <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Posts</Link>
+            <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Blog</Link>
           </h2>
           <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
             {`Here are some recent thoughts I've written up on my blog.`}
