@@ -11,7 +11,7 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
   if (!post) {
     return (
       <main className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
+        <h1 className="text-4xl sm:text-5xl font-bold text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
           Post Not Found
         </h1>
       </main>
@@ -22,10 +22,10 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
     
     <main className="max-w-4xl mx-auto px-6 py-20">
       <header className='my-8 flex flex-col gap-2 '>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center">
+        <h1 className="text-4xl sm:text-5xl font-bold text-blue-950 dark:text-blue-400 flex items-center">
           {post.title}
         </h1>
-        <h2 className="text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+        <h2 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <a href={`/projects/${post.grouping}`} className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
             {`${post.grouping}`}
           </a>
@@ -41,9 +41,10 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
       
       <hr className='border-black/10 dark:border-white/10'></hr>
       
-      <article className="prose sm:prose-lg dark:prose-invert mx-auto max-w-6xl p-6 ">
-        {post && <div dangerouslySetInnerHTML={{ __html: post.compiledContent }} />}
-      </article>
+      {post && <article dangerouslySetInnerHTML={{ __html: post.compiledContent }} 
+      className="prose sm:prose-lg dark:prose-invert mx-auto max-w-6xl py-6 
+      prose-h1:font-semibold prose-h1:pt-3 prose-h2:font-medium prose-h3:font-medium"/>}
+
     </main>
   );
 }

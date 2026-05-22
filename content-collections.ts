@@ -31,7 +31,7 @@ const projects = defineCollection({
   directory: "content/projects",
   include: "**/*.md",
   schema: z.object({
-    description: z.string(),
+    description: z.string().optional(),
   }),
   transform: async (document, context) => {
     const compiledContent = await compileMarkdown(context, document);

@@ -56,7 +56,7 @@ export default async function Home() {
             <Link href="/projects" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Projects</Link>
           </h2>
           <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
-            {`Here's a list of some recent projects I've worked on from my Github.`}
+            {`Here are some recent projects I've worked on from my Github.`}
           </p>
         </header>
         < RepoList repos={repos} displayLim={5} />
@@ -70,7 +70,7 @@ export default async function Home() {
             <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Posts</Link>
           </h2>
           <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
-            {`Here's a list of some recent thoughts I've written up on my blog.`}
+            {`Here are some recent thoughts I've written up on my blog.`}
           </p>
         </header>
         < BlogPostList displayLim={2} />

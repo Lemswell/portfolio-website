@@ -11,16 +11,13 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
   const { slug } = await params;
   const repo = await fetchRepoByName(slug);
   const project = allProjects.find((proj) => {return proj._meta.fileName === `${slug}.md`});
-  // const readmeContent = await fetchRepoReadme(params.slug); // still need to test/make sure this works
+  const readmeContent =  null; // await fetchRepoReadme(params.slug); // still need to test/make sure this works
   
   
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <header className='my-8 flex flex-col gap-3'>
-        <h1 className="mb-3 text-4xl sm:text-5xl font-bold tracking-tight text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
-          {/* <Link href="/" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
-            {"Lems'\u00A0"}
-          </Link> */}
+        <h1 className="mb-3 text-4xl sm:text-5xl font-bold text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
           {repo.name}
         </h1>
         
@@ -32,24 +29,25 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
             <Github />
           </a>
         </div>
-        <p className="text-md line-clamp-2">{project?.description}</p>
-        {/* <p className="text-sm line-clamp-2">{repo.description}</p> */}
+        {/* displaying locally written description over GitHub description */}
+        <p className="text-md line-clamp-2">{project?.description ? project?.description : repo.description}</p> 
         < TagList tags={repo.language ? [repo.language].concat(repo.topics) : repo.topics} />
       </header>
       
-      <hr className='border-black/10 dark:border-white/10'></hr>
+      <hr className='border-black/10 dark:border-white/10' />
       
-      <article className="prose sm:prose-lg dark:prose-invert mx-auto max-w-6xl p-6 ">
-        {/*  */}
-        {project && <div dangerouslySetInnerHTML={{ __html: project.compiledContent }} />}
-      </article>
+      {project && <article dangerouslySetInnerHTML={{ __html: project.compiledContent }} 
+      className="prose sm:prose-lg dark:prose-invert mx-auto max-w-6xl py-6 
+      prose-h1:font-semibold prose-h1:pt-3 prose-h2:font-medium prose-h3:font-medium"/>}
 
-      <hr className='border-black/10 dark:border-white/10'></hr>
+
+
+      {(project || readmeContent) && <hr className='border-black/10 dark:border-white/10' />}
 
       <section id="relevant-blog" className="my-8 flex flex-col gap-5">
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+        <h2 className="text-3xl sm:text-4xl font-bold text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <File className='mr-3 text-blue-950 dark:text-blue-400' />
-          <Link href="/blog">Posts</Link>
+          <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Posts</Link>
         </h2>
         {/*  */}
         < BlogPostList tags={[slug]} />
