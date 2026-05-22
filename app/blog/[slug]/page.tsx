@@ -2,20 +2,15 @@ import { allPosts } from "content-collections";
 import TagList from "@/components/ui/TagList";
 import Calendar from "@/components/ui/icons/Calendar";
 import { formatDate } from '@/lib/formatDate';
+import { notFound } from 'next/navigation';
 
 const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> }) => {
   
   const { slug } = await params;
   const post = allPosts.find((post) => {return post._meta.fileName === `${slug}.md`});
-  // const readmeContent = await fetchRepoReadme(params.slug); // still need to test/make sure this works
+
   if (!post) {
-    return (
-      <main className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-4xl sm:text-5xl font-bold text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
-          Post Not Found
-        </h1>
-      </main>
-    );
+    notFound();
   }
   
   return (
@@ -39,11 +34,11 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
         
       </header>
       
-      <hr className='border-black/10 dark:border-white/10'></hr>
+      <hr className='border-black/10 dark:border-white/10' />
       
       {post && <article dangerouslySetInnerHTML={{ __html: post.compiledContent }} 
-      className="prose sm:prose-lg dark:prose-invert mx-auto max-w-6xl py-6 
-      prose-h1:font-semibold prose-h1:pt-3 prose-h2:font-medium prose-h3:font-medium"/>}
+      className="prose sm:prose-lg dark:prose-invert mt-3 mx-auto max-w-6xl py-6  
+      prose-h1:font-semibold prose-h2:font-semibold prose-h3:font-semibold"/>}
 
     </main>
   );

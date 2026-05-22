@@ -1,6 +1,7 @@
 interface GithubRepository {
     id: number;
     html_url: string;
+    homepage: string;
     name: string;
     full_name: string;
     description: string | null;
