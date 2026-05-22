@@ -39,7 +39,7 @@ export async function fetchRepoByName(repoName: string): Promise<GithubRepositor
 // TODO: not working
 // consider the need to fetch the README.md file content from the repository's default branch.
 export async function fetchRepoReadme(repoName: string): Promise<string> {
-    const response = await fetch(`https://api.github.com/repos/${USERNAME}/${repoName}/git/blobs/README.md`, {
+    const response = await fetch(`https://api.github.com/repos/${USERNAME}/${repoName}/readme`, {
         headers: headers
     });
 

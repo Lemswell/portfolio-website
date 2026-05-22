@@ -10,7 +10,7 @@ import BlogPostList from '@/components/ui/BlogPostList';
 
 export default async function Home() {
   
-  const repos = await fetchRepos()
+  const repos = await fetchRepos().catch((e) => []); // in case of error, return empty array to avoid breaking the page
   
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">

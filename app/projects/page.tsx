@@ -4,7 +4,8 @@ import { fetchRepos } from "@/lib/github";
 import Link from 'next/link';
  
 export default async function App() {
-  const repos = await fetchRepos();
+  // figure out some way to concat non-github projects (LATER)
+  const repos = await fetchRepos().catch((e) => []);
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <header className="my-8">

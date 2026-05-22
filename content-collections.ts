@@ -1,6 +1,5 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMarkdown } from "@content-collections/markdown";
-import { doc } from "prettier";
 import { z } from "zod";
 
 // for more information on configuration, visit:

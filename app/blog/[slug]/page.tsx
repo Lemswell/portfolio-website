@@ -38,7 +38,7 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
       
       {post && <article dangerouslySetInnerHTML={{ __html: post.compiledContent }} 
       className="prose sm:prose-lg dark:prose-invert mt-3 mx-auto max-w-6xl py-6  
-      prose-h1:font-semibold prose-h2:font-semibold prose-h3:font-semibold"/>}
+      prose-headings:font-semibold"/>}
 
     </main>
   );
