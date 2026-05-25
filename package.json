@@ -5,7 +5,7 @@
   "scripts": {
     "generate-icons": "npx tsx scripts/generate-icons.ts",
     "dev": "npm run generate-icons && next dev",
-    "build": "next build",
+    "build": "npm run generate-icons && next build",
     "start": "next start",
     "lint": "eslint"
   },
