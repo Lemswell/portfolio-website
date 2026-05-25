@@ -9,7 +9,7 @@ export default function App() {
           {"Lemuel's\u00A0"}
         </Link>
         <h1 className={`pb-1 text-5xl sm:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1`}>
-          Blog
+          {`Blog\u00A0Posts`}
         </h1>
         <p className='text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3 line-clamp-1'>
           {`A list of some recent thoughts and experiences I've written in blog form.`}

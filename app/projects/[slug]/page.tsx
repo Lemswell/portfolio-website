@@ -17,31 +17,36 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
-      <header className='my-8 flex flex-col gap-3'>
-        <h1 className="mb-3 text-4xl sm:text-5xl font-bold text-blue-950 dark:text-blue-400 flex items-center line-clamp-1">
-          {repo?.name ? repo.name : project ? project._meta.fileName.slice(0, -3) : 'Project Not Found'}
-        </h1>
-        
-        {repo &&<div className="flex items-center gap-3 text-zinc-500/80 dark:text-zinc-400/80">
-           <div className="flex items-center gap-2">
-            <Calendar className="w-3 h-3" />
-            <span className="text-xs">{formatDate(repo.pushed_at)}</span>
-          </div>
-          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
-            <Github className="w-4 h-4"/>
-          </a>
-          {repo.homepage!= "" && 
-          <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
-            {/* TODO: replace with link icon */}
-            <File className="w-4 h-4"/>
-          </a>}
-        </div>
-        }
-        {/* displaying locally written description over GitHub description */}
-        {repo || project?.description ? (
-          <p className="text-md line-clamp-2">{project?.description ? project?.description : repo?.description}</p>
-        ) : null}
-        {repo && <TagList tags={repo.language ? [repo.language].concat(repo.topics) : repo.topics} />}
+      <header className='my-8'>
+        <section>
+          <Link href="/projects" className="text-xl sm:text-2xl font-bold tracking-tight text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
+            {"Project\u00A0"}
+          </Link>
+          <h1 className="pb-1 text-5xl sm:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+            {repo?.name ? repo.name : project ? project._meta.fileName.slice(0, -3) : 'Project Not Found'}
+          </h1>
+        </section>
+        <section className="mt-3 flex flex-col gap-2">
+          {repo && <div className="my-1 flex items-center gap-3 text-zinc-500/80 dark:text-zinc-400/80">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-3 h-3" />
+              <span className="text-xs">{formatDate(repo.pushed_at)}</span>
+            </div>
+            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
+              <Github className="w-4 h-4"/>
+            </a>
+            {repo.homepage!= "" && 
+            <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
+              {/* TODO: replace with link icon */}
+              <File className="w-4 h-4"/>
+            </a>}
+          </div>}
+          {/* displaying locally written description over GitHub description */}
+          {repo || project?.description ? (
+            <p className="text-md line-clamp-2">{project?.description ? project?.description : repo?.description}</p>
+          ) : null}
+          {repo && <TagList tags={repo.language ? [repo.language].concat(repo.topics) : repo.topics} />}
+        </section>
       </header>
       
       <hr className='border-black/10 dark:border-white/10' />
@@ -69,9 +74,10 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
       <section id="relevant-blog" className="my-8 flex flex-col gap-5">
         <h2 className="text-3xl sm:text-4xl font-bold text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <File className='mr-3 text-blue-950 dark:text-blue-400' />
-          <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Posts</Link>
+          <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
+            Relavent Posts
+          </Link>
         </h2>
-        {/*  */}
         < BlogPostList tags={[slug]} />
       </section>
     </main>

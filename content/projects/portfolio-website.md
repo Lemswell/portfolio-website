@@ -1,7 +1,6 @@
 ---
 description: My personal website for blogging and showing off projects.
 ---
-# Portfolio-website
 A generic name for my first project to make in a long while. I for a multitude of reasons, including;
 * To de-rust and relearn how to code
 * Have a project that I can actually be proud of and show to employers
