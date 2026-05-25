@@ -75,7 +75,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
         <h2 className="text-3xl sm:text-4xl font-bold text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
           <File className='mr-3 text-blue-950 dark:text-blue-400' />
           <Link href="/blog" className="text-white hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
-            Relavent Posts
+            Relevant Posts
           </Link>
         </h2>
         < BlogPostList tags={[slug]} />
