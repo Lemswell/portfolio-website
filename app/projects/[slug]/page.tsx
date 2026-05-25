@@ -14,7 +14,9 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
   const project = allProjects.find((proj) => {return proj._meta.fileName === `${slug}.md`});
   const repo = await fetchRepoByName(slug).catch((e) => project ? null : notFound()); // catch error if repo not found
   const readmeContent =  await fetchRepoReadme(slug).catch((e) => {console.log(e); return null}); // still need to test/make sure this works
+  const heading = repo?.name ? repo.name : project ? project._meta.fileName.slice(0, -3) : ""; // prepping for non-software/github projects
 
+  
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <header className='my-8'>
@@ -23,7 +25,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
             {"Project\u00A0"}
           </Link>
           <h1 className="pb-1 text-5xl sm:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-            {repo?.name ? repo.name : project ? project._meta.fileName.slice(0, -3) : 'Project Not Found'}
+            {heading.charAt(0).toUpperCase() + heading.slice(1)}
           </h1>
         </section>
         <section className="mt-3 flex flex-col gap-2">
