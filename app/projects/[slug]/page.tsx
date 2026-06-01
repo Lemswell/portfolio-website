@@ -33,7 +33,7 @@ const ProjectPageDisplay = async({ params }: { params: Promise<{ slug: string }>
         <section className="mt-3 flex flex-col gap-2">
           {repo && <div className="my-1 flex items-center gap-3 text-zinc-500/80 dark:text-zinc-400/80">
             <div className="flex items-center gap-2">
-              <Calendar className="w-3 h-3" />
+              <Calendar className="w-4 h-4" />
               <span className="text-xs">{formatDate(repo.pushed_at)}</span>
             </div>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">

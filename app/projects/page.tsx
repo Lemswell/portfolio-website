@@ -12,10 +12,10 @@ export default async function App() {
         <Link href="/" className="text-xl sm:text-2xl font-bold tracking-tight text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
           {"Lemuel's\u00A0"}
         </Link>
-        <h1 className="pb-1 text-5xl sm:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+        <h1 className="pb-1 text-5xl sm:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center">
           Projects
         </h1>
-        <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
+        <p className='text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
           {`A list of some recent software projects I've worked on.`}
         </p>
       </header>
