@@ -75,7 +75,7 @@ const ToggleName = () => {
       </div>
       <div className='text-sm opacity-0 group-hover:opacity-100 transition-opacity line-clamp-1
                       pointer-events-none group-hover:pointer-events-auto duration-500 justify-center
-                      whitespace-pre-line text-zinc-50/15 tracking-normal font-medium font-mono mt-3'>
+                      whitespace-pre-line text-zinc-500 dark:text-zinc-50/15 tracking-normal font-medium font-mono mt-3'>
         {comment}
       </div>
     </div>

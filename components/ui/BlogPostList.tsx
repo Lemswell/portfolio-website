@@ -27,7 +27,7 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
   }
 
   return (
-      <div role="list" className="rounded-md border border-black/10 dark:border-white/10">
+      <div role="list" className="rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background dark:hover:bg-background">
         {postsToDisplay.map((post, index: number) => (
           <div role="listitem" key={post._meta.fileName}>
             <BlogPostCard post={post} />

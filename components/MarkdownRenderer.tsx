@@ -1,10 +1,8 @@
-import { compileMarkdown } from "@/lib/markdown";
+'use client';
 
-const MarkdownRenderer = async ({ rawMarkdown, className }: { rawMarkdown: string; className?: string }) => {
-    const compiledContent = await compileMarkdown(rawMarkdown);
-
+const MarkdownRenderer = ({ compiledHtml, className }: { compiledHtml: string; className?: string }) => {
     return (
-        <article className={className} dangerouslySetInnerHTML={{ __html: compiledContent }} />
+        <article className={className} dangerouslySetInnerHTML={{ __html: compiledHtml }} />
     )
 }
 

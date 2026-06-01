@@ -23,11 +23,15 @@ const RepoList = ({ repos, timeLim, displayLim }: RepoListProps) => {
   }
 
   return (
-    <ul className="flex flex-col gap-4">
-      {displayedRepos.map(repo => (
-        <RepoCard repo={repo} key={repo.id} />
+    <div role="list" className="rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background dark:hover:bg-background">
+      {displayedRepos.map((repo, index: number) => (
+        <div role="listitem" key={repo.id}>
+          <RepoCard repo={repo}  />
+          {index !== displayedRepos.length - 1 && <hr className="border-black/10 dark:border-white/10" />}
+        </div>
+
       ))}
-    </ul>
+    </div>
   )
 }
 

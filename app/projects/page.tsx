@@ -20,7 +20,7 @@ export default async function App() {
         </p>
       </header>
       <hr className='my-8 border-black/10 dark:border-white/10'></hr>
-      < RepoList repos={repos} />
+      <RepoList repos={repos} />
     </main>
   );
 }
