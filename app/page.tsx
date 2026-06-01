@@ -55,7 +55,7 @@ export default async function Home() {
             <Folders className='mr-3 text-blue-950 dark:text-blue-400' />
             <Link href="/projects" className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Projects</Link>
           </h2>
-          <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
+          <p className='text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
             {`Here are some recent projects I've worked on from my Github.`}
           </p>
         </header>
@@ -69,7 +69,7 @@ export default async function Home() {
             <File className='mr-3 text-blue-950 dark:text-blue-400' />
             <Link href="/blog" className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors">Blog Posts</Link>
           </h2>
-          <p className='text-sm line-clamp-1 justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
+          <p className='text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3'>
             {`Here are some recent thoughts I've written up on my blog.`}
           </p>
         </header>
