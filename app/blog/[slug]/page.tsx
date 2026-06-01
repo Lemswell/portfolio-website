@@ -35,11 +35,11 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
 
         <section className="mt-3 flex flex-col gap-2">
           <div className="my-1 flex items-center gap-2 text-zinc-500/80 dark:text-zinc-400/80">
-            < Calendar className="w-3 h-3" />
+            <Calendar className="w-3 h-3" />
             <span className="text-xs">{formatDate(post.date)}</span>
           </div>
           <p className="text-md line-clamp-2">{post.tldr ? post.tldr : post.compiledContent}</p>
-          < TagList tags={post.tags.includes(post.grouping) ? post.tags : [post.grouping].concat(post.tags)} />
+          <TagList tags={post.tags.includes(post.grouping) ? post.tags : [post.grouping].concat(post.tags)} />
         </section>
       </header>
       
