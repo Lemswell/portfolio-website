@@ -1,5 +1,6 @@
 import { Tag } from '@/components/ui/icons';
 const TagList = ({ tags }: { tags: string[] }) => {
+	if (tags.length === 0) return null;
 	return (
 		<div className="mt-2 flex items-center gap-1 line-clamp-1">
 			<Tag className="h-5 w-5 shrink-0 mr-2"/>
