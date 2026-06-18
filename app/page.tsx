@@ -98,34 +98,52 @@ export default async function Home() {
       <hr className="border-black/10 dark:border-white/10"></hr>
       <section id="projects" className="my-8 flex flex-col">
         <header className="mb-8 flex flex-col gap-3">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-            <Folders className="mr-3 text-blue-950 dark:text-blue-400" />
+          <div className="flex justify-between items-center">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+              <Folders className="mr-3 text-blue-950 dark:text-blue-400" />
+              <Link
+                href="/projects"
+                className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+              >
+                {`Projects\u00a0`}
+              </Link>
+              <span className="text-lg sm:text-xl text-zinc-800/60 dark:text-zinc-100/60">
+                {`(featured)`}
+              </span>
+            </h2>
             <Link
               href="/projects"
-              className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-            >
-              Projects
-            </Link>
-          </h2>
+              className="text-sm sm:text-base text-zinc-800/60 dark:text-zinc-100/60 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+            >{`see more \u2192`}</Link>
+          </div>
           <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
-            {`Here are some recent projects I've worked on from my Github.`}
+            {`Here are some of my favourite projects I've worked on from my Github.`}
           </p>
         </header>
-        <RepoList repos={repos} displayLim={5} featuredOnly={true}/>
+        <RepoList repos={repos} displayLim={5} featuredOnly={true} />
       </section>
       <hr className="border-black/10 dark:border-white/10"></hr>
 
       <section id="blog" className="my-8 flex flex-col">
         <header className="mb-8 flex flex-col gap-3">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-            <File className="mr-3 text-blue-950 dark:text-blue-400" />
+          <div className="flex justify-between items-center">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+              <File className="mr-3 text-blue-950 dark:text-blue-400" />
+              <Link
+                href="/blog"
+                className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+              >
+                {`Blog Posts\u00a0`}
+              </Link>
+              <span className="text-lg sm:text-xl text-zinc-800/60 dark:text-zinc-100/60">
+                {`(latest)`}
+              </span>
+            </h2>
             <Link
               href="/blog"
-              className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-            >
-              Blog Posts
-            </Link>
-          </h2>
+              className="text-sm sm:text-base text-zinc-800/60 dark:text-zinc-100/60 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+            >{`see more \u2192`}</Link>
+          </div>
           <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
             {`Here are some recent thoughts I've written up on my blog.`}
           </p>
