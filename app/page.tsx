@@ -100,7 +100,7 @@ export default async function Home() {
         <header className="mb-8 flex flex-col gap-3">
           <div className="flex justify-between items-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-              <Folders className="mr-3 text-blue-950 dark:text-blue-400" />
+              <Folders className="mr-3 text-blue-950 dark:text-blue-400 shrink-0" />
               <Link
                 href="/projects"
                 className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
@@ -128,7 +128,7 @@ export default async function Home() {
         <header className="mb-8 flex flex-col gap-3">
           <div className="flex justify-between items-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-              <File className="mr-3 text-blue-950 dark:text-blue-400" />
+              <File className="mr-3 text-blue-950 dark:text-blue-400 shrink-0" />
               <Link
                 href="/blog"
                 className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
