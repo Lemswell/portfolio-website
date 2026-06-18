@@ -1,7 +1,7 @@
 ---
 description: My personal website for blogging and showing off projects.
 ---
-A generic name for my first project to make in a long while. I for a multitude of reasons, including;
+A generic name for my first project to make in a long while. I made this for a multitude of reasons, these reasons include;
 * To de-rust and relearn how to code
 * Have a project that I can actually be proud of and show to employers
 * Just for some creative outlet and somewhere to blog

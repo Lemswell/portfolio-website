@@ -111,7 +111,7 @@ export default async function Home() {
             {`Here are some recent projects I've worked on from my Github.`}
           </p>
         </header>
-        <RepoList repos={repos} displayLim={5} />
+        <RepoList repos={repos} displayLim={5} featuredOnly={true}/>
       </section>
       <hr className="border-black/10 dark:border-white/10"></hr>
 
