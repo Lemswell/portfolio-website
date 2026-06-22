@@ -1,5 +1,6 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMarkdown } from "@content-collections/markdown";
+import { sharedRehypePlugins } from "./lib/markdown";
 import { z } from "zod";
 
 // for more information on configuration, visit:
@@ -14,15 +15,15 @@ const posts = defineCollection({
     date: z.coerce.date(),
     tags: z.string().array(),
     grouping: z.string(),
-    tldr: z.string().optional()
+    tldr: z.string().optional(),
   }),
   transform: async (document, context) => {
-  const compiledContent = await compileMarkdown(context, document);
+    const compiledContent = await compileMarkdown(context, document);
     return {
       ...document,
-      compiledContent
+      compiledContent,
     };
-  }
+  },
 });
 
 const projects = defineCollection({
@@ -36,9 +37,9 @@ const projects = defineCollection({
     const compiledContent = await compileMarkdown(context, document);
     return {
       ...document,
-      compiledContent
+      compiledContent,
     };
-  }
+  },
 });
 
 export default defineConfig({

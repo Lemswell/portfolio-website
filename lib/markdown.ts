@@ -2,6 +2,11 @@ import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
+import rehypeExternalLinks from "rehype-external-links";
+
+export const sharedRehypePlugins = [
+  [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
+];
 
 export async function compileMarkdown(
   rawMarkdownString: string,
@@ -9,6 +14,10 @@ export async function compileMarkdown(
   const file = await unified()
     .use(remarkParse)
     .use(remarkRehype)
+    .use(rehypeExternalLinks, {
+      target: "_blank",
+      rel: ["noopener", "noreferrer"],
+    })
     .use(rehypeStringify)
     .process(rawMarkdownString)
     .catch((e) => {
