@@ -113,7 +113,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/projects"
-              className="text-sm sm:text-base text-zinc-800/60 dark:text-zinc-100/60 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+              className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
             >{`see more \u2192`}</Link>
           </div>
           <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
@@ -141,7 +141,7 @@ export default async function Home() {
             </h2>
             <Link
               href="/blog"
-              className="text-sm sm:text-base text-zinc-800/60 dark:text-zinc-100/60 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+              className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
             >{`see more \u2192`}</Link>
           </div>
           <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">

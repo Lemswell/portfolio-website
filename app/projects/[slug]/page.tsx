@@ -131,8 +131,8 @@ const ProjectPageDisplay = async ({
         <hr className="border-black/10 dark:border-white/10" />
       )}
 
-      <section id="relevant-blog" className="my-8 flex flex-col gap-5">
-        <div className="mb-4 flex flex-col gap-3">
+      <section id="relevant-blog" className="my-8 flex flex-col">
+        <header className="mb-8 flex flex-col gap-3">
           <div className="flex justify-between items-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
               <File className="mr-3 text-blue-950 dark:text-blue-400 shrink-0" />
@@ -143,15 +143,18 @@ const ProjectPageDisplay = async ({
                 {`Blog Posts\u00a0`}
               </Link>
               <span className="text-lg sm:text-xl text-zinc-800/60 dark:text-zinc-100/60">
-                {`(that are related to ${repo?.name ? repo?.name : [slug]})`}
+                {`(related to ${repo?.name ? repo?.name : [slug]})`}
               </span>
             </h2>
             <Link
               href="/blog"
-              className="text-sm sm:text-base text-zinc-800/60 dark:text-zinc-100/60 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-            >{`see all \u2192`}</Link>
+              className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+            >{`see more \u2192`}</Link>
           </div>
-        </div>
+          <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
+            {`Here are my latest thoughts when documenting this project.`}
+          </p>
+        </header>
         <BlogPostList displayLim={5} tags={[slug]} />
         {/* TODO: add expand button */}
       </section>
