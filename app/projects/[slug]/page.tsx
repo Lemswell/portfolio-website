@@ -7,7 +7,7 @@ import BlogPostList from "@/components/ui/BlogPostList";
 import { formatDate } from "@/lib/formatDate";
 import { notFound } from "next/navigation";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import { compileMarkdown, outsideLinkFormatter } from "@/lib/markdown";
+import { compileMarkdown } from "@/lib/markdown";
 
 const ProjectPageDisplay = async ({
   params,
@@ -31,14 +31,6 @@ const ProjectPageDisplay = async ({
     : project
       ? project._meta.fileName.slice(0, -3)
       : ""; // prepping for non-software/github projects
-
-  console.log(project?.compiledContent);
-  console.log(readmeContent);
-  console.log();
-  console.log();
-  console.log();
-  console.log(project ? outsideLinkFormatter(project?.compiledContent) : null);
-  console.log(readmeContent ? outsideLinkFormatter(readmeContent) : null);
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">

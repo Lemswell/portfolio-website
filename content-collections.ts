@@ -1,8 +1,14 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMarkdown } from "@content-collections/markdown";
-import { sharedRehypePlugins } from "./lib/markdown";
+// import { sharedRehypePlugins } from "./lib/markdown";
 import { z } from "zod";
-
+import rehypeExternalLinks from "rehype-external-links";
+const sharedRehypePlugins = [
+  [
+    rehypeExternalLinks,
+    { target: "_blank", rel: ["noopener", "noreferrer", "nofollow"] },
+  ],
+];
 // for more information on configuration, visit:
 // https://www.content-collections.dev/docs/configuration
 
@@ -18,7 +24,14 @@ const posts = defineCollection({
     tldr: z.string().optional(),
   }),
   transform: async (document, context) => {
-    const compiledContent = await compileMarkdown(context, document);
+    const compiledContent = await compileMarkdown(context, document, {
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          { target: "_blank", rel: ["noopener", "noreferrer", "nofollow"] },
+        ],
+      ],
+    });
     return {
       ...document,
       compiledContent,
@@ -34,7 +47,9 @@ const projects = defineCollection({
     description: z.string().optional(),
   }),
   transform: async (document, context) => {
-    const compiledContent = await compileMarkdown(context, document);
+    const compiledContent = await compileMarkdown(context, document, {
+      remarkPlugins: sharedRehypePlugins,
+    });
     return {
       ...document,
       compiledContent,

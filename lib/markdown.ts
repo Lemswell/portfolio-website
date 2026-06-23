@@ -1,12 +1,8 @@
 import rehypeStringify from "rehype-stringify";
+import rehypeExternalLinks from "rehype-external-links";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
-import rehypeExternalLinks from "rehype-external-links";
-
-export const sharedRehypePlugins = [
-  [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
-];
 
 export async function compileMarkdown(
   rawMarkdownString: string,
@@ -16,7 +12,7 @@ export async function compileMarkdown(
     .use(remarkRehype)
     .use(rehypeExternalLinks, {
       target: "_blank",
-      rel: ["noopener", "noreferrer"],
+      rel: ["noopener", "noreferrer", "nofollow"],
     })
     .use(rehypeStringify)
     .process(rawMarkdownString)
@@ -25,33 +21,7 @@ export async function compileMarkdown(
       return null; // return null if there's an error during compilation
     });
 
-  const compiledContent = outsideLinkFormatter(String(file));
-
-  return compiledContent;
-}
-
-export function outsideLinkFormatter(compiledMarkdown: string): string {
-  let compiledContent: string = compiledMarkdown;
-
-  let index_of_last_closing_bracket: number = -1;
-  for (let i = compiledContent.length - 1; i >= 0; i--) {
-    if (compiledContent[i] === `>`) {
-      index_of_last_closing_bracket = i;
-    }
-    if (i + 10 <= compiledContent.length) {
-      if (compiledContent.substring(i, i + 10) === `href="http`) {
-        // for every outside link
-        if (index_of_last_closing_bracket !== -1) {
-          compiledContent =
-            compiledContent.substring(0, index_of_last_closing_bracket) +
-            ` target="_blank" rel="noopener noreferrer"` +
-            compiledContent.substring(index_of_last_closing_bracket);
-          index_of_last_closing_bracket = -1;
-        }
-      }
-    }
-  }
-  // target="_blank" rel="noopener noreferrer"
+  const compiledContent = String(file);
 
   return compiledContent;
 }
