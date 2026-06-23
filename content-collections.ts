@@ -3,12 +3,6 @@ import { compileMarkdown } from "@content-collections/markdown";
 // import { sharedRehypePlugins } from "./lib/markdown";
 import { z } from "zod";
 import rehypeExternalLinks from "rehype-external-links";
-const sharedRehypePlugins = [
-  [
-    rehypeExternalLinks,
-    { target: "_blank", rel: ["noopener", "noreferrer", "nofollow"] },
-  ],
-];
 // for more information on configuration, visit:
 // https://www.content-collections.dev/docs/configuration
 
@@ -48,7 +42,12 @@ const projects = defineCollection({
   }),
   transform: async (document, context) => {
     const compiledContent = await compileMarkdown(context, document, {
-      remarkPlugins: sharedRehypePlugins,
+      remarkPlugins: [
+        [
+          rehypeExternalLinks,
+          { target: "_blank", rel: ["noopener", "noreferrer", "nofollow"] },
+        ],
+      ],
     });
     return {
       ...document,
