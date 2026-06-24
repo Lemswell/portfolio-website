@@ -11,9 +11,11 @@ const PostPageDisplay = async ({
   params: Promise<{ slug: string }>;
 }) => {
   const { slug } = await params;
-  const post = allPosts.find((post) => {
+  const constIdx = allPosts.findIndex((post) => {
     return post._meta.fileName === `${slug}.md`;
   });
+  const post = allPosts[constIdx];
+
   // const idx = allPosts.indexOf(post);
   if (!post) {
     notFound();
@@ -71,6 +73,25 @@ const PostPageDisplay = async ({
       prose-headings:font-semibold"
         />
       )}
+      <hr className="border-black/10 dark:border-white/10" />
+      <div className="my-8 flex justify-between items-center">
+        {constIdx - 1 >= 0 && (
+          <Link
+            href={`/blog/${allPosts[constIdx - 1]._meta.fileName}`.slice(0, -3)}
+            className="grow text-left text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+          >
+            {`previous`}
+          </Link>
+        )}
+        {constIdx + 1 < allPosts.length && (
+          <Link
+            href={`/blog/${allPosts[constIdx + 1]._meta.fileName}`.slice(0, -3)}
+            className="grow text-right text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+          >
+            {`next`}
+          </Link>
+        )}
+      </div>
     </main>
   );
 };
