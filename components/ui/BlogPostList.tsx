@@ -32,7 +32,7 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
     <>
       <div
         role="list"
-        className={`border border-black/10 dark:border-white/10 rounded-t-md ${displayLim == undefined ? "rounded-b-md" : ""} bg-zinc-50 dark:bg-background dark:hover:bg-background`}
+        className={`border border-black/10 dark:border-white/10 rounded-t-md ${displayAmount == undefined || displayAmount >= sortedPosts.length ? "rounded-b-md" : ""} bg-zinc-50 dark:bg-background dark:hover:bg-background`}
       >
         {sortedPosts.map(
           (post, index: number) =>
@@ -41,7 +41,11 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
                 {index !== 0 && (
                   <hr className="border-black/10 dark:border-white/10" />
                 )}
-                <BlogPostCard post={post} />
+                <BlogPostCard
+                  post={post}
+                  first={index === 0}
+                  last={index >= sortedPosts.length - 1}
+                />
               </div>
             ),
         )}
@@ -57,7 +61,13 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
               className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""}
                 grow flex py-1 px-4 line-clamp-1 justify-center border-r border-black/10 dark:border-white/10
                 cursor-pointer dark:hover:bg-background hover:bg-zinc-500/10 transition-colors duration-200`}
-              onClick={() => setDisplayAmount(displayAmount + 3)}
+              onClick={() =>
+                setDisplayAmount(
+                  displayAmount + 3 > sortedPosts.length
+                    ? sortedPosts.length
+                    : displayAmount + 3,
+                )
+              }
             >
               {`more...`}
             </div>

@@ -156,7 +156,6 @@ const ProjectPageDisplay = async ({
           </p>
         </header>
         <BlogPostList displayLim={5} tags={[slug]} />
-        {/* TODO: add expand button */}
       </section>
     </main>
   );

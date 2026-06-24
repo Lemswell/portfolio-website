@@ -8,9 +8,22 @@ const filenameToSlug = (filename: string) => {
   return filename.replace(".md", "");
 };
 
-const BlogPostCard = ({ post }: { post: Post }) => {
+const BlogPostCard = ({
+  post,
+  first,
+  last,
+}: {
+  post: Post;
+  first?: boolean;
+  last?: boolean;
+}) => {
+  let borderCompensation = "";
+  if (first) borderCompensation = "rounded-t-md";
+  if (last) borderCompensation = "rounded-b-md";
   return (
-    <div className="flex flex-col gap-3 py-4 px-5 hover:bg-zinc-500/10 transition-colors border-0 border-black/10 dark:border-white/10">
+    <div
+      className={`flex flex-col gap-3 py-4 px-5 hover:bg-zinc-500/10 transition-colors border-0 border-black/10 dark:border-white/10 ${borderCompensation}`}
+    >
       <Link href={`/blog/${filenameToSlug(post._meta.fileName)}`}>
         <h3 className="text-2xl font-semibold text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
           {post.title}
