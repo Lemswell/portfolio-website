@@ -1,6 +1,9 @@
+"use client";
+
 import { allPosts } from "content-collections";
 import BlogPostCard from "./BlogPostCard";
 import Link from "next/link";
+import { useState } from "react";
 
 interface BlogPostListProps {
   displayLim?: number; // max number of posts to display, default to all
@@ -10,26 +13,18 @@ interface BlogPostListProps {
 export default function App({ displayLim, tags }: BlogPostListProps) {
   // let postsToDisplay = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   // copy before sorting to avoid mutating the shared `allPosts` array
-  let postsToDisplay =
-    displayLim !== undefined
-      ? [...allPosts]
-          .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-          )
-          .slice(0, displayLim)
-      : [...allPosts].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-        );
 
-  if (tags && tags.length > 0) {
-    postsToDisplay = postsToDisplay.filter((post) =>
-      post.tags.some((tag) => tags.includes(tag)),
-    );
-  }
+  const sortedPosts = [...allPosts]
+    .filter((post) =>
+      tags ? post.tags.some((tag) => tags.includes(tag)) : true,
+    )
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  if (postsToDisplay.length === 0) {
+  const [displayAmount, setDisplayAmount] = useState(displayLim ?? null);
+
+  if (sortedPosts.length === 0) {
     return (
-      <p className="text-center text-zinc-500 dark:text-zinc-400">{`No posts as of yet :<`}</p>
+      <p className="text-center text-mono text-zinc-500 dark:text-zinc-400">{`No posts as of yet :<`}</p>
     );
   }
 
@@ -37,27 +32,47 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
     <>
       <div
         role="list"
-        className="rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background dark:hover:bg-background"
+        className={`border border-black/10 dark:border-white/10 rounded-t-md ${displayLim == undefined ? "rounded-b-md" : ""} bg-zinc-50 dark:bg-background dark:hover:bg-background`}
       >
-        {postsToDisplay.map((post, index: number) => (
-          <div role="listitem" key={post._meta.fileName}>
-            <BlogPostCard post={post} />
-            {index !== postsToDisplay.length - 1 && (
-              <hr className="border-black/10 dark:border-white/10" />
-            )}
-          </div>
-        ))}
+        {sortedPosts.map(
+          (post, index: number) =>
+            index < (displayAmount ?? sortedPosts.length) && (
+              <div role="listitem" key={post._meta.fileName}>
+                {index !== 0 && (
+                  <hr className="border-black/10 dark:border-white/10" />
+                )}
+                <BlogPostCard post={post} />
+              </div>
+            ),
+        )}
       </div>
-      {displayLim && (
-        <Link
-          href="/blog"
-          className="py-1 px-4 size-fit line-clamp-1 self-center
-          text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal
-          font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300
-          rounded-b-md border border-t-0 border-black/10 dark:border-white/10
-          bg-zinc-50 dark:bg-background dark:hover:bg-background
-          hover:bg-zinc-500/10 transition-colors duration-200"
-        >{`all blog posts \u2192`}</Link>
+
+      {displayAmount && (
+        <div
+          className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""} max-w-full flex items-center text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono
+          rounded-b-md border border-t-0 border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background`}
+        >
+          {displayAmount < sortedPosts.length && (
+            <div
+              className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""}
+                grow flex py-1 px-4 line-clamp-1 justify-center border-r border-black/10 dark:border-white/10
+                cursor-pointer dark:hover:bg-background hover:bg-zinc-500/10 transition-colors duration-200`}
+              onClick={() => setDisplayAmount(displayAmount + 3)}
+            >
+              {`more...`}
+            </div>
+          )}
+          <Link
+            href="/blog"
+            className={`py-1 px-4 line-clamp-1 dark:hover:bg-background
+              hover:bg-zinc-500/10 hover:text-blue-900 dark:hover:text-blue-300
+               transition-colors duration-200`}
+          >
+            {`all `}
+            <span className="hidden sm:inline">{`blog posts`}</span>
+            {` \u2192`}
+          </Link>
+        </div>
       )}
     </>
   );

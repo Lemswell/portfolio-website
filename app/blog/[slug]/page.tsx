@@ -1,30 +1,41 @@
 import { allPosts } from "content-collections";
 import TagList from "@/components/ui/TagList";
 import Calendar from "@/components/ui/icons/Calendar";
-import { formatDate } from '@/lib/formatDate';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import { formatDate } from "@/lib/formatDate";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
-const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> }) => {
-  
+const PostPageDisplay = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   const { slug } = await params;
-  const post = allPosts.find((post) => {return post._meta.fileName === `${slug}.md`});
-
+  const post = allPosts.find((post) => {
+    return post._meta.fileName === `${slug}.md`;
+  });
+  // const idx = allPosts.indexOf(post);
   if (!post) {
     notFound();
   }
-  
+
   return (
-    
     <main className="max-w-4xl mx-auto px-6 py-20">
-      <header className='my-8'>
+      <header className="my-8">
         <section>
           <span className="text-xl sm:text-2xl font-bold">
-            <Link href={`/projects/${post.grouping}`} className="text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
-              {`${post.grouping}`.charAt(0).toUpperCase() + `${post.grouping}`.slice(1)}
+            <Link
+              href={`/projects/${post.grouping}`}
+              className="text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+            >
+              {`${post.grouping}`.charAt(0).toUpperCase() +
+                `${post.grouping}`.slice(1)}
             </Link>
             {"\u00A0/\u00A0"}
-            <Link href={`/blog`} className="text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors">
+            <Link
+              href={`/blog`}
+              className="text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+            >
               {`Blog\u00A0Post`}
             </Link>
           </span>
@@ -38,19 +49,30 @@ const PostPageDisplay = async({ params }: { params: Promise<{ slug: string }> })
             <Calendar className="w-4 h-4" />
             <span className="text-xs">{formatDate(post.date)}</span>
           </div>
-          <p className="text-md line-clamp-2">{post.tldr ? post.tldr : post.compiledContent}</p>
-          <TagList tags={post.tags.includes(post.grouping) ? post.tags : [post.grouping].concat(post.tags)} />
+          <p className="text-md line-clamp-2">
+            {post.tldr ? post.tldr : post.compiledContent}
+          </p>
+          <TagList
+            tags={
+              post.tags.includes(post.grouping)
+                ? post.tags
+                : [post.grouping].concat(post.tags)
+            }
+          />
         </section>
       </header>
-      
-      <hr className='border-black/10 dark:border-white/10' />
-      
-      {post && <article dangerouslySetInnerHTML={{ __html: post.compiledContent }} 
-      className="prose sm:prose-lg dark:prose-invert mt-3 mx-auto max-w-6xl py-6  
-      prose-headings:font-semibold"/>}
 
+      <hr className="border-black/10 dark:border-white/10" />
+
+      {post && (
+        <article
+          dangerouslySetInnerHTML={{ __html: post.compiledContent }}
+          className="prose sm:prose-lg dark:prose-invert mt-3 mx-auto max-w-6xl py-6
+      prose-headings:font-semibold"
+        />
+      )}
     </main>
   );
-}
+};
 
 export default PostPageDisplay;
