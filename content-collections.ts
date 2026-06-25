@@ -39,6 +39,7 @@ const projects = defineCollection({
   include: "**/*.md",
   schema: z.object({
     description: z.string().optional(),
+    status: z.enum(["wip", "inactive", "archived"]).optional(),
   }),
   transform: async (document, context) => {
     const compiledContent = await compileMarkdown(context, document, {

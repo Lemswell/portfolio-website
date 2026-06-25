@@ -1,5 +1,6 @@
 ---
 description: My version of a todo app
+status: wip
 ---
 A todo app called tasker that prioritises useful functionality and low-friction access. 
 Some key ideas/features I want to implement include are:

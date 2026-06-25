@@ -54,13 +54,13 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
       {displayAmount && (
         <div
           className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""} max-w-full flex items-center text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono
-          rounded-b-md border border-t-0 border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background`}
+          rounded-b-md border border-t-0 border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background `}
         >
           {displayAmount < sortedPosts.length && (
             <div
               className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""}
-                grow flex py-1 px-4 line-clamp-1 justify-center border-r border-black/10 dark:border-white/10
-                cursor-pointer dark:hover:bg-background hover:bg-zinc-500/10 transition-colors duration-200`}
+                grow flex justify-between py-1 px-4 line-clamp-1 border-r border-black/10 dark:border-white/10
+                cursor-pointer hover:bg-zinc-500/10 transition-colors duration-200`}
               onClick={() =>
                 setDisplayAmount(
                   displayAmount + 3 > sortedPosts.length
@@ -69,17 +69,20 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
                 )
               }
             >
-              {`more...`}
+              <span>{`see more`}</span>
+              <div className="rotate-90 font-black">{`\u27e9`}</div>
             </div>
           )}
           <Link
             href="/blog"
-            className={`py-1 px-4 line-clamp-1 dark:hover:bg-background
+            className={`py-1 px-4 line-clamp-1
               hover:bg-zinc-500/10 hover:text-blue-900 dark:hover:text-blue-300
-               transition-colors duration-200`}
+              transition-colors duration-200`}
           >
             {`all `}
-            <span className="hidden sm:inline">{`blog posts`}</span>
+            <span
+              className={`${displayAmount < sortedPosts.length ? "hidden" : ""} sm:inline`}
+            >{`blog posts`}</span>
             {` \u2192`}
           </Link>
         </div>

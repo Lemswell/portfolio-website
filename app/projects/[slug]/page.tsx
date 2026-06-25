@@ -102,6 +102,12 @@ const ProjectPageDisplay = async ({
           />
         )}
 
+        {(project?.status || repo?.archived) && (
+          <div className="p-3 text-sm line-clamp-1 mx-auto rounded-md border border-black/10 dark:border-white/10 font-medium text-zinc-800/60 dark:text-zinc-100/60">
+            {`This project is ${project?.status ? (project.status === "wip" ? "a work in progress" : project.status) : "archived"}.`}
+          </div>
+        )}
+
         {readmeContent && (
           <section
             suppressHydrationWarning
@@ -120,7 +126,7 @@ const ProjectPageDisplay = async ({
             <hr className="border-black/10 dark:border-white/10" />
             <MarkdownRenderer
               compiledHtml={readmeContent}
-              className="prose dark:prose-invert p-8 mx-auto max-w-6xl py-6
+              className="prose dark:prose-invert p-8 max-w-6xl py-6
           text-zinc-600 dark:text-zinc-400 max-h-80 overflow-y-scroll
           prose-headings:font-semibold prose-headings:text-zinc-600 dark:prose-headings:text-zinc-400 prose-a:text-zinc-600 dark:prose-a:text-zinc-400"
             />
@@ -146,10 +152,10 @@ const ProjectPageDisplay = async ({
                 {`(related to ${repo?.name ? repo?.name : [slug]})`}
               </span>
             </h2>
-            <Link
+            {/*<Link
               href="/blog"
               className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-            >{`see all \u2192`}</Link>
+            >{`see all \u2192`}</Link>*/}
           </div>
           <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
             {`Here are my latest thoughts when documenting this project.`}

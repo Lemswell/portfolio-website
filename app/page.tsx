@@ -111,10 +111,10 @@ export default async function Home() {
                 {`(featured)`}
               </span>
             </h2>
-            <Link
+            {/*<Link
               href="/projects"
               className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-            >{`see all \u2192`}</Link>
+            >{`see all \u2192`}</Link>*/}
           </div>
           <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
             {`Here are some of my favourite projects I've worked on from my Github.`}
@@ -128,7 +128,7 @@ export default async function Home() {
             text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal
             font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300
             rounded-b-md border border-t-0 border-black/10 dark:border-white/10
-            bg-zinc-50 dark:bg-background dark:hover:bg-background
+            bg-zinc-50 dark:bg-background
             hover:bg-zinc-500/10 transition-colors duration-200"
         >{`all projects \u2192`}</Link>
       </section>
@@ -149,10 +149,10 @@ export default async function Home() {
                 {`(latest)`}
               </span>
             </h2>
-            <Link
+            {/*<Link
               href="/blog"
               className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-            >{`see all \u2192`}</Link>
+            >{`see all \u2192`}</Link>*/}
           </div>
           <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
             {`Here are some recent thoughts I've written up on my blog.`}
