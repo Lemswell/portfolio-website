@@ -104,7 +104,7 @@ const ProjectPageDisplay = async ({
 
         {(project?.status || repo?.archived) && (
           <div className="p-3 text-sm line-clamp-1 mx-auto rounded-md border border-black/10 dark:border-white/10 font-medium text-zinc-800/60 dark:text-zinc-100/60">
-            {`This project is ${project?.status ? (project.status === "wip" ? "a work in progress" : project.status) : "archived"}.`}
+            {`Note: This project is ${project?.status ? (project.status === "wip" ? "a work in progress" : project.status) : "archived"}.`}
           </div>
         )}
 
