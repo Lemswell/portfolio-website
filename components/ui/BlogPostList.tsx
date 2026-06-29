@@ -1,35 +1,35 @@
 "use client";
 
-import { allPosts } from "content-collections";
 import BlogPostCard from "./BlogPostCard";
 import Link from "next/link";
 import { useState } from "react";
+import { Posts } from "@/lib/posts";
+// not actually importing post filter function because assume parent function imports it
 
 interface BlogPostListProps {
+  posts: Posts;
   displayLim?: number; // max number of posts to display, default to all
-  tags?: string[]; // filter posts by tags, default to all
 }
 
-export default function App({ displayLim, tags }: BlogPostListProps) {
+export default function BlogPostListDisplay({
+  posts,
+  displayLim,
+}: BlogPostListProps) {
   // let postsToDisplay = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   // copy before sorting to avoid mutating the shared `allPosts` array
 
-  const sortedPosts = [...allPosts]
-    .filter((post) =>
-      tags ? post.tags.some((tag) => tags.includes(tag)) : true,
-    )
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const sortedPosts = posts.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
 
   const [displayAmount, setDisplayAmount] = useState(displayLim ?? null);
 
   if (sortedPosts.length === 0) {
-    return (
-      <p className="text-center text-mono text-zinc-500 dark:text-zinc-400">{`No posts as of yet :<`}</p>
-    );
+    return null;
   }
 
   return (
-    <>
+    <div className="flex flex-col">
       <div
         role="list"
         className={`border border-black/10 dark:border-white/10 rounded-t-md ${displayAmount == undefined || displayAmount >= sortedPosts.length ? "rounded-b-md" : ""} bg-zinc-50 dark:bg-background dark:hover:bg-background`}
@@ -87,6 +87,6 @@ export default function App({ displayLim, tags }: BlogPostListProps) {
           </Link>
         </div>
       )}
-    </>
+    </div>
   );
 }

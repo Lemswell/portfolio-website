@@ -13,6 +13,7 @@ import Link from "next/link";
 import { fetchRepos } from "@/lib/github";
 import { RepoList } from "@/components/ui/RepoList";
 import BlogPostList from "@/components/ui/BlogPostList";
+import { filteredPosts } from "@/lib/posts";
 
 export default async function Home() {
   const repos = await fetchRepos().catch((e) => []); // in case of error, return empty array to avoid breaking the page
@@ -158,7 +159,7 @@ export default async function Home() {
             {`Here are some recent thoughts I've written up on my blog.`}
           </p>
         </header>
-        <BlogPostList displayLim={2} />
+        <BlogPostList displayLim={2} posts={filteredPosts()} />
       </section>
     </main>
   );

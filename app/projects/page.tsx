@@ -5,7 +5,19 @@ import Link from "next/link";
 
 export default async function App() {
   // figure out some way to concat non-github projects (LATER)
-  const repos = await fetchRepos().catch((e) => []);
+  const repos = await fetchRepos().catch((e) => console.error(e));
+  if (repos === undefined)
+    return (
+      <main className="max-w-4xl mx-auto px-6 py-20">
+        {/* Got to account for properly */}
+        {`Ahh sorry... I probably reached the fetch limit 😅\nClick `}
+        <Link href="/" className="text-blue-500/70 underline">
+          here
+        </Link>
+        {` to go back to the home page.`}
+      </main>
+    );
+
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <header className="my-8">

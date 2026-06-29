@@ -17,6 +17,8 @@ const RepoList = ({
 }: RepoListProps) => {
   // sort by last pushed date, then filter by timeLim and displayLim
 
+  if (repos === undefined) return null;
+
   let displayedRepos = repos.filter(
     (repo) => !BLACKLISTED_REPO_FULLNAMES.includes(repo.full_name),
   );
