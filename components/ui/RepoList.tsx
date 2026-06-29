@@ -1,6 +1,7 @@
 import type { GithubRepository } from "@/types/github";
 import RepoCard from "./RepoCard";
 import { BLACKLISTED_REPO_FULLNAMES, FEATURED_REPOS } from "@/config/github";
+import Link from "next/link";
 
 interface RepoListProps {
   repos: GithubRepository[];
@@ -22,6 +23,9 @@ const RepoList = ({
   let displayedRepos = repos.filter(
     (repo) => !BLACKLISTED_REPO_FULLNAMES.includes(repo.full_name),
   );
+
+  const allRepoLength = displayedRepos.length;
+
   if (featuredOnly) {
     displayedRepos = displayedRepos.filter((repo) =>
       FEATURED_REPOS.includes(repo.full_name),
@@ -44,18 +48,35 @@ const RepoList = ({
   }
 
   return (
-    <div
-      role="list"
-      className="rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background dark:hover:bg-background"
-    >
-      {displayedRepos.map((repo, index: number) => (
-        <div role="listitem" key={repo.id}>
-          <RepoCard repo={repo} />
-          {index !== displayedRepos.length - 1 && (
-            <hr className="border-black/10 dark:border-white/10" />
-          )}
-        </div>
-      ))}
+    <div className="flex flex-col">
+      <div
+        role="list"
+        className="border border-black/10 dark:border-white/10 rounded-md"
+      >
+        {displayedRepos.map((repo, index: number) => (
+          <div role="listitem" key={repo.id}>
+            {index !== 0 && (
+              <hr className="border-black/10 dark:border-white/10" />
+            )}
+            <RepoCard
+              repo={repo}
+              first={index === 0}
+              last={index === displayedRepos.length - 1}
+            />
+          </div>
+        ))}
+      </div>
+      {displayedRepos.length < allRepoLength && (
+        <Link
+          href="/projects"
+          className="py-1 px-4 size-fit line-clamp-1 self-center
+          text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal
+          font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300
+          rounded-b-md border border-t-0 border-black/10 dark:border-white/10
+          bg-zinc-50 dark:bg-background
+          hover:bg-zinc-500/10 transition-colors duration-200"
+        >{`all projects \u2192`}</Link>
+      )}
     </div>
   );
 };

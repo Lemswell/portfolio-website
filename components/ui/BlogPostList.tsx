@@ -3,7 +3,7 @@
 import BlogPostCard from "./BlogPostCard";
 import Link from "next/link";
 import { useState } from "react";
-import { Posts } from "@/lib/posts";
+import { Posts } from "@/types/content";
 // not actually importing post filter function because assume parent function imports it
 
 interface BlogPostListProps {
@@ -57,27 +57,32 @@ export default function BlogPostListDisplay({
           rounded-b-md border border-t-0 border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background `}
         >
           {displayAmount < sortedPosts.length && (
-            <div
-              className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""}
-                grow flex justify-between py-1 px-4 line-clamp-1 border-r border-black/10 dark:border-white/10
+            <>
+              <div
+                className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""}
+                grow flex justify-between py-1 px-4 line-clamp-1
+                rounded-bl-md
                 cursor-pointer hover:bg-zinc-500/10 transition-colors duration-200`}
-              onClick={() =>
-                setDisplayAmount(
-                  displayAmount + 3 > sortedPosts.length
-                    ? sortedPosts.length
-                    : displayAmount + 3,
-                )
-              }
-            >
-              <span>{`see more`}</span>
-              <div className="rotate-90 font-black">{`\u27e9`}</div>
-            </div>
+                onClick={() =>
+                  setDisplayAmount(
+                    displayAmount + 3 > sortedPosts.length
+                      ? sortedPosts.length
+                      : displayAmount + 3,
+                  )
+                }
+              >
+                <span>{`see more`}</span>
+                <div className="rotate-90 font-black">{`\u27e9`}</div>
+              </div>
+              {/* vertical break (like hr) */}
+              <div className="border-l h-7 border-black/10 dark:border-white/10"></div>
+            </>
           )}
           <Link
             href="/blog"
             className={`py-1 px-4 line-clamp-1
               hover:bg-zinc-500/10 hover:text-blue-900 dark:hover:text-blue-300
-              transition-colors duration-200`}
+              transition-colors duration-200 ${displayAmount >= sortedPosts.length ? "rounded-b-md" : "rounded-br-md"}`}
           >
             {`all `}
             <span

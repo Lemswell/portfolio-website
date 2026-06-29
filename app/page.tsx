@@ -117,21 +117,11 @@ export default async function Home() {
               className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
             >{`see all \u2192`}</Link>*/}
           </div>
-          <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
+          <p className="text-sm justify-center whitespace-pre-line text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono mt-3">
             {`Here are some of my favourite projects I've worked on from my Github.`}
           </p>
         </header>
         <RepoList repos={repos} displayLim={5} featuredOnly={true} />
-
-        <Link
-          href="/projects"
-          className="py-1 px-4 size-fit line-clamp-1 self-center
-            text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal
-            font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300
-            rounded-b-md border border-t-0 border-black/10 dark:border-white/10
-            bg-zinc-50 dark:bg-background
-            hover:bg-zinc-500/10 transition-colors duration-200"
-        >{`all projects \u2192`}</Link>
       </section>
       <hr className="border-black/10 dark:border-white/10"></hr>
 
@@ -155,7 +145,7 @@ export default async function Home() {
               className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
             >{`see all \u2192`}</Link>*/}
           </div>
-          <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
+          <p className="text-sm justify-center whitespace-pre-line text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono mt-3">
             {`Here are some recent thoughts I've written up on my blog.`}
           </p>
         </header>

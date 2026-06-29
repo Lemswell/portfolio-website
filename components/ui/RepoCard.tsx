@@ -6,7 +6,15 @@ import Link from "next/link";
 // imports both GithubRepository an allProjects for local descriptions from content collections,
 // but actual projects from github
 
-const RepoCard = ({ repo }: { repo: GithubRepository }) => {
+const RepoCard = ({
+  repo,
+  first,
+  last,
+}: {
+  repo: GithubRepository;
+  first?: boolean;
+  last?: boolean;
+}) => {
   // TODO: getting description from content collection doesn't work.
   const project = allProjects.find((proj) => {
     return proj._meta.fileName === `${repo.name}.md`;
@@ -15,9 +23,14 @@ const RepoCard = ({ repo }: { repo: GithubRepository }) => {
     ? project.description
     : repo.description;
   return (
-    <li
+    <div
       key={repo.id}
-      className="flex flex-col gap-3 py-4 px-5 hover:bg-zinc-500/10 transition-colors duration-200"
+      className={`flex flex-col gap-3 py-4 px-5
+        border-0
+        bg-zinc-50 dark:bg-background dark:hover:bg-background
+        hover:bg-zinc-500/10 transition-colors duration-200
+        ${first ? "rounded-t-md" : ""}
+        ${last ? "rounded-b-md" : ""}`}
     >
       <div className="flex items-center justify-between">
         <Link href={"projects/" + repo.name}>
@@ -26,7 +39,7 @@ const RepoCard = ({ repo }: { repo: GithubRepository }) => {
           </h3>
         </Link>
         {(project?.status || repo.archived) && (
-          <span className="text-sm text-zinc-800/40 dark:text-zinc-100/40">
+          <span className="text-sm text-zinc-800/60 dark:text-zinc-100/60">
             {project?.status ? project.status : "archived"}
           </span>
         )}
@@ -35,7 +48,7 @@ const RepoCard = ({ repo }: { repo: GithubRepository }) => {
       <TagList
         tags={repo.language ? [repo.language].concat(repo.topics) : repo.topics}
       />
-    </li>
+    </div>
   );
 };
 
