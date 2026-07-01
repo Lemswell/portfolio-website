@@ -17,7 +17,7 @@ export default function App() {
         >
           {`Blog\u00A0Posts`}
         </h1>
-        <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
+        <p className="text-sm justify-center whitespace-pre-line text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono mt-3">
           {`A list of some recent thoughts and experiences I've written in blog form.`}
         </p>
       </header>

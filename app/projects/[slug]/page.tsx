@@ -179,7 +179,7 @@ const ProjectPageDisplay = async ({
             className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
           >{`see all \u2192`}</Link>*/}
           </div>
-          <p className="mb-3 text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono">
+          <p className="mb-3 text-sm justify-center whitespace-pre-line  text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono">
             {`Here are my latest thoughts when documenting this project.`}
           </p>
           <BlogPostList displayLim={4} posts={posts} />

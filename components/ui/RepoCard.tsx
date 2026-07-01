@@ -25,9 +25,8 @@ const RepoCard = ({
   return (
     <div
       key={repo.id}
-      className={`flex flex-col gap-3 py-4 px-5
-        border-0
-        bg-zinc-50 dark:bg-background dark:hover:bg-background
+      className={`flex flex-col gap-3 py-4 px-5 border-0
+        bg-zinc-50 dark:bg-background
         hover:bg-zinc-500/10 transition-colors duration-200
         ${first ? "rounded-t-md" : ""}
         ${last ? "rounded-b-md" : ""}`}

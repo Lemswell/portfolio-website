@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect } from "react";
 
 const ToggleName = () => {
-  
   const nameVariations = ["Lemuel", "Lem", "Lemuel\u00A0De\u00A0La\u00A0Cruz"];
   const comments = [
     "Back to my first name! Most people pronounce it like lem-well (sometimes lem-yu-ell)",
@@ -12,10 +10,11 @@ const ToggleName = () => {
     "Now you know my full name! Though I think we both would prefer you call me Lem :p",
   ];
 
-
   const [idxCount, setIdxCount] = useState(0);
   const [displayedText, setDisplayedText] = useState(nameVariations[0]);
-  const [comment, setComment] = useState("Thanks for visiting! Try clicking on my name! :D");
+  const [comment, setComment] = useState(
+    "Thanks for visiting! Try clicking on my name! :D",
+  );
   const [isDeleting, setIsDeleting] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
 
@@ -25,64 +24,76 @@ const ToggleName = () => {
       setIsDeleting(true);
     }
   };
-  
+
   useEffect(() => {
     let timer: NodeJS.Timeout;
-    
+
     const currentFullText = nameVariations[idxCount];
     const nextIdx = (idxCount + 1) % nameVariations.length;
-    
+
     // Deleting the current text
     if (isDeleting && displayedText.length > 0) {
       timer = setTimeout(() => {
-        setDisplayedText(prev => prev.slice(0, -1));
+        setDisplayedText((prev) => prev.slice(0, -1));
       }, 10); // Backspacing speed
-    } 
+    }
     // Finished deleting, switch to next name
     else if (isDeleting && displayedText.length === 0) {
       setIsDeleting(false);
       setIdxCount(nextIdx);
       setIsWaiting(true); // Small pause before typing starts
-    } 
-    
+    }
+
     // Waiting before typing new name
     else if (isWaiting) {
       timer = setTimeout(() => setIsWaiting(false), 100);
     }
     // Typing the new text
     else if (!isDeleting && displayedText !== currentFullText) {
-      timer = setTimeout(() => {
-        setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
-      }, 40 - currentFullText.length*2 > 15 ? 50 - currentFullText.length : 15); // Typing speed
+      timer = setTimeout(
+        () => {
+          setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
+        },
+        40 - currentFullText.length * 2 > 15 ? 50 - currentFullText.length : 15,
+      ); // Typing speed
       setComment(comments[idxCount]);
     }
-    
+
     return () => {
       clearTimeout(timer);
     };
-  }, [displayedText, isDeleting, isWaiting, idxCount, nameVariations, comment, comments]);
-  
+  }, [
+    displayedText,
+    isDeleting,
+    isWaiting,
+    idxCount,
+    nameVariations,
+    comment,
+    comments,
+  ]);
+
   return (
-    <div className='group flex-col'>
-      <div className='flex flex-col md:flex-row'>
-        <h1 className='line-clamp-1 text-xl sm:text-2xl md:text-6xl'>{"Hi, I'm\u00A0"}</h1>
+    <div className="group flex-col">
+      <div className="flex flex-col md:flex-row">
+        <h1 className="line-clamp-1 text-xl sm:text-2xl md:text-6xl">
+          {"Hi, I'm\u00A0"}
+        </h1>
         <div
           className="cursor-pointer min-h-12 sm:min-h-15 text-blue-950 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
           onClick={handleClick}
-          >
+        >
           {displayedText}
         </div>
       </div>
-      <div className='text-sm opacity-0 group-hover:opacity-100 transition-opacity line-clamp-1
+      <div
+        className="text-sm opacity-0 group-hover:opacity-100 transition-opacity line-clamp-1
                       pointer-events-none group-hover:pointer-events-auto duration-500 justify-center
-                      whitespace-pre-line text-zinc-500 dark:text-zinc-50/15 tracking-normal font-medium font-mono mt-3'>
+                      whitespace-pre-line text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono mt-3"
+      >
         {comment}
       </div>
     </div>
-    
   );
 };
-
-
 
 export default ToggleName;

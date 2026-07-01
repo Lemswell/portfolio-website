@@ -30,7 +30,7 @@ export default async function App() {
         <h1 className="pb-1 text-5xl sm:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center">
           Projects
         </h1>
-        <p className="text-sm justify-center whitespace-pre-line text-zinc-600 tracking-normal font-medium font-mono mt-3">
+        <p className="text-sm justify-center whitespace-pre-line text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono mt-3">
           {`A list of some recent software projects I've worked on.`}
         </p>
       </header>
