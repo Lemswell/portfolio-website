@@ -22,6 +22,7 @@ export default function App() {
         </p>
       </header>
       <hr className="my-8 border-black/10 dark:border-white/10"></hr>
+      {/*<BlogPostFilters />*/}
       <BlogPostList posts={filteredPosts()} />
     </main>
   );

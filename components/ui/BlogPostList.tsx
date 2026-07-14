@@ -18,13 +18,14 @@ export default function BlogPostListDisplay({
   // let postsToDisplay = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   // copy before sorting to avoid mutating the shared `allPosts` array
 
-  const sortedPosts = posts.sort(
+  // get from filtered posts (todo: pass responsibility to parent function lib/posts.ts/filteredPosts)
+  posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
   const [displayAmount, setDisplayAmount] = useState(displayLim ?? null);
 
-  if (sortedPosts.length === 0) {
+  if (posts.length === 0) {
     return null;
   }
 
@@ -32,11 +33,11 @@ export default function BlogPostListDisplay({
     <div className="flex flex-col">
       <div
         role="list"
-        className={`border border-black/10 dark:border-white/10 rounded-t-md ${displayAmount == undefined || displayAmount >= sortedPosts.length ? "rounded-b-md" : ""} bg-zinc-50 dark:bg-background dark:hover:bg-background`}
+        className={`border border-black/10 dark:border-white/10 rounded-t-md ${displayAmount == undefined || displayAmount >= posts.length ? "rounded-b-md" : ""} bg-zinc-50 dark:bg-background dark:hover:bg-background`}
       >
-        {sortedPosts.map(
+        {posts.map(
           (post, index: number) =>
-            index < (displayAmount ?? sortedPosts.length) && (
+            index < (displayAmount ?? posts.length) && (
               <div role="listitem" key={post._meta.fileName}>
                 {index !== 0 && (
                   <hr className="border-black/10 dark:border-white/10" />
@@ -44,7 +45,7 @@ export default function BlogPostListDisplay({
                 <BlogPostCard
                   post={post}
                   first={index === 0}
-                  last={index >= sortedPosts.length - 1}
+                  last={index >= posts.length - 1}
                 />
               </div>
             ),
@@ -53,20 +54,20 @@ export default function BlogPostListDisplay({
 
       {displayAmount && (
         <div
-          className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""} max-w-full flex items-center text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono
+          className={`${displayAmount >= posts.length ? "size-fit self-center" : ""} max-w-full flex items-center text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono
           rounded-b-md border border-t-0 border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-background `}
         >
-          {displayAmount < sortedPosts.length && (
+          {displayAmount < posts.length && (
             <>
               <div
-                className={`${displayAmount >= sortedPosts.length ? "size-fit self-center" : ""}
+                className={`${displayAmount >= posts.length ? "size-fit self-center" : ""}
                 grow flex justify-between py-1 px-4 line-clamp-1
                 rounded-bl-md
                 cursor-pointer hover:bg-zinc-500/10 transition-colors duration-200`}
                 onClick={() =>
                   setDisplayAmount(
-                    displayAmount + 3 > sortedPosts.length
-                      ? sortedPosts.length
+                    displayAmount + 3 > posts.length
+                      ? posts.length
                       : displayAmount + 3,
                   )
                 }
@@ -82,11 +83,11 @@ export default function BlogPostListDisplay({
             href="/blog"
             className={`py-1 px-4 line-clamp-1
               hover:bg-zinc-500/10 hover:text-blue-900 dark:hover:text-blue-300
-              transition-colors duration-200 ${displayAmount >= sortedPosts.length ? "rounded-b-md" : "rounded-br-md"}`}
+              transition-colors duration-200 ${displayAmount >= posts.length ? "rounded-b-md" : "rounded-br-md"}`}
           >
             {`all `}
             <span
-              className={`${displayAmount < sortedPosts.length ? "hidden" : ""} sm:inline`}
+              className={`${displayAmount < posts.length ? "hidden" : ""} sm:inline`}
             >{`blog posts`}</span>
             {` \u2192`}
           </Link>
