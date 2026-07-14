@@ -6,7 +6,7 @@ export const filteredPosts = (
   tags?: string[],
 ): typeof allPosts => {
   // todo: make search include filter for tags as `tags:"${tag}"`
-  if (!search || !tags || tags.length === 0) return allPosts;
+  if (!search || !tags || tags.length === 0) return asc ? [...allPosts] : [...allPosts].reverse();;
 
   // seach filter extracts tags from search via `#tag`
   const searchTerms = search.replace(/\s+/g, ' ').trim().split(" ");
@@ -20,15 +20,15 @@ export const filteredPosts = (
 
   console.log(asc);
 
-  // ascSort assumes chronologically ordered
-  return allPosts.filter((post) => {
+  const filtered = allPosts.filter((post) => {
     return (
       post.tags?.some((tag) => tags.includes(tag)) ||
       post.title?.toLowerCase().includes(newSearch) ||
       post.tldr?.toLowerCase().includes(newSearch) ||
       post.tags?.some((tag) => tag.toLowerCase().includes(newSearch))
     );
-  }).sort((a, b) => {
-    return asc ? a.date.getTime() - b.date.getTime() : b.date.getTime() - a.date.getTime();
   });
+
+
+  return filtered.reverse();
 };

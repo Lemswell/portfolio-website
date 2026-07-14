@@ -19,9 +19,7 @@ export default function BlogPostListDisplay({
   // copy before sorting to avoid mutating the shared `allPosts` array
 
   // get from filtered posts (todo: pass responsibility to parent function lib/posts.ts/filteredPosts)
-  posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
+  // why doesn't this work when using `posts.reverse()` or `posts = posts.reverse()`
 
   const [displayAmount, setDisplayAmount] = useState(displayLim ?? null);
 
