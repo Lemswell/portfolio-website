@@ -39,7 +39,7 @@ const ProjectPageDisplay = async ({
       ? project._meta.fileName.slice(0, -3)
       : ""; // prepping for non-software/github projects
 
-  const posts = filteredPosts([slug]);
+  const posts = filteredPosts(false, undefined, [slug]);
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">

@@ -8,7 +8,7 @@ import { Posts } from "@/types/content";
 
 interface BlogPostListProps {
   posts: Posts;
-  displayLim?: number; // max number of posts to display, default to all
+  displayLim?: number; // max number of posts to display, default to all;
 }
 
 export default function BlogPostListDisplay({
@@ -31,7 +31,10 @@ export default function BlogPostListDisplay({
     <div className="flex flex-col">
       <div
         role="list"
-        className={`border border-black/10 dark:border-white/10 rounded-t-md ${displayAmount == undefined || displayAmount >= posts.length ? "rounded-b-md" : ""} bg-zinc-50 dark:bg-background dark:hover:bg-background`}
+        className={`border border-black/10 dark:border-white/10
+          rounded-t-md
+          ${displayAmount == undefined || displayAmount >= posts.length ? "rounded-b-md" : ""}
+          dark:bg-background dark:hover:bg-background bg-zinc-50`}
       >
         {posts.map(
           (post, index: number) =>
