@@ -16,7 +16,13 @@ import BlogPostList from "@/components/ui/BlogPostList";
 import { filteredPosts } from "@/lib/posts";
 
 export default async function Home() {
-  const repos = await fetchRepos().catch((e) => []); // in case of error, return empty array to avoid breaking the page
+
+  // todo: fetchProjects (including locally stored) rather than only repos
+  // todo: display as carasol
+  const repos = await fetchRepos().catch((e) => {
+    console.error(e);
+    return []; // in case of error, return empty array to avoid breaking the page
+  });
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
@@ -39,7 +45,7 @@ export default async function Home() {
             }
           />
         </div>
-        <p className="mt-3 text-lg  fill-zinc-800 dark:fill-zinc-100 leading-6">
+        <p className="mt-3 text-lg text-zinc-800 dark:text-zinc-100 leading-6">
           {
             "I like learning about things so that I can build cool, useful software. Currently exploring web development."
           }
@@ -80,7 +86,7 @@ export default async function Home() {
           <span className="hidden text-zinc-500">|</span>
           <a
             className="hidden items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
-            href="mailto:lemdelac@gmail.com"
+            href="mailto:lemdelac+website@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -97,34 +103,37 @@ export default async function Home() {
         </section>
       </header>
       <hr className="border-black/10 dark:border-white/10"></hr>
-      <section id="projects" className="my-8 flex flex-col">
-        <header className="mb-8 flex flex-col gap-3">
-          <div className="flex justify-between items-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
-              <Folders className="mr-3 text-blue-950 dark:text-blue-400 shrink-0" />
-              <Link
+      {repos.length > 0 && (
+        <>
+          <section id="projects" className="my-8 flex flex-col">
+            <header className="mb-8 flex flex-col gap-3">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 flex items-center line-clamp-1">
+                  <Folders className="mr-3 text-blue-950 dark:text-blue-400 shrink-0" />
+                  <Link
+                    href="/projects"
+                    className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+                  >
+                    {`Projects\u00a0`}
+                  </Link>
+                  <span className="text-lg sm:text-xl text-zinc-800/60 dark:text-zinc-100/60">
+                    {`(featured)`}
+                  </span>
+                </h2>
+                {/*<Link
                 href="/projects"
-                className="hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-              >
-                {`Projects\u00a0`}
-              </Link>
-              <span className="text-lg sm:text-xl text-zinc-800/60 dark:text-zinc-100/60">
-                {`(featured)`}
-              </span>
-            </h2>
-            {/*<Link
-              href="/projects"
-              className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
-            >{`see all \u2192`}</Link>*/}
-          </div>
-          <p className="text-sm justify-center whitespace-pre-line text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono mt-3">
-            {`Here are some of my favourite projects I've worked on from my Github.`}
-          </p>
-        </header>
-        <RepoList repos={repos} displayLim={5} featuredOnly={true} />
-      </section>
-      <hr className="border-black/10 dark:border-white/10"></hr>
-
+                className="hidden sm:inline text-sm text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
+              >{`see all \u2192`}</Link>*/}
+              </div>
+              <p className="text-sm justify-center whitespace-pre-line text-zinc-800/60 dark:text-zinc-100/60 tracking-normal font-medium font-mono mt-3">
+                {`Here are some of my favourite projects I've worked on from my Github.`}
+              </p>
+            </header>
+            <RepoList repos={repos} displayLim={5} featuredOnly={true} />
+          </section>
+          <hr className="border-black/10 dark:border-white/10"></hr>
+        </>
+      )}
       <section id="blog" className="my-8 flex flex-col">
         <header className="mb-8 flex flex-col gap-3">
           <div className="flex justify-between items-center">

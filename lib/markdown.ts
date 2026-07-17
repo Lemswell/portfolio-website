@@ -7,6 +7,7 @@ import { unified } from "unified";
 export async function compileMarkdown(
   rawMarkdownString: string,
 ): Promise<string> {
+  if (!rawMarkdownString || rawMarkdownString.trim() === "") return "";
   const file = await unified()
     .use(remarkParse)
     .use(remarkRehype)

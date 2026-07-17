@@ -1,4 +1,9 @@
-import { fetchRepoByName, fetchRepoReadme } from "@/lib/github";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { allProjects } from "content-collections";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
+import BlogPostList from "@/components/ui/BlogPostList";
+import TagList from "@/components/ui/TagList";
 import {
   Github,
   Calendar,
@@ -6,38 +11,40 @@ import {
   File,
   AlertCircle,
 } from "@/components/ui/icons";
-import Link from "next/link";
-import { allProjects } from "content-collections";
-import TagList from "@/components/ui/TagList";
-import BlogPostList from "@/components/ui/BlogPostList";
+import { fetchRepoByName, fetchRepoReadme } from "@/lib/github";
 import { filteredPosts } from "@/lib/posts";
 import { formatDate } from "@/lib/formatDate";
-import { notFound } from "next/navigation";
-import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { compileMarkdown } from "@/lib/markdown";
 
 const ProjectPageDisplay = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) => {
+  }) => {
+
+  // check URLparams
   const { slug } = await params;
+  // find corrosponding project if stored locally
   const project = allProjects.find((proj) => {
     return proj._meta.fileName === `${slug}.md`;
   });
-  const repo = await fetchRepoByName(slug).catch((e) =>
-    project ? null : notFound(),
-  ); // catch error if repo not found
-  const readmeRaw = await fetchRepoReadme(slug).catch((e) => {
+  // find project github repo
+  const repo = await fetchRepoByName(slug).catch((e) => {
+    // if error, return null or notFound based on whether project is stored locally
     console.log(e);
-    return null;
+    return project ? null : notFound(); // return not found if there's no git project or locally stored project by the name 'slug'
   });
-  const readmeContent = readmeRaw ? await compileMarkdown(readmeRaw) : null;
-  const heading = repo?.name
-    ? repo.name
-    : project
-      ? project._meta.fileName.slice(0, -3)
-      : ""; // prepping for non-software/github projects
+
+  // fetch git readme
+  const readmeContent = await compileMarkdown( // compileMarkdown return "" if input "". It does not accept undefined input;
+    await fetchRepoReadme(slug).catch((e) => {
+      console.log(e);
+      return undefined;
+    }) ?? "" // make sure to pass "" to compileMarkdown, not undefined
+  );
+
+  // title should be pulled locally first
+  const heading = (project?._meta.fileName.slice(0, -3) ?? repo?.name) ?? "Untitled";
 
   const posts = filteredPosts(false, undefined, [slug]);
 
@@ -110,10 +117,10 @@ const ProjectPageDisplay = async ({
           />
         )}
 
-        {(readmeContent || project?.status || repo?.archived) && (
+        {(readmeContent != "" || project?.status || repo?.archived) && (
           <article className=" mx-0 md:mx-10 flex flex-col rounded-md border border-black/10 dark:border-white/10">
             {/* README LINK */}
-            {readmeContent && (
+            {readmeContent != "" && (
               <div
                 className="py-2 px-3 text-sm line-clamp-1 text-zinc-600 font-medium font-mono overflow-x-auto whitespace-nowrap no-scrollbar hover:underline
               border-b border-black/10 dark:border-white/10"
@@ -134,9 +141,9 @@ const ProjectPageDisplay = async ({
                 </a>
               </div>
             )}
-            {readmeContent && (
+            {readmeContent != "" && (
               <MarkdownRenderer
-                compiledHtml={readmeContent ?? "No README.md found."}
+                compiledHtml={readmeContent}
                 className="prose dark:prose-invert p-8 max-w-6xl py-6
           text-zinc-600 dark:text-zinc-400 max-h-80 overflow-y-scroll
           prose-headings:font-semibold prose-headings:text-zinc-600 dark:prose-headings:text-zinc-400 prose-a:text-zinc-600 dark:prose-a:text-zinc-400"

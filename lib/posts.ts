@@ -7,7 +7,8 @@ export const filteredPosts = (
   tags?: string[],
 ): typeof allPosts => {
   // if theres no search AND no tags
-  if (!search && (!tags || tags.length === 0)) return asc ? [...allPosts] : [...allPosts].reverse();
+  search = search?.trim();
+  if ((!search || search === '') && (!tags || tags.length === 0)) return asc ? [...allPosts] : [...allPosts].reverse();
 
   if (!tags) tags = [];
 
@@ -20,6 +21,7 @@ export const filteredPosts = (
 
   // search terms are then seperated into tags and newSearch. It is not used in return.
   // seach filter extracts tags from search via `#tag`
+  // might move to search page
   if (searchTerms) {
     for (let i = 0; i < searchTerms.length; i++) {
       if (searchTerms[i].trim().startsWith('#')) {

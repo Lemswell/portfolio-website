@@ -1,25 +1,30 @@
-import { File, Folders, Home } from '@/components/ui/icons/index';
+import { Github, Linkedin, Email } from '@/components/ui/icons/index';
 import Link from 'next/link';
 
-const Navbar = () => {
+const Footer = () => {
+
+  const version = 'v0.7' // todo: replace with commit id
+
   return (
-    <footer className="left-1/2 transform -translate-x-1/2 max-w-4xl w-full py-2 px-5 flex gap-4 rounded-b-lg mt-20 items-center">
-      <section id="links" className="my-4 ml-0 flex gap-5 m-auto">
-          <Link className="flex items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="/" title='home'>
-            <Home className="w-5 h-5" />
-            <span className='ml-2 text-sm'>Home</span>
+    <footer className='w-full pt-12'>
+      <div className="mx-auto flex max-w-4xl sm:flex-row-reverse sm:justify-between flex-col items-center justify-center px-8 pb-32 text-zinc-800/60 dark:text-zinc-100/60">
+        <section className="flex gap-4">
+          <Link className="hover:text-zinc-500/90 transition-colors" href="https://www.linkedin.com/in/lemdc" title='home'>
+            <Linkedin className="w-5 h-5" />
           </Link>
-          <Link className="flex items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="/projects" title='projects'>
-            <Folders className="w-5 h-5" />
-            <span className='ml-2 text-sm'>Projects</span>
+          <Link className="hover:text-zinc-500/90 transition-colors" href="https://github.com/Lemswell" title='projects'>
+            <Github className="w-5 h-5" />
           </Link>
-          <Link className="flex items-center text-zinc-800 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors" href="/blog" title="blog">
-            <File className="w-5 h-5" />
-            <span className='ml-2 text-sm'>Blog</span>
+          <Link className="hover:text-zinc-500/90 transition-colors" href="mailto:lemdelac+website@gmail.com" title="blog">
+            <Email className="w-5 h-5" />
           </Link>
         </section>
+        <section className="">
+          <span className='font-mono text-xs'>{version}</span>
+        </section>
+      </div>
     </footer>
   )
 }
 
-export default Navbar
+export default Footer
