@@ -6,40 +6,19 @@ export const filteredPosts = (
   search?: string, // TODO: still doesn't work
   tags?: string[],
 ): typeof allPosts => {
-  // if theres no search AND no tags
-  search = search?.trim();
+
+  // if theres no search AND no tags return all posts
   if ((!search || search === '') && (!tags || tags.length === 0)) return asc ? [...allPosts] : [...allPosts].reverse();
-
-  if (!tags) tags = [];
-
-  let newSearch = search ? search : "";
-  const searchTerms =
-    (typeof search === "string" ? search : "") // this was done by ai and i never thought of doing something like this
-      .replace(/\s+/g, " ")
-      .trim()
-      .split(" ");
-
-  // search terms are then seperated into tags and newSearch. It is not used in return.
-  // seach filter extracts tags from search via `#tag`
-  // might move to search page
-  if (searchTerms) {
-    for (let i = 0; i < searchTerms.length; i++) {
-      if (searchTerms[i].trim().startsWith('#')) {
-        tags.push(searchTerms[i].substring(1));
-        searchTerms[i] = '';
-      }
-    }
-    newSearch = searchTerms.join(' ').trim();
-  }
 
   const filtered = allPosts.filter((post) => {
     return (
-      post.tags?.some((tag) => tags?.includes(tag)) &&
-      (newSearch === "" || (newSearch != '' && (
-        post.title?.toLowerCase().includes(newSearch) ||
-        post.tldr?.toLowerCase().includes(newSearch) ||
-        post.tags?.some((tag) => tag.toLowerCase().includes(newSearch))
-      )))
+      (!tags || tags.length === 0 ||
+        tags.every((tag) => post.tags?.includes(tag))) &&
+      (!search || search === '' ||
+        post.title?.toLowerCase().includes(search) ||
+        post.tldr?.toLowerCase().includes(search) ||
+        post.tags?.some((tag) => tag.toLowerCase().includes(search))
+      )
     );
   });
 

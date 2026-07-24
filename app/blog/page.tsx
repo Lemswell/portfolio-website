@@ -1,16 +1,22 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { filteredPosts } from "@/lib/posts";
-import { useState } from "react";
-import BlogPostList from "@/components/ui/BlogPostList";
 import Link from "next/link";
+import { filteredPosts } from "@/lib/posts";
+import BlogPostList from "@/components/ui/BlogPostList";
+import SearchBar from "@/components/ui/SearchBar";
+
 
 export default function App() {
+  // URL manipulation utils
+  const searchParams = useSearchParams();
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  // Pull current query from URL
+  const searchQuery = searchParams.get("search") || ""; // todo: find what || does?
+  const tagsQuery = searchParams.get("tags") || "";
+  const selectedTags = tagsQuery ? tagsQuery.split(",") : [];
 
+  // feed params into postfilter func
   const posts = filteredPosts(false, searchQuery, selectedTags);
 
   return (
@@ -37,7 +43,8 @@ export default function App() {
       <hr className="my-8 border-black/10 dark:border-white/10"></hr>
 
       {/*<BlogPostFilters />*/}
-      <BlogPostList posts={filteredPosts(false, "")} />
+      <SearchBar />
+      <BlogPostList posts={posts} />
     </main>
   );
 }

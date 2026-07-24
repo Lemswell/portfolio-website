@@ -24,7 +24,12 @@ export default function BlogPostListDisplay({
   const [displayAmount, setDisplayAmount] = useState(displayLim ?? null);
 
   if (posts.length === 0) {
-    return null;
+    return (
+      <div className="flex flex-col items-center justify-center pt-20">
+        <p className="text-zinc-800/60 dark:text-zinc-100/60">Gahh, no posts to show here ✋😅</p>
+      </div>
+    );
+
   }
 
   return (
