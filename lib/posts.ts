@@ -11,13 +11,14 @@ export const filteredPosts = (
   if ((!search || search === '') && (!tags || tags.length === 0)) return asc ? [...allPosts] : [...allPosts].reverse();
 
   const filtered = allPosts.filter((post) => {
+    const lowerCaseSearch = search?.toLowerCase() || "";
     return (
       (!tags || tags.length === 0 ||
         tags.every((tag) => post.tags?.includes(tag))) &&
       (!search || search === '' ||
-        post.title?.toLowerCase().includes(search) ||
-        post.tldr?.toLowerCase().includes(search) ||
-        post.tags?.some((tag) => tag.toLowerCase().includes(search))
+        post.title?.toLowerCase().includes(lowerCaseSearch) ||
+        post.tldr?.toLowerCase().includes(lowerCaseSearch) ||
+        post.tags?.some((tag) => tag.toLowerCase().includes(lowerCaseSearch))
       )
     );
   });
