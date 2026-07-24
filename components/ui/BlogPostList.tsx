@@ -29,7 +29,6 @@ export default function BlogPostListDisplay({
         <p className="text-zinc-800/60 dark:text-zinc-100/60">Gahh, no posts to show here ✋😅</p>
       </div>
     );
-
   }
 
   return (

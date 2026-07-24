@@ -1,5 +1,5 @@
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import TagList from '@/components/ui/TagList';
 
 const checkAndRemoveTag = (query: string): string[] => { // takes seach bar input as a query, returns [tag, remainingQuery]
@@ -24,6 +24,7 @@ const checkAndRemoveTag = (query: string): string[] => { // takes seach bar inpu
 };
 
 export default function SearchBar() {
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -82,17 +83,15 @@ export default function SearchBar() {
 
   console.log(tags);
   return (
-    <Suspense fallback={<div className="h-10 my-3.5 px-4 py-2 animate-pulse rounded-md bg-zinc-50 dark:bg-zinc-900" />}>
-      <div className="flex flex-col gap-2 my-3.5">
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Search posts..."
-          className="px-4 py-2 rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 focus:outline-none"
-        />
-        {tags.length > 0 && <TagList tags={tags} searchMode={true} />}
-      </div>
-    </Suspense>
+    <div className="flex flex-col gap-2 my-3.5">
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Search posts..."
+        className="px-4 py-2 rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 focus:outline-none"
+      />
+      {tags.length > 0 && <TagList tags={tags} searchMode={true} />}
+    </div>
   );
 };

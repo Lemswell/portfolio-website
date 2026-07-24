@@ -1,14 +1,13 @@
 'use client';
-
+import { Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
 import { filteredPosts } from "@/lib/posts";
 import BlogPostList from "@/components/ui/BlogPostList";
 import SearchBar from "@/components/ui/SearchBar";
+import { Playfair_Display_SC } from "next/font/google";
 
-
-export default function App() {
-  // URL manipulation utils
+function DisplayContent() {
   const searchParams = useSearchParams();
 
   // Pull current query from URL
@@ -18,6 +17,16 @@ export default function App() {
 
   // feed params into postfilter func
   const posts = filteredPosts(false, searchQuery, selectedTags);
+
+  return (
+    <>
+      <SearchBar />
+      <BlogPostList posts={posts} />
+    </>
+  )
+}
+
+export default function App() {
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
@@ -43,8 +52,9 @@ export default function App() {
       <hr className="my-8 border-black/10 dark:border-white/10"></hr>
 
       {/*<BlogPostFilters />*/}
-      <SearchBar />
-      <BlogPostList posts={posts} />
+      <Suspense fallback={<div className="h-10 my-3.5 px-4 py-2 animate-pulse rounded-md bg-zinc-50 dark:bg-zinc-900" />}>
+        <DisplayContent />
+      </Suspense>
     </main>
   );
 }
