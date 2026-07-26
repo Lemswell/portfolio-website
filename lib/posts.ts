@@ -14,7 +14,7 @@ export const filteredPosts = (
     const lowerCaseSearch = search?.toLowerCase() || "";
     return (
       (!tags || tags.length === 0 ||
-        tags.every((tag) => post.tags?.includes(tag))) &&
+        tags.every((tag) => post.tags?.map((t) => t.toLowerCase()).includes(tag))) &&
       (!search || search === '' ||
         post.title?.toLowerCase().includes(lowerCaseSearch) ||
         post.tldr?.toLowerCase().includes(lowerCaseSearch) ||

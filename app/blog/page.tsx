@@ -5,7 +5,6 @@ import Link from "next/link";
 import { filteredPosts } from "@/lib/posts";
 import BlogPostList from "@/components/ui/BlogPostList";
 import SearchBar from "@/components/ui/SearchBar";
-import { Playfair_Display_SC } from "next/font/google";
 
 function DisplayContent() {
   const searchParams = useSearchParams();

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
 
-  const version = 'v0.7' // todo: replace with commit id
+  const version = 'v0.7.5' // todo: replace with commit id
 
   return (
     <footer className='w-full pt-12'>

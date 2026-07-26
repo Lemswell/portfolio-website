@@ -75,7 +75,7 @@ export default function SearchBar() {
         params.delete("search");
       }
 
-      router.push(`/blog?${params.toString()}`);
+      router.push(`/blog?${params.toString()}`); // todo make adaptable for other routes
     }, 300); // 300ms delay
 
     return () => clearTimeout(timer); // Clean up timer on next keypress
@@ -91,7 +91,8 @@ export default function SearchBar() {
         placeholder="Search posts..."
         className="px-4 py-2 rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 focus:outline-none"
       />
-      {tags.length > 0 && <TagList tags={tags} searchMode={true} />}
+      {tags.length > 0 &&
+        <TagList tags={tags} edittable={true} />}
     </div>
   );
 };
