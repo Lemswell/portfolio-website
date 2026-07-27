@@ -129,7 +129,6 @@ const TagList = ({ tags, edittable, clickable }: TagListProps) => {
               key={topic}
               className={tagClassNames}
             >
-              {/*{edittable && <span className="font-thin pr-1.5 text-zinc-800/60 dark:text-zinc-100/60 hover:text-black hover:dark:text-white">{`\u00d7`}</span>}*/}
               {topic}
             </div>
           ))}

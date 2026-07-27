@@ -92,6 +92,7 @@ export default async function Home() {
           >
             <FileDownload className="w-5 h-5" />
             <HoverBadge
+              pointer={true}
               trigger={<span className="ml-2 text-sm">Download</span>}
               content={
                 <p className="text-white text-[0.7rem]">
