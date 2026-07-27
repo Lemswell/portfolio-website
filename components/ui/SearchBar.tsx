@@ -89,13 +89,13 @@ export default function SearchBar() {
         placeholder="Search posts..."
         className="px-4 py-2 rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 focus:outline-none"
       />
-      {tags.length === 0 &&
+      {/*{tags.length === 0 &&
         <div
           className='flex items-center h-[1.86rem] px-2 opacity-0 group-hover:opacity-100 transition-opacity'>
           <span className=' font-mono text-sm font-medium text-zinc-800/20 dark:text-zinc-100/20'>
             {`type #<tag_name> to search for tags`}
           </span>
-        </div>}
+        </div>}*/}
       <TagList tags={tags} edittable={true} />
     </div>
   );

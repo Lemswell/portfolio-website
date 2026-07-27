@@ -24,6 +24,7 @@ const PostPageDisplay = async ({
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <header className="my-8">
+        {/* BLOG TITLE INFO (and breadcrumb info) */}
         <section>
           <span className="text-xl sm:text-2xl font-bold">
             <Link
@@ -46,6 +47,7 @@ const PostPageDisplay = async ({
           </h1>
         </section>
 
+        {/* BLOG METADATA */}
         <section className="mt-3 flex flex-col gap-2">
           <div className="my-1 flex items-center gap-2 text-zinc-500/80 dark:text-zinc-400/80">
             <Calendar className="w-4 h-4" />
@@ -66,14 +68,21 @@ const PostPageDisplay = async ({
 
       <hr className="border-black/10 dark:border-white/10" />
 
+
+      {/* CONTENT */}
       {post && (
         <article
           dangerouslySetInnerHTML={{ __html: post.compiledContent }}
-          className="prose sm:prose-lg dark:prose-invert mt-3 mx-auto max-w-6xl py-6
-      prose-headings:font-semibold"
+          className={`
+            prose sm:prose-lg dark:prose-invert mt-3 mx-auto max-w-6xl py-6
+            prose-headings:font-semibold prose-img:mx-auto prose-img:rounded-sm
+          `}
         />
       )}
       <hr className="border-black/10 dark:border-white/10" />
+
+      {/* PREV/NEXT NAVIGATOR */}
+
       <div className="my-8 flex justify-between items-center">
         {constIdx - 1 >= 0 && (
           <Link
