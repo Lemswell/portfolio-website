@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { Tag } from "@/components/ui/icons";
-import { Suspense, useState, useEffect } from "react";
+import { Suspense } from "react";
 
 
 interface TagListProps {
@@ -12,65 +12,73 @@ interface TagListProps {
 }
 
 export const TagListClickable = ({ tagList }: { tagList: string[] }) => {
-
+  // should i make togglable?
 
   const searchParams = useSearchParams();
 
-  const URLSpecifiedTagString = searchParams.get("tags") ?? '';
+  const URLParamsString = new URLSearchParams(searchParams.toString());
+  const URLSpecifiedTags = searchParams.get("tags")?.split(",") ?? [];
   const router = useRouter();
 
-  const addTagToURLParams = (tagToBeAdded: string) => { // todo
-    const tags = URLSpecifiedTagString;
-
-    return tags.split(',').includes(tagToBeAdded)
-      ? tags
-      : `${tags},${tagToBeAdded}`;
+  const getNewTagStringWith = (tagToBeAdded: string) => { // returns new URL tag string
+    const tags = URLSpecifiedTags;
+    if (tags.includes(tagToBeAdded)) return "";
+    if (tags.length === 0) return tagToBeAdded;
+    return `${tags.join(",")},${tagToBeAdded}`;
   };
 
+  const pushTagStringToURL = (tags: string) => {
+    if (tags.length === 0) {
+      URLParamsString.delete("tags");
+    } else {
+      URLParamsString.set("tags", tags);
+    }
+    router.push(`/blog?${URLParamsString.toString()}`);
+  };
+
+
+
   const tagClassNames = `
-    px-2 py-[.9] rounded bg-zinc-400/15 text-sm dark:text-zinc-100 text-zinc-900 lowercase min-w-max transition-colors
+    px-2 py-[.9] rounded bg-zinc-400/15 text-sm dark:text-zinc-100 text-zinc-900
+    lowercase min-w-max transition-colors cursor-pointer
   `;
 
   return (
     <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar">
-
+      {tagList.map((topic) => (
+        <div
+          key={topic}
+          onClick={() => { pushTagStringToURL(getNewTagStringWith(topic)) }}
+          className={tagClassNames}
+        >
+          {topic}
+        </div>
+      ))}
     </div>
   );
 }
 
 // tagList below the search bar
-export const TagListSelected = ({ currentTagList }: { currentTagList: string[] }) => {
+export const TagListSelected = () => {
 
   const searchParams = useSearchParams();
 
-  const URLSpecifiedTagString = searchParams.get("tags") ?? '';
+
+  const URLParamsString = new URLSearchParams(searchParams.toString());
+  const URLSpecifiedTags = searchParams.get("tags")?.split(',') ?? [];
   const router = useRouter();
 
-  const [tags, setTags] = useState(currentTagList.join(','));
+  const removeTagFromURLParams = (tags: string[], tagToBeRemoved: string) => {
+    return tags.filter((tag) => tag !== tagToBeRemoved);
+  };
 
-  useEffect(() => {
-    setTags(URLSpecifiedTagString);
-  }, [URLSpecifiedTagString]);
-
-  useEffect(() => {
-    // compare given list and variables;
-    if (tags === URLSpecifiedTagString) return;
-
-
-    const URLParamsString = new URLSearchParams(searchParams.toString());
-    // update URL
-    if (tags) {
-      URLParamsString.set("tags", tags);
-    } else if (tags === '') {
+  const pushCurrentTagsToURL = (tags: string[]) => {
+    if (tags.length === 0) {
       URLParamsString.delete("tags");
+    } else {
+      URLParamsString.set("tags", tags.join(','));
     }
-    router.push(`/blog?${URLParamsString.toString()}`); // todo: make adaptable for other routes
-
-  }, [tags, URLSpecifiedTagString, searchParams, router]);
-
-
-  const removeTagFromURLParams = (tags: string, tagToBeRemoved: string) => {
-    return tags.split(',').filter((tag) => tag !== tagToBeRemoved).join(',');
+    router.push(`/blog?${URLParamsString.toString()}`);
   };
 
   const tagClassNames = `
@@ -79,7 +87,7 @@ export const TagListSelected = ({ currentTagList }: { currentTagList: string[] }
 
   return (
     <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar">
-      {tags.split(",").map((topic) => (
+      {URLSpecifiedTags.map((topic) => (
         <div
           key={topic}
 
@@ -90,9 +98,9 @@ export const TagListSelected = ({ currentTagList }: { currentTagList: string[] }
               font-thin pr-1.5 text-zinc-800/60 dark:text-zinc-100/60 hover:text-black hover:dark:text-white
               cursor-pointer
             `}
-            onClick={() => setTags(removeTagFromURLParams(tags, topic))}
+            onClick={() => pushCurrentTagsToURL(removeTagFromURLParams(URLSpecifiedTags, topic))}
             >{`\u00d7`}</span>
-          {topic}
+          <span>{topic}</span>
         </div>
       ))}
     </div>
@@ -113,7 +121,7 @@ const TagList = ({ tags, edittable, clickable }: TagListProps) => {
     <div className="mt-2 flex items-center gap-1 line-clamp-1">
       {!edittable && <Tag className="h-5 w-5 shrink-0 mr-2" />}
 
-      {!edittable &&
+      {!edittable && !clickable &&
         <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar">
           {tags.map((topic) => (
             <div
@@ -128,7 +136,7 @@ const TagList = ({ tags, edittable, clickable }: TagListProps) => {
       }
       {edittable &&
         <Suspense fallback={<div />}>
-          <TagListSelected currentTagList={tags} />
+          <TagListSelected />
         </Suspense>
       }
       {clickable &&

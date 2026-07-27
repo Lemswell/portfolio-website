@@ -42,6 +42,7 @@ const BlogPostCard = ({
             ? post.tags
             : [post.grouping].concat(post.tags)
         }
+        clickable={true}
       />
     </div>
   );
