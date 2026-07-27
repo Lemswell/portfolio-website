@@ -77,7 +77,7 @@ export default function SearchBar() {
       router.push(`/blog?${params.toString()}`); // todo make adaptable for other routes
     }, 300); // 300ms delay
 
-    return () => clearTimeout(timer); // Clean up timer on next keypress
+    return () => clearTimeout(timer); // Clean up timer on next key press
   }, [text, searchParams, router, urlSearchQuery, tagsQuery]);
 
   return (
@@ -96,7 +96,7 @@ export default function SearchBar() {
             {`type #<tag_name> to search for tags`}
           </span>
         </div>}*/}
-      <TagList tags={tags} edittable={true} />
+      <TagList tags={tags} editable={true} />
     </div>
   );
 };

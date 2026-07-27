@@ -8,7 +8,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 interface TagListProps {
   tags: string[];
-  edittable?: boolean;
+  editable?: boolean;
   clickable?: boolean;
 }
 
@@ -26,11 +26,11 @@ const pushTagStringToURL = (tags: string, URLParamsString: URLSearchParams, rout
   router.push(`/blog?${URLParamsString.toString()}`);
 };
 
-const addToTagString = (tags: string[], tagToBeAdded: string) => { // returns new URL tag string
+const addToTagString = (tags: string[], tagToBeAdded: string) => {
   tagToBeAdded = tagToBeAdded.toLowerCase();
   if (tags.includes(tagToBeAdded)) return tags.join(",");
   if (tags.length === 0) return tagToBeAdded;
-  return `${tags.join(",")},${tagToBeAdded}`;
+  return `${tags.join(",")},${tagToBeAdded}`; // returns new URL tag string
 }
 
 const removeFromTagString = (tags: string[], tagToBeRemoved: string) => {
@@ -44,16 +44,14 @@ const toggleTagInString = (tags: string[], tagToBeToggled: string) => {
 }
 
 export const TagListClickable = ({ tagList }: { tagList: string[] }) => {
-  // should i make togglable?
 
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const URLParamsString = new URLSearchParams(searchParams.toString());
   const URLSpecifiedTags = searchParams.get("tags")?.split(",") ?? [];
-  const router = useRouter();
 
-
-  const tagClassNames = `${tagClasses} cursor-pointer`;
+  const clickableTagClasses = `${tagClasses} cursor-pointer`;
 
   return (
     <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar">
@@ -61,7 +59,7 @@ export const TagListClickable = ({ tagList }: { tagList: string[] }) => {
         <div
           key={topic}
           onClick={() => { pushTagStringToURL(toggleTagInString(URLSpecifiedTags, topic), URLParamsString, router) }}
-          className={tagClassNames}
+          className={clickableTagClasses}
         >
           {topic}
         </div>
@@ -70,16 +68,13 @@ export const TagListClickable = ({ tagList }: { tagList: string[] }) => {
   );
 }
 
-// tagList below the search bar
 export const TagListSelected = () => {
 
   const searchParams = useSearchParams();
-
+  const router = useRouter();
 
   const URLParamsString = new URLSearchParams(searchParams.toString());
   const URLSpecifiedTags = searchParams.get("tags")?.split(',') ?? [];
-  const router = useRouter();
-
 
   return (
     <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar">
@@ -99,28 +94,30 @@ export const TagListSelected = () => {
   );
 }
 
-const TagList = ({ tags, edittable, clickable }: TagListProps) => {
-  edittable = edittable ?? false;
+const TagList = ({ tags, editable, clickable }: TagListProps) => {
+  editable = editable ?? false;
   clickable = clickable ?? false;
 
   if (tags.length === 0) return null;
 
   return (
     <div className="mt-2 flex items-center gap-1 line-clamp-1">
-      {!edittable && <Tag className="h-5 w-5 shrink-0 mr-2" />}
+      {!editable && <Tag className="h-5 w-5 shrink-0 mr-2" />}
 
-      {!edittable && !clickable &&
+      {!editable && !clickable &&
         <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap no-scrollbar">
           {tags.map((topic) => (
             <div key={ topic } className={ tagClasses }> { topic } </div>
           ))}
         </div>
       }
-      {edittable &&
+
+      {editable &&
         <Suspense fallback={<div />}>
           <TagListSelected />
         </Suspense>
       }
+
       {clickable &&
         <Suspense fallback={<div />}>
           <TagListClickable tagList={tags} />
