@@ -10,7 +10,7 @@ const checkAndRemoveTag = (query: string): string[] => { // takes seach bar inpu
   let tags = "";
 
   while (tagIdx !== -1 && tagEnd !== -1 && tagEnd !== tagIdx + 1) { // just in case input is cp in, gets all tags.
-    const tag = newInput.substring(tagIdx + 1, tagEnd);
+    const tag = newInput.substring(tagIdx + 1, tagEnd).toLowerCase();
     tags = tags.length > 0 ? `${tags}, ${tag}` : tag;
     newInput = newInput.substring(0, tagIdx) + newInput.substring(tagEnd + 1);
     tagIdx = newInput.lastIndexOf("#");
@@ -50,7 +50,7 @@ export default function SearchBar() {
       const params = new URLSearchParams(searchParams.toString());
       let queryValue = text;
 
-      // Extract hashtag if present
+      // Extract hashtag (in query) if present
       const searchTerms = checkAndRemoveTag(text);
       if (searchTerms[0].length > 0) {
         const newQuery = searchTerms[1];
@@ -67,7 +67,6 @@ export default function SearchBar() {
         queryValue = searchTerms.length == 3 ? searchTerms[2] : newQuery;
         setText(newQuery); // Update local input text to drop the extracted tag
       }
-      // todo: method for removing tag
 
       if (queryValue) {
         params.set("search", queryValue);

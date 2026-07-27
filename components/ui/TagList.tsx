@@ -21,6 +21,7 @@ export const TagListClickable = ({ tagList }: { tagList: string[] }) => {
   const router = useRouter();
 
   const getNewTagStringWith = (tagToBeAdded: string) => { // returns new URL tag string
+    tagToBeAdded = tagToBeAdded.toLowerCase();
     const tags = URLSpecifiedTags;
     if (tags.includes(tagToBeAdded)) return "";
     if (tags.length === 0) return tagToBeAdded;
