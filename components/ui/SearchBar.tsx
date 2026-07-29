@@ -1,6 +1,8 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useState, useEffect } from "react";
 import TagList from '@/components/ui/TagList';
+import { AlertCircle, Search, SortAsc, SortDesc } from '@/components/ui/icons';
+
 
 const checkAndRemoveTag = (query: string): string[] => { // takes seach bar input as a query, returns [tag, remainingQuery]
   // checks if last word is a tag, and removes it from the query
@@ -22,6 +24,47 @@ const checkAndRemoveTag = (query: string): string[] => { // takes seach bar inpu
   }
   return [tags, newInput];
 };
+
+function SortSwitch({ className }: { className?: string }) {
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const [isAsc, setIsAsc] = useState(searchParams.has("asc"));
+
+  useEffect(() => {
+    setIsAsc(urlSortOrder);
+  }, [urlSortOrder]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (isAsc) {
+        params.set("asc", "");
+      } else {
+        params.delete("asc");
+      }
+      console.log("HELLO");
+      router.push(`/blog?${params.toString()}`); // todo make adaptable for other routes
+    }, 50); // 50ms delay
+
+    return () => clearTimeout(timer); // Clean up timer on next keypress
+  }, [isAsc, router, searchParams]);
+
+  return (
+    <div
+      className={`
+        ${className}
+        hover:text-zinc-800/60
+        hover:dark:text-zinc-100/60
+      `}
+      onClick={() => setIsAsc(!isAsc)}
+    >
+      {isAsc && <SortAsc />}
+      {!isAsc && <SortDesc />}
+    </div>
+  );
+}
 
 export default function SearchBar() {
 
@@ -81,14 +124,19 @@ export default function SearchBar() {
   }, [text, searchParams, router, urlSearchQuery, tagsQuery]);
 
   return (
-    <div className="flex flex-col gap-2 my-3.5 group">
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Search posts..."
-        className="px-4 py-2 rounded-md border border-black/10 dark:border-white/10 bg-zinc-50 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 focus:outline-none"
-      />
+    <div className="flex flex-col gap-2 mb-4 group">
+      <div className='flex items-center border rounded-md border-black/10 dark:border-white/10 px-3 gap-3'>
+        <Search className="h-5 w-5 text-black/10 dark:text-white/10" />
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Search posts..."
+          className="py-2 flex-1 focus:outline-none"
+        />
+        < AlertCircle className="h-5 w-5 text-black/10 dark:text-white/10" />
+        < SortSwitch className="h-5 w-5 text-black/10 dark:text-white/10"/>
+      </div>
       {/*{tags.length === 0 &&
         <div
           className='flex items-center h-[1.86rem] px-2 opacity-0 group-hover:opacity-100 transition-opacity'>

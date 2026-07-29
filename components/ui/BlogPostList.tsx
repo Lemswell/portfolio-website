@@ -35,10 +35,12 @@ export default function BlogPostListDisplay({
     <div className="flex flex-col">
       <div
         role="list"
-        className={`border border-black/10 dark:border-white/10
+        className={`
+          border border-black/10 dark:border-white/10
           rounded-t-md
           ${displayAmount == undefined || displayAmount >= posts.length ? "rounded-b-md" : ""}
-          dark:bg-background dark:hover:bg-background bg-zinc-50`}
+          dark:bg-background dark:hover:bg-background bg-zinc-50
+        `}
       >
         {posts.map(
           (post, index: number) =>
