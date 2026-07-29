@@ -17,9 +17,7 @@ const BlogPostCard = ({
   first?: boolean;
   last?: boolean;
 }) => {
-  let borderCompensation = "";
-  if (first) borderCompensation += "rounded-t-md ";
-  if (last) borderCompensation += "rounded-b-md";
+  const borderCompensation = `${first ? "rounded-t-md" : ""} ${last ? "rounded-b-md" : ""}`;
   return (
     <div
       className={`flex flex-col gap-3 py-4 px-5 hover:bg-zinc-500/10 transition-colors border-0 border-black/10 dark:border-white/10 ${borderCompensation}`}
