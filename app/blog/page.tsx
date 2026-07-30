@@ -14,8 +14,8 @@ function DisplayContent() {
   const tagsQuery = searchParams.get("tags") || "";
   const selectedTags = tagsQuery ? tagsQuery.split(",") : [];
 
-  // feed params into postfilter func
-  const posts = filteredPosts(false, searchQuery, selectedTags);
+  // feed params into post filter func
+  const posts = filteredPosts(searchParams.has("asc"), searchQuery, selectedTags);
 
   return (
     <>

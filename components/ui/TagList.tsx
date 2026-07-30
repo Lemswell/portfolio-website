@@ -84,7 +84,7 @@ export const TagListSelected = () => {
           className={tagClasses}
         >
           <span
-            className={`font-thin pr-1.5 text-zinc-800/60 dark:text-zinc-100/60 hover:text-black hover:dark:text-white cursor-pointer`}
+            className={`font-thin pr-1.5 text-zinc-800/60 dark:text-zinc-100/60 hover:text-black hover:dark:text-white select-none cursor-pointer`}
             onClick={() => pushTagStringToURL(removeFromTagString(URLSpecifiedTags, topic), URLParamsString, router)}
             >{`\u00d7`}</span>
           <span>{topic}</span>
