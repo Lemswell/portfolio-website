@@ -48,10 +48,8 @@ export default function App() {
         </p>
       </header>
 
-      <hr className="my-8 border-black/10 dark:border-white/10"></hr>
-
       {/*<BlogPostFilters />*/}
-      <Suspense fallback={<div className="h-10 my-3.5 px-4 py-2 animate-pulse rounded-md bg-zinc-50 dark:bg-zinc-900" />}>
+      <Suspense fallback={<div className="h-10 my-4 px-4 py-2 animate-pulse rounded-md bg-zinc-50 dark:bg-zinc-900" />}>
         <DisplayContent />
       </Suspense>
     </main>
