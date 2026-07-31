@@ -7,7 +7,14 @@ const Footer = () => {
 
   return (
     <footer className='w-full pt-12'>
-      <div className="mx-auto flex max-w-4xl sm:flex-row-reverse sm:justify-between flex-col items-center justify-center px-8 pb-32 text-zinc-800/60 dark:text-zinc-100/60">
+      <div
+        className={`
+          mx-auto flex max-w-4xl px-8 pb-32
+          flex-col items-center gap-4
+          sm:flex-row-reverse sm:justify-between
+          text-zinc-800/60 dark:text-zinc-100/60
+        `}
+      >
         <section className="flex gap-4">
           <Link className="hover:text-zinc-500/90 transition-colors" href="https://www.linkedin.com/in/lemdc" title='LinkedIn'>
             <Linkedin className="w-5 h-5" />
